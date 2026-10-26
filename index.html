@@ -14,7 +14,7 @@
   --tx:#1f1f1f; --tx-secondary:#3d3d3d; --tx-tertiary:#666;
   --st:#e6e6e6; --st-secondary:#f0f0f0;
   --grey-50:#f9f9f9; --grey-100:#f5f5f5; --grey-200:#f0f0f0;
-  --indigo-500:#6a88e2; --indigo-600:#556adc; --indigo-900:#212191;
+  --indigo-100:#e8effc; --indigo-500:#6a88e2; --indigo-600:#556adc; --indigo-900:#212191;
   --ink-btn-a:#3a3f5c; --ink-btn-b:#1e2033;
   --paper:#fff; --paper-soft:#fcfcfc;
   --gutter:clamp(20px,8.333vw,120px);
@@ -97,31 +97,83 @@ h1{
   text-decoration:none; border:0; cursor:pointer;
 }
 .pill.dark{background:linear-gradient(var(--ink-btn-a) 0%,var(--ink-btn-b) 100%); color:#fff}
-.pill.lightb{background:linear-gradient(#fff 0%,#f0f1f5 100%); color:var(--ink-btn-b)}
+/* hairline so the light pill still reads on the grey bands, where a
+   pure-white fill would otherwise disappear */
+.pill.lightb{background:linear-gradient(#fff 0%,#f0f1f5 100%); color:var(--ink-btn-b);
+             box-shadow:inset 0 0 0 1px rgba(31,31,31,.08)}
 
 /* ============ Body sections ============ */
-.band{background:var(--paper-soft); border-top:1px solid var(--st-secondary)}
-.video{padding-block:clamp(48px,7vw,80px)}
+.band{background:var(--grey-50)}
+.sec{padding-block:clamp(56px,7.5vw,96px)}
+.sec-head{text-align:center; max-width:720px; margin:0 auto clamp(32px,4vw,48px)}
+.sec-head h2, .closing h2{
+  font-family:"Season Mix",Matter,serif; font-weight:525;
+  font-size:clamp(28px,3.4vw,36px); line-height:1.15; letter-spacing:-.02em;
+  color:var(--tx); margin:0; text-wrap:balance;
+}
+.sec-lede{margin:14px auto 0; max-width:54ch; font-size:18px; line-height:1.55; color:var(--tx-tertiary); text-wrap:pretty}
+
+.card{background:#fff; border:1px solid var(--st); border-radius:24px; padding:clamp(24px,2.6vw,32px)}
+.card h3{font-size:20px; font-weight:525; line-height:1.3; color:var(--tx); margin:0 0 10px}
+.card p{margin:0; font-size:16px; line-height:1.6; color:var(--tx-tertiary)}
+.chip{
+  display:grid; place-items:center; width:40px; height:40px; border-radius:11px;
+  background:var(--indigo-100); margin-bottom:18px;
+}
+.chip svg{width:20px; height:20px; fill:none; stroke:#4250d5; stroke-width:1.75;
+          stroke-linecap:round; stroke-linejoin:round}
+.phase{font-size:12px; font-weight:525; letter-spacing:2px; text-transform:uppercase;
+       color:var(--indigo-900); margin:0 0 8px}
+
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+.grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:20px}
+.metric .num{display:block; font-family:"Season Mix",Matter,serif; font-weight:425;
+             font-size:40px; line-height:1; color:var(--indigo-500); margin-bottom:16px}
+
+/* two-column media split, as on their site */
+.split{display:grid; grid-template-columns:minmax(0,360px) minmax(0,1fr); gap:20px; align-items:stretch}
+.split-copy{display:flex; flex-direction:column}
+.h-card{font-family:"Season Mix",Matter,serif; font-weight:525; font-size:clamp(26px,2.8vw,32px);
+        line-height:1.15; letter-spacing:-.02em; color:var(--tx); margin:0 0 14px}
+.split-copy p{font-size:16px; line-height:1.6; color:var(--tx-tertiary); margin:0}
+.split-cta{margin-top:auto; align-self:flex-start}
+@media (min-width:901px){ .split-copy{padding-block:clamp(28px,3vw,40px)} }
+
 .video-frame{
-  position:relative; aspect-ratio:16/9; width:100%; max-width:880px; margin-inline:auto;
-  border:1px solid var(--st); border-radius:14px; overflow:hidden; background:var(--paper);
+  position:relative; aspect-ratio:16/9; width:100%;
+  border:1px solid var(--st); border-radius:24px; overflow:hidden; background:#fff;
 }
 .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0; display:block}
-.video-ph{position:absolute; inset:0; display:flex; flex-direction:column;
-          align-items:center; justify-content:center; gap:14px; padding:24px; text-align:center}
-.video-ph .play{width:56px; height:56px; border-radius:50%; display:grid; place-items:center;
-                background:#fff; border:1px solid var(--st)}
-.video-ph .play svg{width:16px; height:16px; margin-left:3px; fill:var(--tx)}
-.kicker{font-size:12px; font-weight:525; letter-spacing:2px; text-transform:uppercase; color:var(--tx-tertiary)}
+.video-ph{position:absolute; inset:0; display:grid; place-items:center}
+.play{
+  width:64px; height:64px; border-radius:50%; display:grid; place-items:center;
+  background:rgba(255,255,255,.72); border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 8px 28px rgba(31,31,31,.14); backdrop-filter:blur(6px);
+}
+.play svg{width:17px; height:17px; margin-left:3px; fill:var(--tx)}
 
-.plan{padding-block:clamp(48px,7vw,80px) clamp(64px,9vw,112px)}
 .plan-inner{max-width:880px; margin-inline:auto}
-.plan h2{margin:0 0 20px; text-align:center}
-.plan-box{border:1px solid var(--st); border-radius:14px; background:#fff; padding:clamp(24px,3.6vw,40px)}
-.plan-box p{margin:0; font-size:18px; line-height:1.65; color:var(--tx-secondary)}
+.plan-box p{font-size:18px; line-height:1.65; color:var(--tx-secondary)}
 .plan-box p b{color:#000; font-weight:600}
 
-.site-footer{border-top:1px solid var(--st-secondary); padding-block:24px 40px; background:var(--paper-soft)}
+.closing{text-align:center}
+.closing .rule{margin-bottom:28px}
+.closing .cta{margin-top:32px}
+
+@media (max-width:1000px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .grid-3{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .split-cta{margin-top:24px}
+}
+@media (max-width:560px){
+  .grid-4{grid-template-columns:1fr}
+  .card{border-radius:18px}
+  .video-frame{border-radius:18px}
+}
+
 /* Narrow screens: the gradient is sized in vw, so it needs its own scale
    or it collapses into a blob at the top and the motif lands on bare white. */
 @media (max-width:760px){
@@ -173,37 +225,147 @@ h1{
   </section>
 </div>
 
-<div class="band">
+<!-- ============ WALKTHROUGH — Sarvam's two-column media pattern ============ -->
+<section class="band" id="walkthrough">
+  <div class="wrap split">
+    <div class="card split-copy">
+      <h2 class="h-card">The two-minute version</h2>
+      <p>If you only have two minutes, start here. I walk through where I think
+         Sarvam&rsquo;s funnel leaks today, which of the two growth tracks I&rsquo;d
+         pick up first, and what I&rsquo;d have shipped by day thirty.</p>
+      <a class="pill dark split-cta" href="#plan">Read the plan instead</a>
+    </div>
 
-  <!-- ===================================================================
-       YOUTUBE SLOT — to use your video:
-       1. delete the whole <div class="video-ph">…</div> block below
-       2. uncomment the <iframe> and swap VIDEO_ID for your real ID
-          (from youtu.be/VIDEO_ID or youtube.com/watch?v=VIDEO_ID)
-       =================================================================== -->
-  <section class="video wrap" id="walkthrough">
+    <!-- =================================================================
+         YOUTUBE SLOT — to use your video:
+         1. delete the whole <div class="video-ph">…</div> block below
+         2. uncomment the <iframe> and swap VIDEO_ID for your real ID
+            (from youtu.be/VIDEO_ID or youtube.com/watch?v=VIDEO_ID)
+         ================================================================= -->
     <div class="video-frame">
 
       <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="30-day plan walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
 
       <div class="video-ph">
         <span class="play" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 1.5v13l11-6.5z"/></svg></span>
-        <span class="kicker">Walkthrough &middot; 16:9</span>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="plan wrap" id="plan">
+<!-- ============ THE THREE PHASES ============ -->
+<section class="sec" id="plan">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2>The plan in three phases</h2>
+      <p class="sec-lede">Thirty days is enough to learn the funnel, fix the cheap
+         things and prove what moved &mdash; in that order.</p>
+    </header>
+
+    <div class="grid-3">
+      <article class="card">
+        <span class="chip" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg></span>
+        <p class="phase">Days 1&ndash;10</p>
+        <h3>Learn the funnel by using it</h3>
+        <p>I sign up for the API as a first-time developer would and time every step
+           to the first successful call, noting each place I hesitate &mdash; those are
+           the same places signups drop. In parallel I audit which docs and posts
+           already pull organic traffic, and how Sarvam gets described when you ask
+           ChatGPT, Perplexity or Gemini about Indic speech and translation.</p>
+      </article>
+
+      <article class="card">
+        <span class="chip" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M16 7h5v5"/></svg></span>
+        <p class="phase">Days 11&ndash;20</p>
+        <h3>Ship the cheapest fixes</h3>
+        <p>The audit becomes a ranked backlog where every item has an owner, an effort
+           estimate and a number it should move. Then I publish the two or three
+           highest-leverage pieces myself: a comparison page that captures search
+           demand that already exists, a developer tutorial that ends in a working
+           call, and the metadata and schema work that makes both easier to quote.</p>
+      </article>
+
+      <article class="card">
+        <span class="chip" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+        <p class="phase">Days 21&ndash;30</p>
+        <h3>Prove it with numbers</h3>
+        <p>One dashboard the team actually opens, two honest experiments run against
+           it, and a short written readout to close the month: what moved, what
+           didn&rsquo;t, what I&rsquo;d kill, and the three bets worth real budget in month
+           two. The goal isn&rsquo;t a vanity spike &mdash; it&rsquo;s a measurement setup that
+           outlives the internship.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT I'D MEASURE ============ -->
+<section class="band sec">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2>What I&rsquo;d measure</h2>
+      <p class="sec-lede">Four numbers I&rsquo;d want on one screen before I argue for
+         spending anything.</p>
+    </header>
+
+    <div class="grid-4">
+      <article class="card metric">
+        <span class="num">01</span>
+        <h3>Time to first call</h3>
+        <p>Minutes from landing page to a developer&rsquo;s first successful API response.
+           The single best proxy for activation friction.</p>
+      </article>
+      <article class="card metric">
+        <span class="num">02</span>
+        <h3>Signup &rarr; activation</h3>
+        <p>What share of signups ever make that first call, split by source. Tells you
+           which channels bring builders and which bring tourists.</p>
+      </article>
+      <article class="card metric">
+        <span class="num">03</span>
+        <h3>Organic &amp; assisted</h3>
+        <p>Sessions and assisted conversions from search and docs, tracked per page so
+           content decisions stop being guesswork.</p>
+      </article>
+      <article class="card metric">
+        <span class="num">04</span>
+        <h3>Share of AI answers</h3>
+        <p>How often Sarvam is named when an LLM is asked about Indic speech,
+           translation or sovereign AI. Increasingly the real top of funnel.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE WHOLE THING, ONE PARAGRAPH ============ -->
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2>Or the whole thing, in one paragraph</h2>
+    </header>
     <div class="plan-inner">
-      <h2 class="kicker">What&rsquo;s the 30-day plan</h2>
-      <div class="plan-box">
+      <div class="card plan-box">
         <p><b>Days 1&ndash;10, learn the funnel by using it.</b> I sign up for the API the way a first-time developer would, time every step from landing page to first successful call, and write down each place I hesitate &mdash; because those are the same places signups drop off. Alongside that I audit what already exists: which docs pages and blog posts pull organic traffic, which keywords Sarvam ranks for against competitors, and how Sarvam&rsquo;s models get described when you ask ChatGPT, Perplexity and Gemini about Indian-language speech and translation &mdash; increasingly that answer <em>is</em> the top of the funnel. <b>Days 11&ndash;20, ship the cheapest fixes.</b> I turn the audit into a ranked list where every item has an owner, an effort estimate and a number it should move, then publish the two or three highest-leverage pieces myself &mdash; a comparison page that captures existing search demand, a developer-facing tutorial that ends in a working call, and the metadata and schema changes that make both easier for search engines and LLMs to quote. <b>Days 21&ndash;30, prove it with numbers.</b> I set up one dashboard the team actually opens &mdash; signups, activation rate, time-to-first-call, organic sessions and assisted conversions in one view &mdash; run at least two honest experiments against it, and close the month with a short written readout: what moved, what didn&rsquo;t, what I&rsquo;d kill, and the three bets worth a bigger budget in month two. The goal for thirty days isn&rsquo;t a vanity spike. It&rsquo;s leaving behind a measurement setup and a backlog the team keeps using after the internship ends.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-</div>
+<!-- ============ CLOSING ============ -->
+<section class="band sec closing">
+  <div class="wrap">
+    <span class="rule" aria-hidden="true"></span>
+    <h2>Happy to talk through any of this</h2>
+    <p class="sec-lede">The plan is a starting position, not a pitch &mdash; I&rsquo;d
+       expect half of it to change once I see the real numbers.</p>
+    <div class="cta">
+      <!-- swap these two for your real email and LinkedIn -->
+      <a class="pill dark" href="mailto:your@email.com">Email me</a>
+      <a class="pill lightb" href="https://linkedin.com/in/your-handle">LinkedIn</a>
+    </div>
+  </div>
+</section>
 
 <footer class="site-footer">
   <div class="wrap"><p>Prepared by Harsh &middot; Not affiliated with Sarvam AI</p></div>
