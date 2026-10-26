@@ -275,6 +275,16 @@ h1{
   text-transform:uppercase; color:var(--tx-tertiary); line-height:1.4;
 }
 
+.xp-bar{display:flex; justify-content:flex-end; margin-bottom:10px}
+.xp-all{
+  background:none; border:0; cursor:pointer; padding:6px 2px;
+  font-family:"Matter Mono",ui-monospace,monospace; font-size:12px;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--tx-tertiary);
+  transition:color .2s cubic-bezier(.4,0,.2,1);
+}
+.xp-all:hover{color:var(--indigo-700)}
+.xp-all:focus-visible{outline:2px solid var(--indigo-600); outline-offset:3px; border-radius:4px}
+
 .xp{border-top:1px solid var(--st)}
 .xp-item{border-bottom:1px solid var(--st-secondary)}
 
@@ -397,6 +407,7 @@ h1{
   .xp-panel{grid-template-rows:1fr !important}
   .xp-content{opacity:1 !important}
   .xp-chev{display:none !important}
+  .xp-bar{display:none !important}
   h1{font-size:34px !important}
   .sec-head h2,.closing h2{font-size:22px !important}
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:11px; color:#666}
@@ -406,17 +417,16 @@ h1{
                letter-spacing:.05em; text-transform:uppercase; color:#ccc}
 </style>
 <noscript><style>
-  /* the reveal animation starts at opacity:0 — without JS nothing would ever
-     turn it back on, so the whole page would render blank */
+  /* the reveal animation starts at opacity:0 and the accordion panels start
+     collapsed — without JS nothing turns either back on, so the page would
+     render blank and the work history would be unreachable */
   .reveal{opacity:1 !important; translate:none !important}
-  .xp-panel{grid-template-rows:1fr !important}
-  .xp-content{opacity:1 !important}
-  .xp-chev{display:none !important}
   .header-bg{opacity:1 !important; translate:0 0 !important}
   .xp-panel{grid-template-rows:1fr !important}
   .xp-content{opacity:1 !important}
   .xp-chev{display:none}
   .xp-head{cursor:default}
+  .xp-bar{display:none}
 </style></noscript>
 </head>
 <body>
@@ -646,7 +656,11 @@ h1{
       <div class="stat"><span class="n" data-val="23" data-suf="+">23+</span><span class="l">Clients</span></div>
     </div>
 
-    <div class="xp">
+    <div class="xp-bar reveal">
+      <button class="xp-all" type="button" id="xp-all" aria-controls="xp-list">Expand all</button>
+    </div>
+
+    <div class="xp" id="xp-list">
       <article class="xp-item open reveal">
         <h3 style="margin:0">
           <button class="xp-head" type="button" id="xp-h1" aria-expanded="true" aria-controls="xp-p1">
@@ -858,26 +872,47 @@ h1{
   items.forEach(function (el) { io.observe(el); });
 
   // experience accordion
-  // EXCLUSIVE true = one panel open at a time. Set it to false to let
-  // several stay open at once.
-  var EXCLUSIVE = true;
+  // EXCLUSIVE false = several panels may be open at once.
+  // Set it to true to close the others whenever one opens.
+  var EXCLUSIVE = false;
   var items = [].slice.call(document.querySelectorAll('.xp-item'));
+  var allBtn = document.getElementById('xp-all');
+
+  function setOpen(item, open) {
+    item.classList.toggle('open', open);
+    item.querySelector('.xp-head').setAttribute('aria-expanded', String(open));
+  }
+  function allOpen() {
+    return items.every(function (i) { return i.classList.contains('open'); });
+  }
+  function syncAllBtn() {
+    if (allBtn) allBtn.textContent = allOpen() ? 'Collapse all' : 'Expand all';
+  }
+
   items.forEach(function (item) {
-    var head = item.querySelector('.xp-head');
-    head.addEventListener('click', function () {
+    item.querySelector('.xp-head').addEventListener('click', function () {
       var willOpen = !item.classList.contains('open');
       if (EXCLUSIVE && willOpen) {
-        items.forEach(function (other) {
-          if (other !== item) {
-            other.classList.remove('open');
-            other.querySelector('.xp-head').setAttribute('aria-expanded', 'false');
-          }
-        });
+        items.forEach(function (other) { if (other !== item) setOpen(other, false); });
       }
-      item.classList.toggle('open', willOpen);
-      head.setAttribute('aria-expanded', String(willOpen));
+      setOpen(item, willOpen);
+      syncAllBtn();
     });
   });
+
+  if (allBtn) {
+    if (EXCLUSIVE) {
+      // the control has no meaning when only one panel may be open
+      allBtn.parentElement.style.display = 'none';
+    } else {
+      allBtn.addEventListener('click', function () {
+        var target = !allOpen();
+        items.forEach(function (i) { setOpen(i, target); });
+        syncAllBtn();
+      });
+      syncAllBtn();
+    }
+  }
 
   // stat numbers count up the first time the strip is seen
   var nums = document.querySelectorAll('.stat .n[data-val]');
