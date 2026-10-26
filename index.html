@@ -200,6 +200,52 @@ h1{
 .plan-box p{font-size:18px; line-height:1.65; color:var(--tx-secondary)}
 .plan-box p b{color:#000; font-weight:600}
 
+/* ============ Experience — a stat strip and a divided list.
+   Deliberately not cards: the grids above already use that shape. ============ */
+.stats{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--st); border-bottom:1px solid var(--st);
+  margin-bottom:clamp(36px,4.5vw,56px);
+}
+.stat{padding:clamp(24px,2.8vw,34px) clamp(12px,2vw,28px); border-left:1px solid var(--st-secondary)}
+.stat:first-child{border-left:0}
+.stat .n{
+  display:block; font-family:"Season Mix",Matter,serif; font-weight:425;
+  font-size:clamp(34px,4.4vw,48px); line-height:1; letter-spacing:-.02em; color:var(--tx);
+}
+.stat .l{
+  display:block; margin-top:10px; font-size:12px; font-weight:525; letter-spacing:2px;
+  text-transform:uppercase; color:var(--tx-tertiary); line-height:1.4;
+}
+
+.xp{border-top:1px solid var(--st)}
+.xp-row{
+  display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:clamp(16px,3vw,48px);
+  padding-block:clamp(24px,3vw,34px); border-bottom:1px solid var(--st-secondary);
+}
+.xp-meta h3{font-size:20px; font-weight:525; line-height:1.3; color:var(--tx); margin:0 0 6px}
+.xp-meta .when{
+  font-family:"Matter Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--tx-tertiary);
+}
+.xp-body p{margin:0; font-size:17px; line-height:1.6; color:var(--tx-secondary)}
+.xp-body .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; padding:0; list-style:none}
+.xp-body .tags li{
+  font-size:13px; color:var(--tx-tertiary);
+  border:1px solid var(--st); border-radius:999px; padding:4px 12px;
+}
+@media (max-width:860px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--st-secondary)}
+  .xp-row{grid-template-columns:1fr; gap:12px}
+}
+@media (max-width:460px){
+  .stats{grid-template-columns:1fr}
+  .stat{border-left:0}
+  .stat:nth-child(n+2){border-top:1px solid var(--st-secondary)}
+}
+
 .closing{text-align:center}
 .closing .rule{margin-bottom:28px}
 .closing .cta{margin-top:32px}
@@ -263,6 +309,7 @@ h1{
       <nav class="nav">
         <a href="#walkthrough">Walkthrough</a>
         <a href="#plan">30-Day Plan</a>
+        <a href="#experience">Experience</a>
       </nav>
       <div class="header-cta">
         <span class="pill-sm light">Growth Marketing Intern</span>
@@ -417,32 +464,101 @@ h1{
   </div>
 </section>
 
-<!-- ============ ABOUT — replace the three cards with your real background ============ -->
-<section class="sec" id="about">
+<!-- ============ EXPERIENCE ============ -->
+<section class="band sec" id="experience">
   <div class="wrap">
     <header class="sec-head reveal">
-      <h2>Who&rsquo;s writing this</h2>
-      <p class="sec-lede">The short version. The resume has the full one.</p>
+      <h2>What I&rsquo;ve actually run</h2>
+      <p class="sec-lede">Not coursework. Campaigns with budgets, deadlines and
+         someone waiting on the numbers.</p>
     </header>
-    <div class="grid-3">
-      <article class="card reveal">
-        <span class="chip" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V17c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-6.5"/></svg></span>
-        <h3>Background</h3>
-        <p>REPLACE ME &mdash; where you study or studied, what you&rsquo;re finishing,
-           and the one line that explains why marketing rather than anything else.</p>
+
+    <div class="stats reveal">
+      <div class="stat"><span class="n">14M+</span><span class="l">Views generated</span></div>
+      <div class="stat"><span class="n">860K+</span><span class="l">Followers grown</span></div>
+      <div class="stat"><span class="n">&#8377;13L+</span><span class="l">Ad spend managed</span></div>
+      <div class="stat"><span class="n">50+</span><span class="l">Sites shipped</span></div>
+    </div>
+
+    <div class="xp">
+      <article class="xp-row reveal">
+        <div class="xp-meta">
+          <h3>Political campaigns</h3>
+          <span class="when">Maharashtra &middot; state level</span>
+        </div>
+        <div class="xp-body">
+          <p>Ran digital campaigns for senior Maharashtra politicians &mdash; organic
+             content and paid distribution together. 14M+ views and 860K+ followers
+             across the accounts I worked on, with &#8377;13L+ of ad spend managed
+             against reach and engagement targets. Campaign work means real
+             deadlines and a public scoreboard: you find out within hours whether
+             a message landed.</p>
+          <ul class="tags">
+            <li>Paid social</li><li>Organic content</li><li>Audience growth</li><li>Rapid iteration</li>
+          </ul>
+        </div>
       </article>
-      <article class="card reveal">
-        <span class="chip" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V9M12 20V4M18 20v-8"/></svg></span>
-        <h3>What I&rsquo;ve actually run</h3>
-        <p>REPLACE ME &mdash; the newsletter, page, store, campus campaign or client
-           project you grew yourself, with the realest number you have.</p>
+
+      <article class="xp-row reveal">
+        <div class="xp-meta">
+          <h3>PK Films India, Studio IQ, Dial Vola</h3>
+          <span class="when">Freelance &middot; growth &amp; content</span>
+        </div>
+        <div class="xp-body">
+          <p>Growth and content work for production and media studios &mdash; campaign
+             creative, distribution across channels, and the measurement around it.
+             Three different clients with three different audiences, which is the
+             fastest way to learn that what works on one never transfers cleanly
+             to the next.</p>
+          <ul class="tags">
+            <li>Client work</li><li>Creative</li><li>Distribution</li>
+          </ul>
+        </div>
       </article>
-      <article class="card reveal">
-        <span class="chip" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/></svg></span>
-        <h3>Why Sarvam</h3>
-        <p>REPLACE ME &mdash; two sentences on why this company and not a generic
-           startup. Specific beats enthusiastic every time.</p>
+
+      <article class="xp-row reveal">
+        <div class="xp-meta">
+          <h3>50+ websites, Chakan MIDC</h3>
+          <span class="when">Manufacturing &middot; Pune</span>
+        </div>
+        <div class="xp-body">
+          <p>Built and shipped 50+ websites for manufacturers across Chakan MIDC, one
+             of Asia&rsquo;s largest industrial estates. Mostly businesses with no web
+             presence at all, on fast turnarounds &mdash; which taught me more about
+             what a landing page needs to do than any amount of theory would have.</p>
+          <ul class="tags">
+            <li>AI-assisted builds</li><li>Landing pages</li><li>B2B</li>
+          </ul>
+        </div>
       </article>
+
+      <article class="xp-row reveal">
+        <div class="xp-meta">
+          <h3>B.Tech, Data Science</h3>
+          <span class="when">Third year &middot; in progress</span>
+        </div>
+        <div class="xp-body">
+          <p>Department of Technology, Savitribai Phule Pune University. The useful
+             half for this role is the data half &mdash; being comfortable with a
+             dataset is what separates a growth guess from a growth decision.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY SARVAM — send me your two sentences and I'll drop them in ============ -->
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="plan-inner">
+      <div class="card plan-box reveal">
+        <h2 class="kicker" style="text-align:left; margin:0 0 16px">Why Sarvam</h2>
+        <p>REPLACE ME &mdash; two or three sentences on why this company specifically.
+           The campaign work is the bridge worth drawing: you have already done
+           distribution in Indian languages, at scale, for audiences that are not
+           English-first &mdash; which is the whole problem Sarvam is built around.
+           Say it in your own words and it will land.</p>
+      </div>
     </div>
   </div>
 </section>
