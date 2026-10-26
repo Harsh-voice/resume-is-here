@@ -384,6 +384,57 @@ h1{
 }
 .glyphs i{font-style:normal}
 
+/* ============ Design sheet — staggered 6 / 7 / 6 ============ */
+.sheet{display:grid; gap:clamp(12px,1.6vw,18px)}
+.sheet-row{display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(12px,1.6vw,18px)}
+.spec{width:clamp(76px,8.2vw,104px); display:flex; flex-direction:column; gap:9px}
+.spec-box{
+  position:relative; aspect-ratio:1; border-radius:14px; overflow:hidden;
+  border:1px solid var(--st); background:#fff;
+  display:grid; place-items:center;
+  box-shadow:0 1px 2px rgba(31,31,31,.04), 0 6px 18px rgba(31,31,31,.04);
+  transition:transform .35s cubic-bezier(.2,0,0,1), box-shadow .35s cubic-bezier(.2,0,0,1);
+}
+.spec:hover .spec-box{transform:translateY(-3px); box-shadow:0 2px 4px rgba(31,31,31,.05), 0 14px 32px rgba(31,31,31,.10)}
+.spec-cap{
+  font-family:"Matter Mono",ui-monospace,monospace; font-size:10px; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--grey-400); text-align:center; line-height:1.3;
+}
+.spec-box.fill{border-color:transparent}
+.spec-box .aa{font-size:clamp(26px,3.2vw,38px); line-height:1; color:var(--tx)}
+.spec-box .aa.season{font-family:"Season Mix",Matter,serif; font-weight:425}
+.spec-box .aa.matter{font-family:Matter,sans-serif; font-weight:525}
+.spec-box .aa.mono{font-family:"Matter Mono",ui-monospace,monospace; font-size:clamp(20px,2.4vw,28px)}
+.spec-box .num{
+  font-family:"Season Mix",Matter,serif; font-weight:425; line-height:1; color:var(--tx-tertiary);
+  font-size:clamp(22px,2.8vw,32px);
+}
+.spec-box .mini-pill{
+  padding:6px 13px; border-radius:999px; font-family:"Season Mix",Matter,serif;
+  font-weight:500; font-size:11px; white-space:nowrap;
+}
+.spec-box .mini-pill.dark{background:linear-gradient(var(--ink-btn-a),var(--ink-btn-b)); color:#fff}
+.spec-box .mini-pill.light{background:linear-gradient(#fff,#f0f1f5); color:var(--ink-btn-b);
+                           box-shadow:inset 0 0 0 1px rgba(31,31,31,.08)}
+.spec-box .mini-chip{width:34px; height:34px; border-radius:10px; background:var(--indigo-100);
+                     display:grid; place-items:center}
+.spec-box .mini-chip svg{width:17px; height:17px; fill:none; stroke:var(--indigo-700);
+                         stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round}
+.spec-box .mini-motif{width:64%; opacity:.62}
+.spec-box .mini-rule{width:66%; height:1px;
+  background:radial-gradient(circle,var(--indigo-500) 0%,transparent 100%)}
+.spec-box .mini-play{
+  width:34px; height:34px; border-radius:50%; display:grid; place-items:center;
+  background:rgba(255,255,255,.75); border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 5px 16px rgba(31,31,31,.14);
+}
+.spec-box .mini-play svg{width:11px; height:11px; margin-left:2px; fill:var(--tx)}
+.spec-box .mini-glyph{font-size:26px; line-height:1}
+@media (max-width:620px){
+  .spec{width:clamp(62px,19vw,88px)}
+  .spec-cap{font-size:9px}
+}
+
 /* ============ Statement ============ */
 .statement{
   position:relative; overflow:hidden; isolation:isolate;
@@ -932,6 +983,45 @@ h1{
       <li class="tool"><svg class="tool-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.548 1.156L6.832 2.872v1.682h1.716zm0 3.398v.035H6.832v-.035H3.386L0 7.844v3.577h2.826V8.94c0-.525.429-.954.954-.954h16.476c.525 0 .954.43.954.954v2.48h2.754V7.844l-3.386-3.29H17.3v.035h-1.717v-.035zm7.035 0H17.3V2.872l-1.717-1.716zM8.679 1.188V2.84h6.773V1.188zm11.471 7.07a.834.834 0 00-.132.01l-.543.002c-5.216.014-10.432-.008-15.648.01-.435-.063-.794.436-.716.883v2.264h17.812c-.016-.888.045-1.782-.034-2.666-.104-.342-.427-.502-.739-.502zm-15.422.634a.689.698 0 01.689.698.689.698 0 01-.689.697.689.698 0 01-.688-.697.689.698 0 01.688-.698zm2.134 0a.689.698 0 01.689.698.689.698 0 01-.689.697.689.698 0 01-.688-.697.689.698 0 01.688-.698zM.036 11.645v9.156c0 1.05.858 1.908 1.907 1.908h.883V11.645zm21.174 0v11.064h.882c1.05 0 1.908-.858 1.908-1.908v-9.156zM4.057 13.133v6.85h6.137v-6.85zm13.243.021v3.777l-1.708.977-1.708-.977v-3.758a4.006 4.006 0 000 7.23v2.441h3.457v-2.442a4.006 4.006 0 00-.041-7.248zm-13.243 8.26v1.43h7.925v-1.43z"/></svg><span class="tool-name">Search Console</span></li>
       <li class="tool"><svg class="tool-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg><span class="tool-name">Figma</span></li>
     </ul>
+  </div>
+</section>
+
+<!-- ============ DESIGN SHEET ============ -->
+<section class="sec" id="design">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <h2>And I built this page</h2>
+      <p class="sec-lede">In your design language, not mine &mdash; Season Mix and Matter,
+         your colour tokens, your type scale, your components. Here they are.</p>
+    </header>
+
+    <div class="sheet">
+      <div class="sheet-row reveal">
+        <div class="spec"><div class="spec-box fill" style="background:#f9730c"></div><span class="spec-cap">Saffron</span></div>
+        <div class="spec"><div class="spec-box fill" style="background:#ffb053"></div><span class="spec-cap">Amber</span></div>
+        <div class="spec"><div class="spec-box fill" style="background:#a5bbfc"></div><span class="spec-cap">Peri</span></div>
+        <div class="spec"><div class="spec-box fill" style="background:#556adc"></div><span class="spec-cap">Indigo</span></div>
+        <div class="spec"><div class="spec-box fill" style="background:#3333cc"></div><span class="spec-cap">Deep</span></div>
+        <div class="spec"><div class="spec-box fill" style="background:linear-gradient(160deg,#3a3f5c,#1e2033)"></div><span class="spec-cap">Ink</span></div>
+      </div>
+      <div class="sheet-row reveal">
+        <div class="spec"><div class="spec-box"><span class="aa season">Aa</span></div><span class="spec-cap">Season Mix</span></div>
+        <div class="spec"><div class="spec-box"><span class="aa matter">Aa</span></div><span class="spec-cap">Matter</span></div>
+        <div class="spec"><div class="spec-box"><span class="aa mono">Aa</span></div><span class="spec-cap">Matter Mono</span></div>
+        <div class="spec"><div class="spec-box"><span class="num">64</span></div><span class="spec-cap">Hero</span></div>
+        <div class="spec"><div class="spec-box"><span class="num">42</span></div><span class="spec-cap">Section</span></div>
+        <div class="spec"><div class="spec-box"><span class="num">18</span></div><span class="spec-cap">Body</span></div>
+        <div class="spec"><div class="spec-box"><span class="num">12</span></div><span class="spec-cap">Label</span></div>
+      </div>
+      <div class="sheet-row reveal">
+        <div class="spec"><div class="spec-box"><span class="mini-pill dark">Button</span></div><span class="spec-cap">Primary</span></div>
+        <div class="spec"><div class="spec-box"><span class="mini-pill light">Button</span></div><span class="spec-cap">Secondary</span></div>
+        <div class="spec"><div class="spec-box"><span class="mini-chip"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M16 7h5v5"/></svg></span></div><span class="spec-cap">Icon chip</span></div>
+        <div class="spec"><div class="spec-box"><img class="mini-motif" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1IiBoZWlnaHQ9IjEyNSIgdmlld0JveD0iMCAwIDEyNSAxMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2lfNjY3MV8xNTk0NSkiPgo8cGF0aCBkPSJNODYuNTg3MyAzNy45NTk5TDg4LjEyNjMgMzMuNzc0MkM5Mi4wNTc2IDIyLjExNDggODUuOTczNSAxNS41MTc4IDc4LjI0NCAxMy42MDAxQzcyLjAzNDQgMTIuMDU5NSA2NS42ODA0IDE0LjEzMTkgNjIuMzQyNyAxOC4zNTQ3QzU4Ljk5NSAxMy45MTA4IDUyLjU0MjUgMTEuNTM3NiA0Ni4yNzQgMTIuODY4OUMzOC41NjIgMTQuNTA2OCAzMy4zOTU0IDIzLjk2NDUgMzYuNjE4NyAzMy45MjI4TDM4LjIwNTMgMzguMTY5M0wzNC4wNjE1IDM2LjYxNDhDMjIuNTE4NiAzMi42NDM5IDE1Ljk4NzYgMzguNzg5NCAxNC4wODkxIDQ2LjU5NjlDMTIuNTYzOSA1Mi44NjkzIDE0LjYxNTYgNTkuMjg3NCAxOC43OTYyIDYyLjY1ODlDMTQuMzk2NyA2Ni4wNDA0IDEyLjA0NzIgNzIuNTU4MSAxMy4zNjUyIDc4Ljg4OTlDMTQuOTg2NyA4Ni42Nzk4IDI0LjM0OTkgOTEuODk4NiAzNC4yMDg1IDg4LjY0MjdMMzguNDEyNyA4Ny4wNDAxTDM2Ljg3MzcgOTEuMjI1OEMzMi45NDI0IDEwMi44ODUgMzkuMDI2NSAxMDkuNDgyIDQ2Ljc1NiAxMTEuNEM1Mi45NjU2IDExMi45NCA1OS4zMTk2IDExMC44NjggNjIuNjU3MyAxMDYuNjQ1QzY2LjAwNSAxMTEuMDg5IDcyLjQ1NzUgMTEzLjQ2MiA3OC43MjYgMTEyLjEzMUM4Ni40MzggMTEwLjQ5MyA5MS42MDQ2IDEwMS4wMzUgODguMzgxMyA5MS4wNzcyTDg2Ljc5NDcgODYuODMwNkw5MC45Mzg1IDg4LjM4NTJDMTAyLjQ4MSA5Mi4zNTYxIDEwOS4wMTIgODYuMjEwNiAxMTAuOTExIDc4LjQwMzFDMTEyLjQzNiA3Mi4xMzA3IDExMC4zODQgNjUuNzEyNiAxMDYuMjA0IDYyLjM0MTFDMTEwLjYwMyA1OC45NTk2IDExMi45NTMgNTIuNDQxOSAxMTEuNjM1IDQ2LjExMDFDMTEwLjAxMyAzOC4zMjAyIDEwMC42NSAzMy4xMDE0IDkwLjc5MTUgMzYuMzU3M0w4Ni41ODczIDM3Ljk1OTlaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfNjY3MV8xNTk0NSkiLz4KPC9nPgo8ZGVmcz4KPGZpbHRlciBpZD0iZmlsdGVyMF9pXzY2NzFfMTU5NDUiIHg9IjEzIiB5PSIzLjA4ODI0IiB3aWR0aD0iOTkuOTQxMiIgaGVpZ2h0PSIxMDkuNDEyIiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHg9IjAuOTQxMTc2IiBkeT0iLTkuNDExNzYiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iNy4wNTg4MiIvPgo8ZmVDb21wb3NpdGUgaW4yPSJoYXJkQWxwaGEiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMj0iLTEiIGszPSIxIi8+CjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAuOTk2MDc4IDAgMCAwIDAgMC42OTQxMTggMCAwIDAgMCAwLjE2ODYyNyAwIDAgMCAxIDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9InNoYXBlIiByZXN1bHQ9ImVmZmVjdDFfaW5uZXJTaGFkb3dfNjY3MV8xNTk0NSIvPgo8L2ZpbHRlcj4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzY2NzFfMTU5NDUiIHgxPSI2Mi41IiB5MT0iMTIuNzIwMyIgeDI9IjYyLjQ5OTgiIHkyPSIxMDEuOTEzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNFOEVGRkMiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODFBMEU5Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+Cg==" alt="" aria-hidden="true"></div><span class="spec-cap">Motif</span></div>
+        <div class="spec"><div class="spec-box"><span class="mini-rule"></span></div><span class="spec-cap">Hairline</span></div>
+        <div class="spec"><div class="spec-box"><span class="mini-play"><svg viewBox="0 0 16 16"><path d="M3 1.5v13l11-6.5z"/></svg></span></div><span class="spec-cap">Play</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
