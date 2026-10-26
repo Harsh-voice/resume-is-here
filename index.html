@@ -387,6 +387,44 @@ h1{
   .stat:nth-child(n+2){border-top:1px solid var(--st-secondary)}
 }
 
+/* ============ Glyph field — their careers page renders these as live text,
+   not an image, which is why it stays crisp. Rebuilt the same way. ============ */
+:root{
+  --glyph-dim:#d8d8d8; --glyph-saffron:#f9730c; --glyph-amber:#ffb053;
+  --glyph-indigo:#556adc; --glyph-peri:#a5bbfc;
+}
+.glyphs{
+  position:relative; z-index:0; pointer-events:none; user-select:none;
+  margin-top:clamp(44px,5.5vw,72px); height:clamp(148px,19vw,232px); overflow:hidden;
+  display:flex; flex-wrap:wrap; align-content:flex-start; justify-content:center;
+  gap:7px 13px; padding-inline:16px;
+  font-size:17px; line-height:1.5;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 46%,transparent 100%);
+          mask-image:linear-gradient(180deg,#000 0%,#000 46%,transparent 100%);
+}
+.glyphs i{font-style:normal}
+
+/* ============ Statement ============ */
+.statement{
+  position:relative; overflow:hidden; isolation:isolate;
+  padding-block:clamp(84px,11vw,150px) 0; background:var(--paper);
+  border-top:1px solid var(--st-secondary);
+}
+.statement-inner{position:relative; z-index:1; text-align:center; max-width:900px; margin-inline:auto}
+.statement h2{
+  margin:0; font-family:"Season Mix",Matter,serif; font-weight:425;
+  font-size:clamp(32px,5.4vw,60px); line-height:1.08; letter-spacing:-.025em;
+  color:var(--tx); text-wrap:balance;
+}
+/* saffron through to indigo — the flag running left to right */
+.statement h2 .grad{
+  background:linear-gradient(100deg,#f9730c 0%,#ffb053 26%,#556adc 68%,#3333cc 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+@supports not (background-clip:text){ .statement h2 .grad{color:#3333cc} }
+.statement .kicker{display:block; margin-bottom:clamp(18px,2.4vw,26px)}
+.statement .cta{margin-top:clamp(30px,3.6vw,42px)}
+
 /* ============ Pull quote ============ */
 .quote-sec{
   position:relative; overflow:hidden; padding-block:clamp(72px,10vw,132px);
@@ -407,6 +445,32 @@ h1{
   margin:clamp(22px,3vw,30px) 0 0; font-family:"Matter Mono",ui-monospace,monospace;
   font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--tx-tertiary);
 }
+
+/* ============ Work samples ============ */
+.samples{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,1.6vw,20px);
+}
+.sample{
+  position:relative; aspect-ratio:4/5; overflow:hidden;
+  border:1px solid var(--st); border-radius:18px; background:var(--grey-50);
+  box-shadow:0 1px 2px rgba(31,31,31,.04), 0 10px 28px rgba(31,31,31,.045);
+  transition:transform .35s cubic-bezier(.2,0,0,1), box-shadow .35s cubic-bezier(.2,0,0,1);
+}
+.sample:hover{transform:translateY(-4px); box-shadow:0 2px 4px rgba(31,31,31,.05), 0 20px 48px rgba(31,31,31,.10)}
+.sample img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
+/* visible until a real image is dropped in */
+.sample-ph{
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:10px; padding:22px; text-align:center;
+}
+.sample-ph .n{
+  font-family:"Season Mix",Matter,serif; font-size:30px; line-height:1; color:var(--grey-400);
+}
+.sample-ph .t{font-size:14px; font-weight:525; color:var(--tx-tertiary); line-height:1.4}
+.sample-ph .d{font-size:12px; color:var(--grey-400); line-height:1.5; max-width:22ch}
+.sample-cap{margin:10px 2px 0; font-size:13px; color:var(--tx-tertiary); line-height:1.45}
+@media (max-width:760px){ .samples{grid-template-columns:1fr; gap:14px} .sample{aspect-ratio:16/10} }
 
 /* ============ Tool grid ============ */
 .tools{
@@ -488,6 +552,7 @@ h1{
   .xp-content{opacity:1 !important}
   .xp-chev{display:none !important}
   .xp-bar{display:none !important}
+  .glyphs,.quote-motif{display:none !important}
   h1{font-size:34px !important}
   .sec-head h2,.closing h2{font-size:22px !important}
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:11px; color:#666}
@@ -900,6 +965,54 @@ h1{
   </div>
 </section>
 
+<!-- ============ WORK SAMPLES ============================================
+     Drop a real image in by replacing the <div class="sample-ph">…</div>
+     with:  <img src="samples/your-file.jpg" alt="what it shows">
+     Portrait 4:5 crops best here — roughly 1000x1250.
+     ====================================================================== -->
+<section class="band sec" id="work">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <h2>Selected work</h2>
+      <p class="sec-lede">Campaign creative, the funnel behind it, and the product I
+         built and sold.</p>
+    </header>
+
+    <ul class="samples reveal">
+      <li>
+        <div class="sample">
+          <div class="sample-ph">
+            <span class="n">01</span>
+            <span class="t">Campaign creative</span>
+            <span class="d">Marathi ad creative from the MLA campaign</span>
+          </div>
+        </div>
+        <p class="sample-cap">Nexussv &middot; vernacular creative for Meta</p>
+      </li>
+      <li>
+        <div class="sample">
+          <div class="sample-ph">
+            <span class="n">02</span>
+            <span class="t">Ads manager</span>
+            <span class="d">The spend and results screen behind the 10x</span>
+          </div>
+        </div>
+        <p class="sample-cap">PK Films &middot; &#8377;7.6L spend, &#8377;75.2L sales</p>
+      </li>
+      <li>
+        <div class="sample">
+          <div class="sample-ph">
+            <span class="n">03</span>
+            <span class="t">Dialvola</span>
+            <span class="d">The AI voice product, as customers saw it</span>
+          </div>
+        </div>
+        <p class="sample-cap">Dialvola &middot; 22+ astrologers in Pune</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ PULL QUOTE ============ -->
 <section class="quote-sec grain">
   <img class="quote-motif" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1IiBoZWlnaHQ9IjEyNSIgdmlld0JveD0iMCAwIDEyNSAxMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2lfNjY3MV8xNTk2MykiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTc0LjQyNjEgOTkuMjA4N0M3NC40MjYgOTkuMjA4NyA3NC40MjYyIDk5LjIwODYgNzQuNDI2MSA5OS4yMDg3Wk03MS42MDA2IDEwMS43MjhDNzEuNjAwNiAxMDEuNzI4IDcxLjYwMDcgMTAxLjcyOCA3MS42MDA2IDEwMS43MjhaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfNjY3MV8xNTk2MykiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01My4wNzk1IDIzLjU3NzVDNTIuMzQ4MSAyNC4yNzc4IDUxLjUwNzQgMjQuOTk1IDUwLjU3MzkgMjUuNzkxM0M0OS43ODQ5IDI2LjQ2NDQgNDguOTI5NiAyNy4xOTQgNDguMDE4IDI4LjAxNzhDNDcuNzc4OCAyOC4yMzM5IDQ3LjUyOTYgMjguNDU1NCA0Ny4yNzM4IDI4LjY4MjZDNDMuODQgMzEuNzMzMyAzOS4yMjkzIDM1LjgyOTUgNDIgNDIuMjAzQzM1Ljk2OTIgMzkuMDY3MiAzMC40MTIzIDQzLjY1MDggMjguMDE3OCA0Ni43Mjk0QzI3LjE1NjMgNDcuODM3MSAyNi4zNjIxIDQ4Ljk0NDggMjUuNTcxMSA1MC4wNDgxQzI0LjkxNjUgNTAuOTYxIDI0LjI2NDEgNTEuODcxIDIzLjU3NzUgNTIuNzc1NEgyMy41NzJDMjEuNzQ1MyA1NS40Nzk3IDE2LjA5NTUgNjEuMzA0MiAxMi44MzUzIDYyLjIyMjZDMTIuMzg4NCA2Mi4zNDg2IDEyLjM4OCA2My4wMjA4IDEyLjgzNTMgNjMuMTQ4NUMxNi4xMTE0IDY0LjA4MjQgMjEuMzM3NSA2OS41NjkyIDIzLjI3MjQgNzEuNjAwNkMyMy4zODU1IDcxLjcxOTUgMjMuNDg3OSA3MS44MjY5IDIzLjU3NzUgNzEuOTIwNUMyNC4yNzc4IDcyLjY1MTggMjQuOTk0OSA3My40OTI1IDI1Ljc5MTIgNzQuNDI1OUMyNi40NjQzIDc1LjIxNDkgMjcuMTk0IDc2LjA3MDQgMjguMDE3OCA3Ni45ODJDMjguMjMzOSA3Ny4yMjEyIDI4LjQ1NTQgNzcuNDcwNCAyOC42ODI2IDc3LjcyNjJDMzEuNzMzMyA4MS4xNiAzNS44Mjk1IDg1Ljc3MDcgNDIuMjAzIDgzQzM5LjA2NzIgODkuMDMwOCA0My42NTA4IDk0LjU4NzcgNDYuNzI5NCA5Ni45ODIyQzQ3LjgzNjkgOTcuODQzNiA0OC45NDQ1IDk4LjYzNzcgNTAuMDQ3NiA5OS40Mjg2QzUwLjk2MDMgMTAwLjA4MyA1MS44NzEyIDEwMC43MzYgNTIuNzc1NCAxMDEuNDIzVjEwMS40MjhDNTUuNDc5NyAxMDMuMjU1IDYxLjMwNDIgMTA4LjkwNCA2Mi4yMjI1IDExMi4xNjVDNjIuMzQ4NiAxMTIuNjEyIDYzLjAyMDggMTEyLjYxMiA2My4xNDg1IDExMi4xNjVDNjQuMDgyMyAxMDguODg5IDY5LjU2OSAxMDMuNjYzIDcxLjYwMDYgMTAxLjcyOEw3MS42ODcgMTAxLjY0NUw3MS43OTc5IDEwMS41NEw3MS44NTU5IDEwMS40ODRMNzEuOTIwNSAxMDEuNDIzQzcyLjY1MTggMTAwLjcyMiA3My40OTI3IDEwMC4wMDUgNzQuNDI2MSA5OS4yMDg3Qzc1LjIxNTEgOTguNTM1NiA3Ni4wNzA0IDk3LjgwNiA3Ni45ODIgOTYuOTgyMkM3Ny4yMjEyIDk2Ljc2NjEgNzcuNDcwNCA5Ni41NDQ2IDc3LjcyNjIgOTYuMzE3NEM4MS4xNiA5My4yNjY3IDg1Ljc3MDcgODkuMTcwNSA4MyA4Mi43OTY5Qzg5LjAzMDggODUuOTMyOCA5NC41ODc3IDgxLjM0OTIgOTYuOTgyMiA3OC4yNzA2Qzk3Ljg0MzcgNzcuMTYyOSA5OC42Mzc5IDc2LjA1NTIgOTkuNDI4OSA3NC45NTJDMTAwLjA4MyA3NC4wMzkgMTAwLjczNiA3My4xMjkxIDEwMS40MjMgNzIuMjI0NkgxMDEuNDI4QzEwMy4yNTUgNjkuNTIwMyAxMDguOTA0IDYzLjY5NTggMTEyLjE2NSA2Mi43Nzc0QzExMi42MTIgNjIuNjUxNCAxMTIuNjEyIDYxLjk3OTIgMTEyLjE2NSA2MS44NTE1QzEwOC44ODkgNjAuOTE3NiAxMDMuNjYzIDU1LjQzMDkgMTAxLjcyOCA1My4zOTk0QzEwMS42MTQgNTMuMjgwNCAxMDEuNTEyIDUzLjE3MzIgMTAxLjQyMyA1My4wNzk1QzEwMC43MjIgNTIuMzQ4MiAxMDAuMDA1IDUxLjUwNzUgOTkuMjA4OCA1MC41NzQxQzk4LjUzNTggNDkuNzg1MSA5Ny44MDYgNDguOTI5NiA5Ni45ODIyIDQ4LjAxOEM5Ni43NjYxIDQ3Ljc3ODggOTYuNTQ0NiA0Ny41Mjk2IDk2LjMxNzQgNDcuMjczOEM5My4yNjY3IDQzLjg0IDg5LjE3MDUgMzkuMjI5MyA4Mi43OTY5IDQyQzg1LjkzMjggMzUuOTY5MiA4MS4zNDkyIDMwLjQxMjMgNzguMjcwNiAyOC4wMTc4Qzc3LjE2MjkgMjcuMTU2MyA3Ni4wNTUyIDI2LjM2MjEgNzQuOTUxOSAyNS41NzExQzc0LjAzOSAyNC45MTY1IDczLjEyOSAyNC4yNjQxIDcyLjIyNDYgMjMuNTc3NVYyMy41NzJDNjkuNTIwMyAyMS43NDUzIDYzLjY5NTggMTYuMDk1NSA2Mi43Nzc0IDEyLjgzNTNDNjIuNjUxNCAxMi4zODg0IDYxLjk3OTIgMTIuMzg4IDYxLjg1MTUgMTIuODM1M0M2MC45MTc2IDE2LjExMTQgNTUuNDMwOCAyMS4zMzc0IDUzLjM5OTQgMjMuMjcyNEM1My4yODA0IDIzLjM4NTcgNTMuMTczMiAyMy40ODc4IDUzLjA3OTUgMjMuNTc3NVoiIGZpbGw9InVybCgjcGFpbnQxX2xpbmVhcl82NjcxXzE1OTYzKSIvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2lfNjY3MV8xNTk2MyIgeD0iMTIuNSIgeT0iNS45ODMwNSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDYuNTE3IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9Ii02LjUxNjk1Ii8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjYuNTE2OTUiLz4KPGZlQ29tcG9zaXRlIGluMj0iaGFyZEFscGhhIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazI9Ii0xIiBrMz0iMSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwLjMzMzMzMyAwIDAgMCAwIDAuNDE1Njg2IDAgMCAwIDAgMC44NjI3NDUgMCAwIDAgMSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJzaGFwZSIgcmVzdWx0PSJlZmZlY3QxX2lubmVyU2hhZG93XzY2NzFfMTU5NjMiLz4KPC9maWx0ZXI+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl82NjcxXzE1OTYzIiB4MT0iNjIuNSIgeTE9IjEyLjUiIHgyPSI2Mi41IiB5Mj0iMTEyLjUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZDRUFGMCIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNFQTY2OUYiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDFfbGluZWFyXzY2NzFfMTU5NjMiIHgxPSI2Mi41IiB5MT0iMTIuNSIgeDI9IjYyLjUiIHkyPSIxMTIuNSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRkNFQUYwIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0VBNjY5RiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo=" alt="" aria-hidden="true" decoding="async">
@@ -962,18 +1075,19 @@ h1{
 </section>
 
 <!-- ============ CLOSING ============ -->
-<section class="band sec closing grain">
-  <div class="wrap">
-    <span class="rule" aria-hidden="true"></span>
-    <h2 class="reveal">Happy to talk through any of this</h2>
-    <p class="sec-lede reveal">The plan is a starting position, not a pitch &mdash; I&rsquo;d
-       expect half of it to change once I see the real numbers.</p>
+<section class="statement">
+  <div class="wrap statement-inner">
+    <span class="kicker reveal">Growth Marketing Intern &middot; Bengaluru</span>
+    <h2 class="reveal">Build the Future of India&rsquo;s AI<br><span class="grad">with Sarvam</span></h2>
+    <p class="sec-lede reveal">The plan above is a starting position, not a pitch &mdash;
+       I&rsquo;d expect half of it to change once I see the real numbers.</p>
     <div class="cta reveal">
       <!-- swap these two for your real email and LinkedIn -->
       <a class="pill dark" href="mailto:your@email.com">Email me</a>
       <a class="pill lightb" href="https://linkedin.com/in/your-handle">LinkedIn</a>
     </div>
   </div>
+  <div class="glyphs" aria-hidden="true"><i style="color:var(--glyph-saffron);opacity:0.72;font-size:0.81em">ઘ</i><i style="color:var(--glyph-saffron);opacity:0.68;font-size:1.18em">ਕ</i><i style="color:var(--glyph-dim);opacity:0.58;font-size:0.81em">ಇ</i><i style="color:var(--glyph-saffron);opacity:0.34;font-size:1.03em">ம</i><i style="color:var(--glyph-indigo);opacity:0.68;font-size:0.8em">ಈ</i><i style="color:var(--glyph-indigo);opacity:0.86;font-size:0.91em">ಇ</i><i style="color:var(--glyph-dim);opacity:0.67;font-size:1.03em">స</i><i style="color:var(--glyph-indigo);opacity:0.67;font-size:0.86em">క</i><i style="color:var(--glyph-dim);opacity:0.67;font-size:1.05em">ம</i><i style="color:var(--glyph-saffron);opacity:0.81;font-size:0.98em">ହ</i><i style="color:var(--glyph-dim);opacity:0.46;font-size:0.86em">ପ</i><i style="color:var(--glyph-indigo);opacity:0.5;font-size:1.0em">ಊ</i><i style="color:var(--glyph-dim);opacity:0.7;font-size:0.81em">ય</i><i style="color:var(--glyph-dim);opacity:0.79;font-size:0.85em">ਭ</i><i style="color:var(--glyph-dim);opacity:0.93;font-size:0.81em">ଭ</i><i style="color:var(--glyph-dim);opacity:0.75;font-size:1.04em">ਦ</i><i style="color:var(--glyph-dim);opacity:0.91;font-size:0.99em">ଉ</i><i style="color:var(--glyph-dim);opacity:0.72;font-size:1.22em">ஆ</i><i style="color:var(--glyph-saffron);opacity:0.88;font-size:0.93em">ତ</i><i style="color:var(--glyph-dim);opacity:0.7;font-size:1.0em">ନ</i><i style="color:var(--glyph-dim);opacity:0.78;font-size:0.96em">ತ</i><i style="color:var(--glyph-dim);opacity:0.59;font-size:1.02em">ଊ</i><i style="color:var(--glyph-indigo);opacity:0.48;font-size:0.96em">మ</i><i style="color:var(--glyph-dim);opacity:0.4;font-size:0.86em">ફ</i><i style="color:var(--glyph-dim);opacity:0.62;font-size:1.04em">ಟ</i><i style="color:var(--glyph-dim);opacity:0.39;font-size:1.02em">ত</i><i style="color:var(--glyph-indigo);opacity:0.92;font-size:1.07em">ગ</i><i style="color:var(--glyph-indigo);opacity:0.56;font-size:0.96em">व</i><i style="color:var(--glyph-peri);opacity:0.56;font-size:0.86em">ந</i><i style="color:var(--glyph-dim);opacity:0.37;font-size:1.04em">ಯ</i><i style="color:var(--glyph-indigo);opacity:0.4;font-size:0.82em">அ</i><i style="color:var(--glyph-dim);opacity:0.87;font-size:1.05em">આ</i><i style="color:var(--glyph-saffron);opacity:0.69;font-size:0.99em">డ</i><i style="color:var(--glyph-amber);opacity:0.61;font-size:0.92em">ந</i><i style="color:var(--glyph-dim);opacity:0.78;font-size:0.99em">క</i><i style="color:var(--glyph-dim);opacity:0.43;font-size:1.2em">ష</i><i style="color:var(--glyph-indigo);opacity:0.89;font-size:1.11em">ઘ</i><i style="color:var(--glyph-dim);opacity:0.64;font-size:1.18em">ঊ</i><i style="color:var(--glyph-indigo);opacity:0.65;font-size:1.0em">ટ</i><i style="color:var(--glyph-dim);opacity:0.83;font-size:1.11em">ಜ</i><i style="color:var(--glyph-indigo);opacity:0.62;font-size:1.1em">ಜ</i><i style="color:var(--glyph-amber);opacity:0.47;font-size:1.08em">थ</i><i style="color:var(--glyph-saffron);opacity:0.92;font-size:0.94em">ય</i><i style="color:var(--glyph-dim);opacity:0.61;font-size:0.93em">ಕ</i><i style="color:var(--glyph-amber);opacity:0.89;font-size:0.93em">ଅ</i><i style="color:var(--glyph-dim);opacity:0.89;font-size:1.12em">வ</i><i style="color:var(--glyph-dim);opacity:0.58;font-size:1.06em">ಲ</i><i style="color:var(--glyph-saffron);opacity:0.6;font-size:1.11em">ன</i><i style="color:var(--glyph-dim);opacity:0.41;font-size:0.84em">ள</i><i style="color:var(--glyph-peri);opacity:0.4;font-size:1.14em">ర</i><i style="color:var(--glyph-dim);opacity:0.66;font-size:0.84em">ନ</i><i style="color:var(--glyph-indigo);opacity:0.79;font-size:0.84em">ग</i><i style="color:var(--glyph-dim);opacity:0.46;font-size:0.91em">ಝ</i><i style="color:var(--glyph-dim);opacity:0.65;font-size:1.15em">ದ</i><i style="color:var(--glyph-amber);opacity:0.73;font-size:1.14em">फ</i><i style="color:var(--glyph-indigo);opacity:0.38;font-size:0.85em">ਭ</i><i style="color:var(--glyph-amber);opacity:0.8;font-size:1.05em">ਆ</i><i style="color:var(--glyph-dim);opacity:0.61;font-size:1.1em">ఛ</i><i style="color:var(--glyph-dim);opacity:0.74;font-size:1.01em">ਈ</i><i style="color:var(--glyph-indigo);opacity:0.34;font-size:0.86em">କ</i><i style="color:var(--glyph-indigo);opacity:0.59;font-size:0.79em">ग</i><i style="color:var(--glyph-dim);opacity:0.7;font-size:1.0em">த</i><i style="color:var(--glyph-dim);opacity:0.59;font-size:1.01em">ਜ</i><i style="color:var(--glyph-dim);opacity:0.75;font-size:1.17em">ଷ</i><i style="color:var(--glyph-amber);opacity:0.39;font-size:0.83em">জ</i><i style="color:var(--glyph-dim);opacity:0.74;font-size:0.97em">ଦ</i><i style="color:var(--glyph-dim);opacity:0.88;font-size:0.85em">ಥ</i><i style="color:var(--glyph-dim);opacity:0.87;font-size:1.21em">ઘ</i><i style="color:var(--glyph-saffron);opacity:0.88;font-size:0.85em">ಕ</i><i style="color:var(--glyph-saffron);opacity:0.95;font-size:0.96em">ಚ</i><i style="color:var(--glyph-saffron);opacity:0.51;font-size:1.1em">ജ</i><i style="color:var(--glyph-indigo);opacity:0.6;font-size:1.09em">प</i><i style="color:var(--glyph-indigo);opacity:0.71;font-size:1.01em">ധ</i><i style="color:var(--glyph-dim);opacity:0.93;font-size:0.83em">ஈ</i><i style="color:var(--glyph-dim);opacity:0.89;font-size:0.86em">ঢ</i><i style="color:var(--glyph-dim);opacity:0.56;font-size:1.02em">మ</i><i style="color:var(--glyph-dim);opacity:0.36;font-size:0.81em">ਵ</i><i style="color:var(--glyph-dim);opacity:0.47;font-size:0.79em">మ</i><i style="color:var(--glyph-dim);opacity:0.35;font-size:1.16em">ன</i><i style="color:var(--glyph-dim);opacity:0.59;font-size:0.93em">க</i><i style="color:var(--glyph-dim);opacity:0.7;font-size:0.8em">ਭ</i><i style="color:var(--glyph-dim);opacity:0.47;font-size:0.86em">ಖ</i><i style="color:var(--glyph-indigo);opacity:0.79;font-size:0.91em">থ</i><i style="color:var(--glyph-dim);opacity:0.53;font-size:0.79em">ਛ</i><i style="color:var(--glyph-dim);opacity:0.31;font-size:1.0em">ই</i><i style="color:var(--glyph-amber);opacity:0.46;font-size:0.98em">ಶ</i><i style="color:var(--glyph-indigo);opacity:0.84;font-size:0.95em">വ</i><i style="color:var(--glyph-dim);opacity:0.94;font-size:0.93em">ਥ</i><i style="color:var(--glyph-saffron);opacity:0.94;font-size:1.15em">బ</i><i style="color:var(--glyph-peri);opacity:0.78;font-size:0.89em">क</i><i style="color:var(--glyph-dim);opacity:0.73;font-size:0.95em">ఈ</i><i style="color:var(--glyph-peri);opacity:0.46;font-size:0.91em">ਤ</i><i style="color:var(--glyph-dim);opacity:0.47;font-size:0.78em">ଛ</i><i style="color:var(--glyph-indigo);opacity:0.51;font-size:0.8em">ધ</i><i style="color:var(--glyph-saffron);opacity:0.42;font-size:0.93em">ঝ</i><i style="color:var(--glyph-dim);opacity:0.63;font-size:0.87em">ந</i><i style="color:var(--glyph-dim);opacity:0.47;font-size:0.82em">ਅ</i><i style="color:var(--glyph-saffron);opacity:0.31;font-size:0.91em">ഇ</i><i style="color:var(--glyph-indigo);opacity:0.92;font-size:1.16em">ಊ</i><i style="color:var(--glyph-dim);opacity:0.77;font-size:1.0em">ఫ</i><i style="color:var(--glyph-dim);opacity:0.84;font-size:1.09em">ঘ</i><i style="color:var(--glyph-indigo);opacity:0.39;font-size:1.01em">ਮ</i><i style="color:var(--glyph-indigo);opacity:0.82;font-size:1.09em">ਆ</i><i style="color:var(--glyph-dim);opacity:0.33;font-size:1.06em">ಊ</i><i style="color:var(--glyph-amber);opacity:0.66;font-size:1.06em">ட</i><i style="color:var(--glyph-amber);opacity:0.47;font-size:0.98em">ਠ</i><i style="color:var(--glyph-indigo);opacity:0.88;font-size:0.82em">ள</i><i style="color:var(--glyph-amber);opacity:0.46;font-size:0.81em">ਉ</i><i style="color:var(--glyph-dim);opacity:0.45;font-size:1.07em">ঠ</i><i style="color:var(--glyph-saffron);opacity:0.35;font-size:1.18em">ଶ</i><i style="color:var(--glyph-peri);opacity:0.71;font-size:0.87em">ই</i><i style="color:var(--glyph-dim);opacity:0.72;font-size:1.08em">ధ</i><i style="color:var(--glyph-amber);opacity:0.34;font-size:0.9em">అ</i><i style="color:var(--glyph-dim);opacity:0.74;font-size:0.91em">ழ</i><i style="color:var(--glyph-amber);opacity:0.6;font-size:1.12em">ਤ</i><i style="color:var(--glyph-dim);opacity:0.94;font-size:1.19em">ਜ</i><i style="color:var(--glyph-amber);opacity:0.35;font-size:1.0em">द</i><i style="color:var(--glyph-saffron);opacity:0.44;font-size:1.2em">ଢ</i><i style="color:var(--glyph-indigo);opacity:0.36;font-size:1.11em">ಉ</i><i style="color:var(--glyph-dim);opacity:0.69;font-size:1.06em">প</i><i style="color:var(--glyph-saffron);opacity:0.45;font-size:1.17em">খ</i><i style="color:var(--glyph-dim);opacity:0.4;font-size:1.2em">ବ</i><i style="color:var(--glyph-dim);opacity:0.77;font-size:0.96em">ବ</i><i style="color:var(--glyph-dim);opacity:0.85;font-size:0.78em">ദ</i><i style="color:var(--glyph-dim);opacity:0.91;font-size:0.87em">બ</i><i style="color:var(--glyph-dim);opacity:0.54;font-size:0.95em">द</i><i style="color:var(--glyph-saffron);opacity:0.79;font-size:1.16em">ஞ</i><i style="color:var(--glyph-dim);opacity:0.84;font-size:0.91em">ক</i><i style="color:var(--glyph-dim);opacity:0.58;font-size:0.92em">ఠ</i><i style="color:var(--glyph-dim);opacity:0.83;font-size:1.06em">મ</i><i style="color:var(--glyph-dim);opacity:0.77;font-size:0.8em">ਹ</i><i style="color:var(--glyph-peri);opacity:0.79;font-size:1.06em">യ</i><i style="color:var(--glyph-dim);opacity:0.89;font-size:1.02em">শ</i><i style="color:var(--glyph-saffron);opacity:0.52;font-size:0.91em">ల</i><i style="color:var(--glyph-peri);opacity:0.46;font-size:0.99em">ব</i><i style="color:var(--glyph-dim);opacity:0.72;font-size:0.81em">ഖ</i><i style="color:var(--glyph-indigo);opacity:0.44;font-size:1.18em">ਵ</i><i style="color:var(--glyph-dim);opacity:0.66;font-size:0.89em">ମ</i><i style="color:var(--glyph-indigo);opacity:0.36;font-size:0.89em">ధ</i><i style="color:var(--glyph-dim);opacity:0.79;font-size:0.96em">জ</i><i style="color:var(--glyph-dim);opacity:0.54;font-size:0.93em">ഷ</i><i style="color:var(--glyph-dim);opacity:0.67;font-size:0.94em">ष</i><i style="color:var(--glyph-peri);opacity:0.81;font-size:1.15em">਼</i><i style="color:var(--glyph-dim);opacity:0.55;font-size:1.06em">க</i><i style="color:var(--glyph-dim);opacity:0.38;font-size:0.97em">ഥ</i><i style="color:var(--glyph-dim);opacity:0.35;font-size:1.19em">ଶ</i><i style="color:var(--glyph-amber);opacity:0.46;font-size:0.83em">ਰ</i><i style="color:var(--glyph-indigo);opacity:0.93;font-size:0.83em">ఘ</i><i style="color:var(--glyph-indigo);opacity:0.8;font-size:0.78em">ଊ</i><i style="color:var(--glyph-indigo);opacity:0.9;font-size:1.06em">ట</i><i style="color:var(--glyph-peri);opacity:0.46;font-size:1.06em">গ</i><i style="color:var(--glyph-dim);opacity:0.5;font-size:1.2em">ஈ</i><i style="color:var(--glyph-dim);opacity:0.45;font-size:1.04em">ಫ</i><i style="color:var(--glyph-amber);opacity:0.48;font-size:0.92em">ध</i><i style="color:var(--glyph-indigo);opacity:0.45;font-size:0.89em">ಲ</i><i style="color:var(--glyph-dim);opacity:0.31;font-size:1.0em">ഥ</i><i style="color:var(--glyph-dim);opacity:0.45;font-size:0.97em">ഊ</i><i style="color:var(--glyph-amber);opacity:0.32;font-size:0.93em">ટ</i><i style="color:var(--glyph-saffron);opacity:0.43;font-size:1.13em">പ</i><i style="color:var(--glyph-dim);opacity:0.62;font-size:0.87em">ਉ</i><i style="color:var(--glyph-amber);opacity:0.44;font-size:1.11em">ಟ</i><i style="color:var(--glyph-peri);opacity:0.62;font-size:0.86em">ক</i><i style="color:var(--glyph-saffron);opacity:0.89;font-size:0.8em">ವ</i><i style="color:var(--glyph-dim);opacity:0.44;font-size:1.21em">బ</i><i style="color:var(--glyph-dim);opacity:0.76;font-size:0.86em">భ</i><i style="color:var(--glyph-dim);opacity:0.95;font-size:1.19em">ଦ</i><i style="color:var(--glyph-dim);opacity:0.72;font-size:1.01em">જ</i><i style="color:var(--glyph-dim);opacity:0.73;font-size:0.95em">ଇ</i><i style="color:var(--glyph-amber);opacity:0.41;font-size:0.78em">ધ</i><i style="color:var(--glyph-saffron);opacity:0.57;font-size:1.17em">ঊ</i><i style="color:var(--glyph-saffron);opacity:0.53;font-size:1.14em">ਝ</i><i style="color:var(--glyph-dim);opacity:0.76;font-size:0.87em">ഊ</i><i style="color:var(--glyph-dim);opacity:0.51;font-size:1.1em">ਯ</i><i style="color:var(--glyph-peri);opacity:0.57;font-size:1.14em">ଆ</i><i style="color:var(--glyph-saffron);opacity:0.32;font-size:0.81em">ഇ</i><i style="color:var(--glyph-dim);opacity:0.79;font-size:1.18em">त</i><i style="color:var(--glyph-dim);opacity:0.52;font-size:1.2em">પ</i><i style="color:var(--glyph-dim);opacity:0.9;font-size:0.91em">त</i><i style="color:var(--glyph-dim);opacity:0.37;font-size:1.09em">அ</i><i style="color:var(--glyph-dim);opacity:0.89;font-size:1.14em">ଫ</i><i style="color:var(--glyph-dim);opacity:0.31;font-size:1.19em">వ</i><i style="color:var(--glyph-peri);opacity:0.45;font-size:1.16em">ঘ</i><i style="color:var(--glyph-peri);opacity:0.35;font-size:0.87em">ପ</i><i style="color:var(--glyph-saffron);opacity:0.34;font-size:0.79em">ఠ</i><i style="color:var(--glyph-dim);opacity:0.4;font-size:0.97em">ਸ</i><i style="color:var(--glyph-dim);opacity:0.71;font-size:0.87em">இ</i><i style="color:var(--glyph-amber);opacity:0.41;font-size:0.84em">വ</i><i style="color:var(--glyph-indigo);opacity:0.85;font-size:1.07em">ଠ</i><i style="color:var(--glyph-dim);opacity:0.49;font-size:1.03em">ற</i><i style="color:var(--glyph-dim);opacity:0.43;font-size:0.89em">ડ</i><i style="color:var(--glyph-dim);opacity:0.48;font-size:1.18em">ಠ</i><i style="color:var(--glyph-dim);opacity:0.56;font-size:1.22em">ದ</i><i style="color:var(--glyph-dim);opacity:0.72;font-size:0.82em">਼</i><i style="color:var(--glyph-dim);opacity:0.3;font-size:1.17em">ଇ</i><i style="color:var(--glyph-saffron);opacity:0.33;font-size:0.91em">ಯ</i><i style="color:var(--glyph-dim);opacity:0.69;font-size:1.14em">ஆ</i><i style="color:var(--glyph-saffron);opacity:0.63;font-size:0.86em">ಉ</i><i style="color:var(--glyph-dim);opacity:0.71;font-size:1.09em">অ</i><i style="color:var(--glyph-dim);opacity:0.54;font-size:0.84em">ઝ</i><i style="color:var(--glyph-dim);opacity:0.69;font-size:1.07em">ಡ</i><i style="color:var(--glyph-dim);opacity:0.57;font-size:0.94em">ಅ</i><i style="color:var(--glyph-dim);opacity:0.32;font-size:1.0em">উ</i><i style="color:var(--glyph-saffron);opacity:0.37;font-size:0.95em">ଉ</i><i style="color:var(--glyph-peri);opacity:0.65;font-size:1.07em">ਘ</i><i style="color:var(--glyph-saffron);opacity:0.94;font-size:1.07em">ഢ</i><i style="color:var(--glyph-dim);opacity:0.78;font-size:1.17em">ഈ</i><i style="color:var(--glyph-dim);opacity:0.86;font-size:1.22em">ഭ</i><i style="color:var(--glyph-saffron);opacity:0.77;font-size:0.87em">જ</i><i style="color:var(--glyph-dim);opacity:0.58;font-size:1.14em">र</i><i style="color:var(--glyph-amber);opacity:0.8;font-size:0.84em">പ</i><i style="color:var(--glyph-peri);opacity:0.82;font-size:0.95em">छ</i><i style="color:var(--glyph-dim);opacity:0.39;font-size:0.9em">શ</i><i style="color:var(--glyph-dim);opacity:0.37;font-size:1.0em">ਚ</i><i style="color:var(--glyph-dim);opacity:0.84;font-size:0.8em">ಥ</i><i style="color:var(--glyph-dim);opacity:0.69;font-size:1.06em">ଦ</i><i style="color:var(--glyph-peri);opacity:0.75;font-size:1.17em">ழ</i><i style="color:var(--glyph-peri);opacity:0.85;font-size:1.14em">ಬ</i><i style="color:var(--glyph-dim);opacity:0.56;font-size:1.01em">ఝ</i><i style="color:var(--glyph-dim);opacity:0.4;font-size:1.21em">ന</i><i style="color:var(--glyph-indigo);opacity:0.85;font-size:1.08em">ಇ</i><i style="color:var(--glyph-saffron);opacity:0.69;font-size:1.02em">ખ</i><i style="color:var(--glyph-dim);opacity:0.68;font-size:0.97em">ভ</i><i style="color:var(--glyph-indigo);opacity:0.58;font-size:0.79em">ય</i><i style="color:var(--glyph-dim);opacity:0.59;font-size:1.05em">ର</i><i style="color:var(--glyph-amber);opacity:0.56;font-size:0.81em">ଛ</i><i style="color:var(--glyph-saffron);opacity:0.36;font-size:0.97em">મ</i><i style="color:var(--glyph-dim);opacity:0.71;font-size:0.82em">ਇ</i><i style="color:var(--glyph-dim);opacity:0.34;font-size:1.0em">શ</i><i style="color:var(--glyph-dim);opacity:0.86;font-size:1.22em">ഗ</i><i style="color:var(--glyph-dim);opacity:0.94;font-size:1.0em">எ</i><i style="color:var(--glyph-dim);opacity:0.84;font-size:1.05em">ట</i><i style="color:var(--glyph-dim);opacity:0.88;font-size:0.9em">চ</i><i style="color:var(--glyph-dim);opacity:0.63;font-size:1.18em">ଘ</i><i style="color:var(--glyph-peri);opacity:0.63;font-size:0.92em">ಡ</i><i style="color:var(--glyph-dim);opacity:0.56;font-size:1.06em">ट</i><i style="color:var(--glyph-saffron);opacity:0.41;font-size:1.13em">দ</i><i style="color:var(--glyph-indigo);opacity:0.33;font-size:1.16em">ற</i><i style="color:var(--glyph-indigo);opacity:0.75;font-size:1.17em">ସ</i><i style="color:var(--glyph-peri);opacity:0.86;font-size:1.1em">হ</i><i style="color:var(--glyph-saffron);opacity:0.94;font-size:1.03em">ડ</i><i style="color:var(--glyph-dim);opacity:0.59;font-size:0.86em">ધ</i><i style="color:var(--glyph-indigo);opacity:0.46;font-size:1.06em">द</i><i style="color:var(--glyph-dim);opacity:0.44;font-size:0.91em">અ</i><i style="color:var(--glyph-indigo);opacity:0.54;font-size:0.8em">ഭ</i><i style="color:var(--glyph-peri);opacity:0.72;font-size:0.79em">ଟ</i><i style="color:var(--glyph-dim);opacity:0.37;font-size:0.94em">फ</i><i style="color:var(--glyph-indigo);opacity:0.5;font-size:0.84em">ಭ</i><i style="color:var(--glyph-dim);opacity:0.39;font-size:1.19em">લ</i><i style="color:var(--glyph-amber);opacity:0.36;font-size:1.06em">ಘ</i><i style="color:var(--glyph-dim);opacity:0.93;font-size:0.8em">ব</i><i style="color:var(--glyph-peri);opacity:0.72;font-size:0.98em">ਨ</i><i style="color:var(--glyph-dim);opacity:0.41;font-size:0.78em">ਵ</i><i style="color:var(--glyph-saffron);opacity:0.42;font-size:0.85em">आ</i><i style="color:var(--glyph-peri);opacity:0.66;font-size:1.19em">அ</i><i style="color:var(--glyph-dim);opacity:0.64;font-size:1.06em">భ</i><i style="color:var(--glyph-indigo);opacity:0.5;font-size:0.91em">ഛ</i><i style="color:var(--glyph-indigo);opacity:0.3;font-size:1.15em">श</i><i style="color:var(--glyph-peri);opacity:0.59;font-size:0.88em">ଊ</i><i style="color:var(--glyph-dim);opacity:0.72;font-size:0.83em">க</i><i style="color:var(--glyph-dim);opacity:0.71;font-size:1.08em">ঈ</i></div>
 </section>
 
 <footer class="site-footer">
@@ -981,7 +1095,7 @@ h1{
     <div class="foot-top">
       <div>
         <p class="foot-name">Harsh</p>
-        <p class="foot-role">Applying for Growth Marketing Intern &middot; Pune</p>
+        <p class="foot-role">Applying for Growth Marketing Intern &middot; Bengaluru</p>
       </div>
       <!-- swap these for your real links -->
       <ul class="foot-links">
