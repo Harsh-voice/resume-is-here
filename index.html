@@ -431,11 +431,9 @@ h1{
 .tick{
   flex:0 0 auto; width:20px; height:20px; display:block;
 }
-.tick svg{width:100%; height:100%; display:block}
-.tick .seal{fill:var(--indigo-600)}
-.tick .mark{fill:none; stroke:#fff; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round}
-.tick.green .seal{fill:#6ea335}
-.tick.pink .seal{fill:#e879b9}
+.tick svg{width:100%; height:100%; display:block; color:var(--indigo-600)}
+.tick.green svg{color:#6ea335}
+.tick.pink svg{color:#e879b9}
 .xp-points li b{color:var(--tx); font-weight:600}
 .xp-points li.todo{
   padding:12px 14px 12px 16px; border:1px dashed var(--grey-400);
@@ -601,6 +599,33 @@ h1{
   font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--tx-tertiary);
 }
 
+/* small uppercase label used across the page — keep this above anything
+   that only overrides it, or deleting that block takes the base with it */
+.kicker{font-size:12px; font-weight:525; letter-spacing:2px; text-transform:uppercase;
+        color:var(--tx-tertiary)}
+
+/* ============ Languages ============ */
+.langs-wrap{margin-top:clamp(34px,4.4vw,56px); text-align:center}
+.langs-wrap .kicker{display:block; margin-bottom:clamp(16px,2vw,22px)}
+.langs{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(10px,1.4vw,14px);
+}
+.lang{
+  display:flex; align-items:baseline; gap:11px;
+  padding:13px 22px; border-radius:999px;
+  background:linear-gradient(170deg,#fff 0%,#f4f7ff 100%);
+  border:1px solid var(--indigo-300);
+  transition:transform .35s cubic-bezier(.2,0,0,1), box-shadow .35s cubic-bezier(.2,0,0,1);
+  box-shadow:0 1px 2px rgba(31,31,31,.04), 0 6px 18px rgba(31,31,31,.04);
+}
+.lang:hover{transform:translateY(-2px); box-shadow:0 2px 4px rgba(31,31,31,.05), 0 12px 28px rgba(31,31,31,.09)}
+.lang .script{font-size:19px; line-height:1.2; color:var(--indigo-800)}
+.lang .name{font-size:15px; font-weight:525; color:var(--tx)}
+.lang .level{font-family:"Matter Mono",ui-monospace,monospace; font-size:10px;
+             letter-spacing:.07em; text-transform:uppercase; color:var(--tx-tertiary)}
+@media (max-width:560px){ .lang{padding:11px 17px} .lang .script{font-size:17px} }
+
 /* ============ Tool grid ============ */
 /* the six that matter for this role, lifted out of the greys */
 .tool.key{
@@ -731,6 +756,13 @@ h1{
 </head>
 <body>
 
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <symbol id="seal" viewBox="0 0 24 24">
+    <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C11.4388 1.25 10.9816 1.48611 10.5656 1.80358C10.1759 2.10089 9.74606 2.53075 9.24319 3.03367L9.20782 3.06904C8.69316 3.5837 8.24449 3.78626 7.55208 3.78626C7.4653 3.78626 7.35579 3.78318 7.23212 3.7797C6.91509 3.77078 6.50497 3.75924 6.14615 3.79027C5.62128 3.83566 4.96532 3.97929 4.46745 4.48134C3.9734 4.97955 3.83327 5.63282 3.78923 6.15439C3.75922 6.50995 3.77075 6.91701 3.77966 7.23178L3.77966 7.23181C3.78317 7.35581 3.78628 7.46549 3.78628 7.55206C3.78628 8.24448 3.58371 8.69315 3.06902 9.20784L3.03367 9.24319C2.53075 9.74606 2.10089 10.1759 1.80358 10.5655C1.48612 10.9816 1.25001 11.4388 1.25 12C1.25001 12.5611 1.48613 13.0183 1.80358 13.4344C2.10095 13.8242 2.53091 14.2541 3.03395 14.7571L3.06906 14.7922C3.40272 15.1258 3.56011 15.3422 3.64932 15.5464C3.73619 15.7453 3.78628 15.9971 3.78628 16.4479C3.78628 16.5347 3.7832 16.6442 3.77972 16.7679C3.7708 17.0849 3.75926 17.495 3.79029 17.8539C3.83569 18.3787 3.97933 19.0347 4.48139 19.5326C4.97961 20.0266 5.63287 20.1667 6.15443 20.2107C6.50997 20.2408 6.91703 20.2292 7.23179 20.2203C7.35581 20.2168 7.4655 20.2137 7.55206 20.2137C7.99328 20.2137 8.24126 20.2581 8.43645 20.3386C8.63147 20.4191 8.84006 20.5632 9.15424 20.8774C9.22129 20.9444 9.30963 21.0391 9.41153 21.1483L9.41176 21.1486L9.41179 21.1486L9.4118 21.1486C9.64176 21.3951 9.94071 21.7155 10.22 21.9596C10.6437 22.33 11.2516 22.75 12 22.75C12.7485 22.75 13.3563 22.33 13.7801 21.9596C14.0593 21.7155 14.3583 21.3951 14.5882 21.1486C14.6902 21.0392 14.7787 20.9445 14.8458 20.8773C15.1599 20.5632 15.3685 20.4191 15.5635 20.3386C15.7587 20.2581 16.0067 20.2137 16.4479 20.2137C16.5345 20.2137 16.6442 20.2168 16.7682 20.2203C17.083 20.2292 17.49 20.2408 17.8456 20.2107C18.3671 20.1667 19.0204 20.0266 19.5186 19.5326C20.0207 19.0347 20.1643 18.3787 20.2097 17.8539C20.2407 17.495 20.2292 17.0849 20.2203 16.7679L20.2203 16.7676C20.2168 16.644 20.2137 16.5346 20.2137 16.4479C20.2137 15.9971 20.2638 15.7453 20.3507 15.5464C20.4399 15.3422 20.5973 15.1258 20.9309 14.7922L20.9661 14.7571C21.4691 14.2541 21.8991 13.8242 22.1964 13.4344C22.5139 13.0183 22.75 12.5611 22.75 12C22.75 11.4388 22.5139 10.9816 22.1964 10.5655C21.8991 10.1759 21.4693 9.74607 20.9664 9.24322L20.931 9.20784C20.5973 8.87416 20.4399 8.65779 20.3507 8.45354C20.2638 8.25468 20.2137 8.00288 20.2137 7.55206C20.2137 7.46534 20.2168 7.35593 20.2203 7.23236L20.2203 7.2321C20.2292 6.91507 20.2407 6.50496 20.2097 6.14615C20.1643 5.62129 20.0207 4.96533 19.5187 4.46747C19.0205 3.97339 18.3672 3.83325 17.8456 3.78921C17.49 3.75919 17.083 3.77072 16.7682 3.77964C16.6442 3.78315 16.5345 3.78626 16.4479 3.78626C15.7553 3.78626 15.3067 3.58361 14.7922 3.06904L14.7568 3.03368C14.2539 2.53075 13.8241 2.10089 13.4344 1.80358C13.0184 1.48611 12.5612 1.25 12 1.25ZM15.7657 10.1432C16.1209 9.72033 16.0661 9.08954 15.6432 8.73432C15.2203 8.37909 14.5895 8.43394 14.2343 8.85683L10.6972 13.0676L9.66603 12.1469C9.25406 11.7791 8.6219 11.8149 8.25407 12.2269C7.88624 12.6388 7.92202 13.271 8.33399 13.6388L10.134 15.246C10.3357 15.4261 10.6018 15.5168 10.8716 15.4975C11.1413 15.4781 11.3918 15.3503 11.5657 15.1432L15.7657 10.1432Z"/>
+  </symbol>
+</svg>
+
+
   <header class="site-header">
     <div class="header-bg" aria-hidden="true"></div>
     <div class="wrap bar">
@@ -840,10 +872,10 @@ h1{
           <h3>Learn the funnel by using it</h3>
           <p>I sign up for the API as a first-time developer would and time every step to the first successful call, noting each place I hesitate &mdash; those are the same places signups drop. In parallel I audit what already pulls organic traffic, and how Sarvam gets described when you ask an LLM about Indic speech.</p>
           <ul class="slide-ticks">
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Time every step to first call</li>
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Note every point of hesitation</li>
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Audit docs, posts and keywords</li>
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Check how LLMs describe Sarvam</li>
+            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Time every step to first call</li>
+            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Note every point of hesitation</li>
+            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Audit docs, posts and keywords</li>
+            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Check how LLMs describe Sarvam</li>
           </ul>
         </div>
         <div class="slide-visual v1">
@@ -863,10 +895,10 @@ h1{
           <h3>Ship the cheapest fixes</h3>
           <p>The audit becomes a ranked backlog where every item has an owner, an effort estimate and a number it should move. Then I publish the two or three highest-leverage pieces myself.</p>
           <ul class="slide-ticks">
-            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Rank by effort against impact</li>
-            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>A comparison page for existing demand</li>
-            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>A tutorial that ends in a working call</li>
-            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Metadata and schema both can quote</li>
+            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Rank by effort against impact</li>
+            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>A comparison page for existing demand</li>
+            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>A tutorial that ends in a working call</li>
+            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Metadata and schema both can quote</li>
           </ul>
         </div>
         <div class="slide-visual v2">
@@ -886,10 +918,10 @@ h1{
           <h3>Prove it with numbers</h3>
           <p>One dashboard the team actually opens, two honest experiments run against it, and a short written readout to close the month: what moved, what didn&rsquo;t, what I&rsquo;d kill, and the three bets worth real budget in month two.</p>
           <ul class="slide-ticks">
-            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>One dashboard, five numbers</li>
-            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>At least two honest experiments</li>
-            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>A written readout, not a deck</li>
-            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Three bets for month two</li>
+            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>One dashboard, five numbers</li>
+            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>At least two honest experiments</li>
+            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>A written readout, not a deck</li>
+            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Three bets for month two</li>
           </ul>
         </div>
         <div class="slide-visual v3">
@@ -984,13 +1016,13 @@ h1{
         <div class="xp-panel" id="xp-p1" role="region" aria-labelledby="xp-h1">
           <div class="xp-panel-inner"><div class="xp-content">
             <ul class="xp-points">
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Ran political campaign marketing across Maharashtra, including an
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Ran political campaign marketing across Maharashtra, including an
                   <b>MLA election campaign for the NCP in Pune</b> &mdash; the largest
                   campaign we handled.</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Managed <b>&#8377;14 lakh in Meta ad spend</b> across the campaign:
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Managed <b>&#8377;14 lakh in Meta ad spend</b> across the campaign:
                   audience targeting, vernacular creative, and daily optimisation
                   against a fixed polling date.</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Grew the agency to <b>23+ clients</b> over two and a half years.</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Grew the agency to <b>23+ clients</b> over two and a half years.</li>
               <li class="todo">Add the campaign outcome here &mdash; did they win, what was
                   the reach or vote share? This is the strongest line on the page once
                   filled.</li>
@@ -1017,14 +1049,14 @@ h1{
         <div class="xp-panel" id="xp-p2" role="region" aria-labelledby="xp-h2">
           <div class="xp-panel-inner"><div class="xp-content">
             <ul class="xp-points">
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Built and sold an AI voice call centre to <b>22+ astrologers in Pune</b>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Built and sold an AI voice call centre to <b>22+ astrologers in Pune</b>
                   &mdash; found the segment, wrote the pitch, closed the clients myself.</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Accepted into the <b>Sarvam AI Startup Program</b>, which is how I got
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Accepted into the <b>Sarvam AI Startup Program</b>, which is how I got
                   close to the stack from the customer side.</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Built the voice layer on ElevenLabs. Not after a benchmark comparison
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Built the voice layer on ElevenLabs. Not after a benchmark comparison
                   &mdash; it was the name I already knew. That default is exactly the gap
                   I want to work on at Sarvam.</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Honest lesson: the product worked and distribution did not. I could not
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Honest lesson: the product worked and distribution did not. I could not
                   get it in front of enough people, and that is why I want to be excellent
                   at this function rather than adjacent to it.</li>
             </ul>
@@ -1050,9 +1082,9 @@ h1{
         <div class="xp-panel" id="xp-p3" role="region" aria-labelledby="xp-h3">
           <div class="xp-panel-inner"><div class="xp-content">
             <ul class="xp-points">
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Drove <b>&#8377;75.2L in sales on &#8377;7.6 lakh of ad spend</b> across
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Drove <b>&#8377;75.2L in sales on &#8377;7.6 lakh of ad spend</b> across
                   WhatsApp Ads and Google Ads &mdash; roughly a 10x return.</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Owned the full paid funnel: targeting, creative, WhatsApp conversation
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Owned the full paid funnel: targeting, creative, WhatsApp conversation
                   flow and conversion tracking.</li>
             </ul>
             <ul class="tags">
@@ -1077,9 +1109,9 @@ h1{
         <div class="xp-panel" id="xp-p4" role="region" aria-labelledby="xp-h4">
           <div class="xp-panel-inner"><div class="xp-content">
             <ul class="xp-points">
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Produced design and creative for an India Post campaign serving offline
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Produced design and creative for an India Post campaign serving offline
                   offices across rural Pune.</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M21.55 12Q23.2 15 20.27 16.77Q20.2 20.2 16.78 20.27Q15 23.2 12 21.55Q9 23.2 7.23 20.27Q3.8 20.2 3.73 16.77Q0.8 15 2.45 12Q0.8 9 3.73 7.23Q3.8 3.8 7.22 3.73Q9 0.8 12 2.45Q15 0.8 16.78 3.73Q20.2 3.8 20.27 7.22Q23.2 9 21.55 12Z"/><path class="mark" d="M8.1 12.2l2.7 2.7 5.1-5.6"/></svg></span>Marketing to audiences reached in person rather than online &mdash; the
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#seal"/></svg></span>Marketing to audiences reached in person rather than online &mdash; the
                   same audience Sarvam&rsquo;s voice and language products are ultimately
                   built for.</li>
             </ul>
@@ -1320,6 +1352,18 @@ h1{
         <li class="tool"><span class="tool-letter" aria-hidden="true">E</span><span class="tool-name">Emergent</span></li>
         <li class="tool"><svg class="tool-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.548 1.156L6.832 2.872v1.682h1.716zm0 3.398v.035H6.832v-.035H3.386L0 7.844v3.577h2.826V8.94c0-.525.429-.954.954-.954h16.476c.525 0 .954.43.954.954v2.48h2.754V7.844l-3.386-3.29H17.3v.035h-1.717v-.035zm7.035 0H17.3V2.872l-1.717-1.716zM8.679 1.188V2.84h6.773V1.188zm11.471 7.07a.834.834 0 00-.132.01l-.543.002c-5.216.014-10.432-.008-15.648.01-.435-.063-.794.436-.716.883v2.264h17.812c-.016-.888.045-1.782-.034-2.666-.104-.342-.427-.502-.739-.502zm-15.422.634a.689.698 0 01.689.698.689.698 0 01-.689.697.689.698 0 01-.688-.697.689.698 0 01.688-.698zm2.134 0a.689.698 0 01.689.698.689.698 0 01-.689.697.689.698 0 01-.688-.697.689.698 0 01.688-.698zM.036 11.645v9.156c0 1.05.858 1.908 1.907 1.908h.883V11.645zm21.174 0v11.064h.882c1.05 0 1.908-.858 1.908-1.908v-9.156zM4.057 13.133v6.85h6.137v-6.85zm13.243.021v3.777l-1.708.977-1.708-.977v-3.758a4.006 4.006 0 000 7.23v2.441h3.457v-2.442a4.006 4.006 0 00-.041-7.248zm-13.243 8.26v1.43h7.925v-1.43z"/></svg><span class="tool-name">Search Console</span></li>
         <li class="tool"><svg class="tool-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg><span class="tool-name">Figma</span></li>
+      </ul>
+    </div>
+
+    <div class="langs-wrap reveal">
+      <span class="kicker">Languages I market in</span>
+      <ul class="langs">
+        <li class="lang"><span class="script" lang="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</span>
+            <span class="name">Hindi</span><span class="level">Fluent</span></li>
+        <li class="lang"><span class="script" lang="mr">&#2350;&#2352;&#2366;&#2336;&#2368;</span>
+            <span class="name">Marathi</span><span class="level">Native</span></li>
+        <li class="lang"><span class="script">Aa</span>
+            <span class="name">English</span><span class="level">Fluent</span></li>
       </ul>
     </div>
   </div>
