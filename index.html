@@ -280,12 +280,33 @@ h1{
   display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:clamp(16px,3vw,48px);
   padding-block:clamp(24px,3vw,34px); border-bottom:1px solid var(--st-secondary);
 }
+.xp-num{
+  display:block; font-family:"Season Mix",Matter,serif; font-weight:425;
+  font-size:30px; line-height:1; color:var(--grey-400); margin-bottom:14px;
+}
 .xp-meta h3{font-size:20px; font-weight:525; line-height:1.3; color:var(--tx); margin:0 0 6px}
+.xp-meta .org{display:block; font-size:16px; color:var(--tx-secondary); margin-bottom:8px}
 .xp-meta .when{
   font-family:"Matter Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.06em;
   text-transform:uppercase; color:var(--tx-tertiary);
 }
 .xp-body p{margin:0; font-size:17px; line-height:1.6; color:var(--tx-secondary)}
+.xp-points{margin:0; padding:0; list-style:none; display:grid; gap:12px}
+.xp-points li{
+  position:relative; padding-left:20px;
+  font-size:17px; line-height:1.6; color:var(--tx-secondary);
+}
+.xp-points li::before{
+  content:""; position:absolute; left:2px; top:11px;
+  width:5px; height:5px; border-radius:50%; background:var(--indigo-500);
+}
+.xp-points li b{color:var(--tx); font-weight:600}
+/* an outcome still to be filled in — deliberately obvious */
+.xp-points li.todo{
+  padding:12px 14px 12px 16px; border:1px dashed var(--grey-400);
+  border-radius:10px; color:var(--tx-tertiary); font-size:15px;
+}
+.xp-points li.todo::before{display:none}
 .xp-body .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; padding:0; list-style:none}
 .xp-body .tags li{
   font-size:13px; color:var(--tx-tertiary);
@@ -399,36 +420,36 @@ h1{
   <span class="kicker reveal">Brands I&rsquo;ve worked with</span>
   <div class="marquee">
     <div class="marquee-track">
-      <span class="marquee-item">PK Films India</span>
-      <span class="marquee-item">Studio IQ</span>
-      <span class="marquee-item">Dial Vola</span>
-      <span class="marquee-item">Chakan MIDC</span>
-      <span class="marquee-item">Maharashtra Campaigns</span>
-      <span class="marquee-item" aria-hidden="true">PK Films India</span>
-      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
-      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
-      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
-      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
-      <span class="marquee-item" aria-hidden="true">PK Films India</span>
-      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
-      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
-      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
-      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
-      <span class="marquee-item" aria-hidden="true">PK Films India</span>
-      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
-      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
-      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
-      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
-      <span class="marquee-item" aria-hidden="true">PK Films India</span>
-      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
-      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
-      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
-      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
-      <span class="marquee-item" aria-hidden="true">PK Films India</span>
-      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
-      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
-      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
-      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
+      <span class="marquee-item">Nexussv</span>
+      <span class="marquee-item">Dialvola</span>
+      <span class="marquee-item">PK Films</span>
+      <span class="marquee-item">India Post</span>
+      <span class="marquee-item">Sarvam AI Startup Program</span>
+      <span class="marquee-item" aria-hidden="true">Nexussv</span>
+      <span class="marquee-item" aria-hidden="true">Dialvola</span>
+      <span class="marquee-item" aria-hidden="true">PK Films</span>
+      <span class="marquee-item" aria-hidden="true">India Post</span>
+      <span class="marquee-item" aria-hidden="true">Sarvam AI Startup Program</span>
+      <span class="marquee-item" aria-hidden="true">Nexussv</span>
+      <span class="marquee-item" aria-hidden="true">Dialvola</span>
+      <span class="marquee-item" aria-hidden="true">PK Films</span>
+      <span class="marquee-item" aria-hidden="true">India Post</span>
+      <span class="marquee-item" aria-hidden="true">Sarvam AI Startup Program</span>
+      <span class="marquee-item" aria-hidden="true">Nexussv</span>
+      <span class="marquee-item" aria-hidden="true">Dialvola</span>
+      <span class="marquee-item" aria-hidden="true">PK Films</span>
+      <span class="marquee-item" aria-hidden="true">India Post</span>
+      <span class="marquee-item" aria-hidden="true">Sarvam AI Startup Program</span>
+      <span class="marquee-item" aria-hidden="true">Nexussv</span>
+      <span class="marquee-item" aria-hidden="true">Dialvola</span>
+      <span class="marquee-item" aria-hidden="true">PK Films</span>
+      <span class="marquee-item" aria-hidden="true">India Post</span>
+      <span class="marquee-item" aria-hidden="true">Sarvam AI Startup Program</span>
+      <span class="marquee-item" aria-hidden="true">Nexussv</span>
+      <span class="marquee-item" aria-hidden="true">Dialvola</span>
+      <span class="marquee-item" aria-hidden="true">PK Films</span>
+      <span class="marquee-item" aria-hidden="true">India Post</span>
+      <span class="marquee-item" aria-hidden="true">Sarvam AI Startup Program</span>
     </div>
   </div>
 </section>
@@ -578,60 +599,102 @@ h1{
     </header>
 
     <div class="stats reveal">
-      <div class="stat"><span class="n" data-pre="" data-val="14" data-suf="M+">14M+</span><span class="l">Views generated</span></div>
-      <div class="stat"><span class="n" data-pre="" data-val="860" data-suf="K+">860K+</span><span class="l">Followers grown</span></div>
-      <div class="stat"><span class="n" data-pre="&#8377;" data-val="13" data-suf="L+">&#8377;13L+</span><span class="l">Ad spend managed</span></div>
-      <div class="stat"><span class="n" data-pre="" data-val="50" data-suf="+">50+</span><span class="l">Sites shipped</span></div>
+      <div class="stat"><span class="n" data-pre="&#8377;" data-val="75.2" data-dec="1" data-suf="L">&#8377;75.2L</span><span class="l">Revenue driven</span></div>
+      <div class="stat"><span class="n" data-val="10" data-suf="x">10x</span><span class="l">Return on ad spend</span></div>
+      <div class="stat"><span class="n" data-pre="&#8377;" data-val="21.6" data-dec="1" data-suf="L">&#8377;21.6L</span><span class="l">Ad spend managed</span></div>
+      <div class="stat"><span class="n" data-val="23" data-suf="+">23+</span><span class="l">Clients</span></div>
     </div>
 
     <div class="xp">
       <article class="xp-row reveal">
         <div class="xp-meta">
-          <h3>Political campaigns</h3>
-          <span class="when">Maharashtra &middot; state level</span>
+          <span class="xp-num">01</span>
+          <h3>Co-Founder</h3>
+          <span class="org">Nexussv &middot; Full-time</span>
+          <span class="when">Aug 2023 &mdash; Feb 2026</span>
         </div>
         <div class="xp-body">
-          <p>Ran digital campaigns for senior Maharashtra politicians &mdash; organic
-             content and paid distribution together. 14M+ views and 860K+ followers
-             across the accounts I worked on, with &#8377;13L+ of ad spend managed
-             against reach and engagement targets. Campaign work means real
-             deadlines and a public scoreboard: you find out within hours whether
-             a message landed.</p>
+          <ul class="xp-points">
+            <li>Ran political campaign marketing across Maharashtra, including an
+                <b>MLA election campaign for the NCP in Pune</b> &mdash; the largest
+                campaign we handled.</li>
+            <li>Managed <b>&#8377;14 lakh in Meta ad spend</b> across the campaign:
+                audience targeting, vernacular creative, and daily optimisation
+                against a fixed polling date.</li>
+            <li>Grew the agency to <b>23+ clients</b> over two and a half years.</li>
+            <li class="todo">Add the campaign outcome here &mdash; did they win, what was
+                the reach or vote share? This is the strongest line on the page once
+                filled.</li>
+          </ul>
           <ul class="tags">
-            <li>Paid social</li><li>Organic content</li><li>Audience growth</li><li>Rapid iteration</li>
+            <li>Meta Ads</li><li>Political campaigns</li><li>Marathi creative</li><li>Client growth</li>
           </ul>
         </div>
       </article>
 
       <article class="xp-row reveal">
         <div class="xp-meta">
-          <h3>PK Films India, Studio IQ, Dial Vola</h3>
-          <span class="when">Freelance &middot; growth &amp; content</span>
+          <span class="xp-num">02</span>
+          <h3>Founder</h3>
+          <span class="org">Dialvola &middot; AI voice call centre</span>
+          <span class="when">Mar 2026 &mdash; Oct 2026</span>
         </div>
         <div class="xp-body">
-          <p>Growth and content work for production and media studios &mdash; campaign
-             creative, distribution across channels, and the measurement around it.
-             Three different clients with three different audiences, which is the
-             fastest way to learn that what works on one never transfers cleanly
-             to the next.</p>
+          <ul class="xp-points">
+            <li>Built and sold an AI voice call centre to <b>22+ astrologers in Pune</b>
+                &mdash; found the segment, wrote the pitch, closed the clients myself.</li>
+            <li>Accepted into the <b>Sarvam AI Startup Program</b>, which is how I got
+                close to the stack from the customer side.</li>
+            <li>Built the voice layer on ElevenLabs. Not after a benchmark comparison
+                &mdash; it was the name I already knew. That default is exactly the gap
+                I want to work on at Sarvam.</li>
+            <li>Honest lesson: the product worked and distribution did not. I could not
+                get it in front of enough people, and that is why I want to be excellent
+                at this function rather than adjacent to it.</li>
+          </ul>
           <ul class="tags">
-            <li>Client work</li><li>Creative</li><li>Distribution</li>
+            <li>AI voice</li><li>Founder-led sales</li><li>Positioning</li><li>Vernacular</li>
           </ul>
         </div>
       </article>
 
       <article class="xp-row reveal">
         <div class="xp-meta">
-          <h3>50+ websites, Chakan MIDC</h3>
-          <span class="when">Manufacturing &middot; Pune</span>
+          <span class="xp-num">03</span>
+          <h3>Growth &amp; Performance Marketing</h3>
+          <span class="org">PK Films &middot; Part-time</span>
+          <span class="when">May 2025 &mdash; Dec 2025</span>
         </div>
         <div class="xp-body">
-          <p>Built and shipped 50+ websites for manufacturers across Chakan MIDC, one
-             of Asia&rsquo;s largest industrial estates. Mostly businesses with no web
-             presence at all, on fast turnarounds &mdash; which taught me more about
-             what a landing page needs to do than any amount of theory would have.</p>
+          <ul class="xp-points">
+            <li>Drove <b>&#8377;75.2L in sales on &#8377;7.6 lakh of ad spend</b> across
+                WhatsApp Ads and Google Ads &mdash; roughly a 10x return.</li>
+            <li>Owned the full paid funnel: targeting, creative, WhatsApp conversation
+                flow and conversion tracking.</li>
+          </ul>
           <ul class="tags">
-            <li>AI-assisted builds</li><li>Landing pages</li><li>B2B</li>
+            <li>Google Ads</li><li>WhatsApp Ads</li><li>ROAS</li><li>Conversion</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="xp-row reveal">
+        <div class="xp-meta">
+          <span class="xp-num">04</span>
+          <h3>Campaign Design &amp; Creative</h3>
+          <span class="org">India Post &middot; Project engagement</span>
+          <span class="when">Sep 2024</span>
+        </div>
+        <div class="xp-body">
+          <ul class="xp-points">
+            <li>Produced design and creative for an India Post campaign serving offline
+                offices across rural Pune.</li>
+            <li>Marketing to audiences reached in person rather than online &mdash; the
+                same audience Sarvam&rsquo;s voice and language products are ultimately
+                built for.</li>
+          </ul>
+          <ul class="tags">
+            <li>Creative</li><li>Offline / rural</li><li>Government</li>
           </ul>
         </div>
       </article>
@@ -639,12 +702,13 @@ h1{
       <article class="xp-row reveal">
         <div class="xp-meta">
           <h3>B.Tech, Data Science</h3>
+          <span class="org">Department of Technology, SPPU</span>
           <span class="when">Third year &middot; in progress</span>
         </div>
         <div class="xp-body">
-          <p>Department of Technology, Savitribai Phule Pune University. The useful
-             half for this role is the data half &mdash; being comfortable with a
-             dataset is what separates a growth guess from a growth decision.</p>
+          <p>Savitribai Phule Pune University. The useful half for this role is the data
+             half &mdash; being comfortable with a dataset is what separates a growth
+             guess from a growth decision.</p>
         </div>
       </article>
     </div>
@@ -727,13 +791,17 @@ h1{
       if (t0 === null) t0 = ts;
       var k = Math.min((ts - t0) / dur, 1);
       var eased = 1 - Math.pow(1 - k, 4);           // easeOutQuart
-      el.textContent = pre + Math.round(target * eased) + suf;
+      var dec = parseInt(el.dataset.dec || '0', 10);
+      el.textContent = pre + (target * eased).toFixed(dec) + suf;
       if (k < 1) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   }
   if (nums.length && !reduced && 'IntersectionObserver' in window) {
-    nums.forEach(function (el) { el.textContent = (el.dataset.pre||'') + '0' + (el.dataset.suf||''); });
+    nums.forEach(function (el) {
+      var d = parseInt(el.dataset.dec || '0', 10);
+      el.textContent = (el.dataset.pre||'') + (0).toFixed(d) + (el.dataset.suf||'');
+    });
     var cio = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); }
