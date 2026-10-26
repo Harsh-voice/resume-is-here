@@ -172,6 +172,34 @@ h1{
   .grid-3 .card:hover,.grid-4 .card:hover,.pill:hover{transform:none}
 }
 
+/* ============ Stepper ============ */
+.steps{
+  display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
+  gap:0; margin-bottom:clamp(26px,3.4vw,40px);
+}
+.step{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:9px 18px 9px 10px; border-radius:999px;
+  background:#fff; border:1px solid var(--st);
+  box-shadow:0 1px 2px rgba(31,31,31,.04), 0 6px 18px rgba(31,31,31,.045);
+  font-size:15px; color:var(--tx-tertiary); white-space:nowrap;
+}
+.step .ic{
+  width:26px; height:26px; border-radius:50%; display:grid; place-items:center;
+  background:var(--grey-100);
+}
+.step .ic svg{width:14px; height:14px; fill:none; stroke:var(--grey-400);
+              stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+.step.on{color:var(--tx); border-color:var(--indigo-300)}
+.step.on .ic{background:var(--indigo-100)}
+.step.on .ic svg{stroke:var(--indigo-700)}
+.step-line{flex:1 1 34px; min-width:18px; height:1px; background:var(--st)}
+@media (max-width:760px){
+  .steps{gap:10px}
+  .step-line{display:none}
+  .step{font-size:14px; padding:8px 15px 8px 9px}
+}
+
 /* ============ Section motifs — large, faint, bleeding off an edge ============ */
 .sec, .band{position:relative}
 .has-motif{overflow:hidden}
@@ -209,6 +237,57 @@ h1{
        color:var(--indigo-900); margin:0 0 8px}
 
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+
+/* ============ Plan slides ============ */
+.slides{display:grid; gap:clamp(14px,2vw,22px)}
+.slide{
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);
+  gap:clamp(20px,3vw,48px); align-items:center;
+  background:#fff; border:1px solid var(--st); border-radius:24px;
+  padding:clamp(24px,3vw,44px);
+  box-shadow:0 1px 2px rgba(31,31,31,.04), 0 12px 32px rgba(31,31,31,.05);
+}
+.slide-copy h3{margin:0 0 12px; font-size:clamp(21px,2.4vw,27px); font-weight:525;
+               line-height:1.22; letter-spacing:-.015em; color:var(--tx)}
+.slide-copy > p{margin:0; font-size:16px; line-height:1.62; color:var(--tx-tertiary)}
+.slide-copy .kicker{display:block; margin-bottom:14px}
+.slide-ticks{list-style:none; margin:clamp(22px,2.6vw,30px) 0 0; padding:0; display:grid; gap:11px}
+.slide-ticks li{display:flex; align-items:center; gap:11px; font-size:15px; color:var(--tx-secondary)}
+
+.slide-visual{
+  border-radius:18px; padding:clamp(18px,2.4vw,30px); display:grid; place-items:center;
+  min-height:clamp(220px,24vw,300px);
+}
+.slide-visual.v1{background:linear-gradient(150deg,#a5bbfc 0%,#d5e2ff 52%,#eef2ff 100%)}
+.slide-visual.v2{background:linear-gradient(150deg,#ffb053 0%,#ffd6a8 52%,#fff3e4 100%)}
+.slide-visual.v3{background:linear-gradient(150deg,#acd587 0%,#d6ecc2 52%,#f2f8eb 100%)}
+.vig{
+  width:100%; background:#fff; border-radius:12px; padding:16px 17px;
+  box-shadow:0 10px 30px rgba(31,31,31,.14); font-size:12px;
+}
+.vig-head{display:flex; justify-content:space-between; align-items:center;
+          padding-bottom:11px; margin-bottom:11px; border-bottom:1px solid var(--st-secondary)}
+.vig-title{font-weight:525; color:var(--tx); font-size:12px}
+.vig-tag{font-family:"Matter Mono",ui-monospace,monospace; font-size:9px; letter-spacing:.08em;
+         text-transform:uppercase; color:var(--grey-600,#999)}
+.vig-row{display:flex; align-items:center; gap:10px; padding-block:7px; color:var(--tx-tertiary)}
+.vig-row + .vig-row{border-top:1px solid #f5f5f5}
+.vig-row .k{flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.vig-row .v{font-weight:525; color:var(--tx); font-variant-numeric:tabular-nums}
+.vig-row.hot .v{color:#b81514}
+.vig-rank{width:16px; font-family:"Matter Mono",ui-monospace,monospace; color:var(--grey-400); font-size:10px}
+.vig-chip{font-size:10px; padding:2px 7px; border-radius:999px; background:var(--grey-100); color:var(--tx-tertiary)}
+.vig-bar{height:5px; border-radius:999px; background:var(--grey-100); overflow:hidden; width:46px; flex:0 0 auto}
+.vig-bar i{display:block; height:100%; border-radius:999px; background:var(--indigo-500)}
+.vig-tiles{display:grid; grid-template-columns:1fr 1fr; gap:9px}
+.vig-tile{border:1px solid var(--st-secondary); border-radius:9px; padding:9px 10px}
+.vig-tile .n{display:block; font-family:"Season Mix",Matter,serif; font-size:19px; line-height:1; color:var(--tx)}
+.vig-tile .l{display:block; margin-top:5px; font-size:9px; letter-spacing:.06em;
+             text-transform:uppercase; color:var(--tx-tertiary)}
+@media (max-width:860px){
+  .slide{grid-template-columns:1fr; gap:24px}
+  .slide-visual{min-height:200px; order:2}
+}
 /* measured list — no boxes, so it reads differently from the grids above */
 .measure{list-style:none; margin:0; padding:0; border-top:1px solid var(--st)}
 .measure li{
@@ -346,11 +425,17 @@ h1{
 .xp-item.open .xp-content{opacity:1}
 
 .xp-points{margin:0; padding:0; list-style:none; display:grid; gap:12px}
-.xp-points li{position:relative; padding-left:20px; font-size:17px; line-height:1.6; color:var(--tx-secondary)}
-.xp-points li::before{
-  content:""; position:absolute; left:2px; top:11px;
-  width:5px; height:5px; border-radius:50%; background:var(--indigo-500);
+.xp-points li{position:relative; padding-left:30px; font-size:17px; line-height:1.6; color:var(--tx-secondary)}
+.xp-points li > .tick{position:absolute; left:0; top:4px}
+/* scalloped verification badge, as on their enterprise checklists */
+.tick{
+  flex:0 0 auto; width:19px; height:19px; display:block;
 }
+.tick svg{width:100%; height:100%; display:block}
+.tick .seal{fill:var(--indigo-600)}
+.tick .mark{fill:none; stroke:#fff; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round}
+.tick.green .seal{fill:#6ea335}
+.tick.pink .seal{fill:#e879b9}
 .xp-points li b{color:var(--tx); font-weight:600}
 .xp-points li.todo{
   padding:12px 14px 12px 16px; border:1px dashed var(--grey-400);
@@ -486,6 +571,14 @@ h1{
 @supports not (background-clip:text){ .statement h2 .grad{color:#3333cc} }
 .statement .kicker{display:block; margin-bottom:clamp(18px,2.4vw,26px)}
 .statement .cta{margin-top:clamp(30px,3.6vw,42px)}
+
+/* ============ FAQ ============ */
+.faq{max-width:880px; margin-inline:auto; border-top:1px solid var(--st)}
+.faq .xp-head{grid-template-columns:minmax(0,1fr) 22px; padding-block:clamp(18px,2vw,24px)}
+.faq .xp-q{font-size:17px; font-weight:525; line-height:1.4; color:var(--tx)}
+.faq .xp-content{padding-left:0; padding-right:clamp(26px,3vw,40px)}
+.faq .xp-content p{font-size:16px; line-height:1.65; color:var(--tx-tertiary)}
+@media (max-width:860px){ .faq .xp-head{grid-template-columns:minmax(0,1fr) 20px} }
 
 /* ============ Pull quote ============ */
 .quote-sec{
@@ -675,6 +768,17 @@ h1{
 
 <!-- ============ WALKTHROUGH — Sarvam's two-column media pattern ============ -->
 <section class="band" id="walkthrough">
+  <div class="wrap">
+    <ol class="steps reveal" aria-label="The arc of the plan">
+      <li class="step on"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 4a7 7 0 100 14 7 7 0 000-14z"/><path d="M16.5 16.5L21 21"/></svg></span>Audit</li>
+      <span class="step-line" aria-hidden="true"></span>
+      <li class="step"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 16l5-5 3 2 7-7"/><path d="M15 6h5v5"/></svg></span>Ship</li>
+      <span class="step-line" aria-hidden="true"></span>
+      <li class="step"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V9M10 20V4M16 20v-7M21 20H3"/></svg></span>Measure</li>
+      <span class="step-line" aria-hidden="true"></span>
+      <li class="step"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/><path d="M9 13h7M9 17h5"/></svg></span>Report</li>
+    </ol>
+  </div>
   <div class="wrap split">
     <div class="card split-copy reveal">
       <h2 class="h-card">The two-minute version</h2>
@@ -729,41 +833,76 @@ h1{
          &mdash; in that order.</p>
     </header>
 
-    <div class="grid-3">
-      <article class="card reveal">
-        <img class="accent" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1IiBoZWlnaHQ9IjEyNSIgdmlld0JveD0iMCAwIDEyNSAxMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2lfNjY3MV8xNTk0MCkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTY3LjI5MSAxNy42NTc5QzY3LjI4NDUgMTcuNjU0NiA2Ny4yNzggMTcuNjUxMiA2Ny4yNzE1IDE3LjY0NzhaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfNjY3MV8xNTk0MCkiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy42NTc5IDU3LjcwOUMxNy42NTQ2IDU3LjcxNTUgMTcuNjUxMiA1Ny43MjIgMTcuNjQ3OCA1Ny43Mjg1WiIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyXzY2NzFfMTU5NDApIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNDYuMTI5NCAyNS42MDk2QzQ3LjU4NTYgMjQuMTUzNCA0OS4xODY3IDIyLjkyOTkgNTAuODg3NCAyMS45NDI2QzUzLjEzODQgMjAuNjQ2NyA1Ni41MDY3IDE4LjY3OTQgNTcuNjMwNiAxNy43ODAzQzU3Ljc0MzIgMTcuNjkwMiA1Ny45MjUxIDE3LjU4MzggNTguMTU0MyAxNy40NDk2QzU5LjE5NzUgMTYuODM5MSA2MS4yMTk3IDE1LjY1NTcgNjIuMTM5MSAxMi44MzUzQzYyLjI4NTIgMTIuMzg4IDYyLjg2NTQgMTIuMzg4NCA2My4wMDk1IDEyLjgzNTNDNjQuMDE4MiAxNS45NjY1IDY2LjM2MjQgMTcuMTc4IDY3LjI3MTUgMTcuNjQ3OEM2Ny4zNzM5IDE3LjcwMDggNjcuNDU4NiAxNy43NDQ1IDY3LjUyMDUgMTcuNzgwM0M2Ny45MjYyIDE4LjAxNDUgNjguOTExOSAxOC42NTE1IDcwLjAyMjkgMTkuMzY5NUM3MS4zNzQxIDIwLjI0MjcgNzIuOTExNiAyMS4yMzYzIDczLjgxNDEgMjEuNzY5NFYyMS43NzQ5Qzc1LjYyNTcgMjIuNzkwNSA3Ny4zMjk3IDI0LjA2ODkgNzguODcwNiAyNS42MDk2QzgyLjc1NSAyOS40OTQgODQuOTcwNiAzNC40MTU1IDg1LjUxNzIgMzkuNDgyOEM5MC41ODQ1IDQwLjAyOTQgOTUuNTA2IDQyLjI0NSA5OS4zOTA0IDQ2LjEyOTRDMTAwLjg0NyA0Ny41ODU2IDEwMi4wNyA0OS4xODY3IDEwMy4wNTcgNTAuODg3NEMxMDQuMzUzIDUzLjEzODQgMTA2LjMyMSA1Ni41MDY3IDEwNy4yMiA1Ny42MzA2QzEwNy4zMSA1Ny43NDMyIDEwNy40MTYgNTcuOTI1MSAxMDcuNTUgNTguMTU0M0MxMDguMTYxIDU5LjE5NzUgMTA5LjM0NCA2MS4yMTk3IDExMi4xNjUgNjIuMTM5MUMxMTIuNjEyIDYyLjI4NTIgMTEyLjYxMiA2Mi44NjU0IDExMi4xNjUgNjMuMDA5NUMxMDkuMDMzIDY0LjAxODIgMTA3LjgyMiA2Ni4zNjI0IDEwNy4zNTIgNjcuMjcxNUMxMDcuMjk5IDY3LjM3NCAxMDcuMjU1IDY3LjQ1ODUgMTA3LjIyIDY3LjUyMDVDMTA2Ljk4NiA2Ny45MjYxIDEwNi4zNDkgNjguOTExNyAxMDUuNjMxIDcwLjAyMjVDMTA0Ljc1OCA3MS4zNzM3IDEwMy43NjQgNzIuOTExNiAxMDMuMjMxIDczLjgxNDFIMTAzLjIyNUMxMDIuMjEgNzUuNjI1NyAxMDAuOTMxIDc3LjMyOTcgOTkuMzkwNCA3OC44NzA2Qzk1LjUwNiA4Mi43NTUgOTAuNTg0NSA4NC45NzA2IDg1LjUxNzIgODUuNTE3MkM4NC45NzA2IDkwLjU4NDUgODIuNzU1IDk1LjUwNiA3OC44NzA2IDk5LjM5MDRDNzcuNDE0NCAxMDAuODQ3IDc1LjgxMzMgMTAyLjA3IDc0LjExMjYgMTAzLjA1N0M3MS44NjE2IDEwNC4zNTMgNjguNDkzMyAxMDYuMzIxIDY3LjM2OTQgMTA3LjIyQzY3LjI1NjggMTA3LjMxIDY3LjA3NDkgMTA3LjQxNiA2Ni44NDU3IDEwNy41NUM2NS44MDI1IDEwOC4xNjEgNjMuNzgwMyAxMDkuMzQ0IDYyLjg2MDkgMTEyLjE2NUM2Mi43MTQ4IDExMi42MTIgNjIuMTM0NiAxMTIuNjEyIDYxLjk5MDUgMTEyLjE2NUM2MC45ODE4IDEwOS4wMzMgNTguNjM3NiAxMDcuODIyIDU3LjcyODUgMTA3LjM1MkM1Ny42MjYgMTA3LjI5OSA1Ny41NDE1IDEwNy4yNTUgNTcuNDc5NSAxMDcuMjJDNTcuMDczNiAxMDYuOTg1IDU2LjA4NzEgMTA2LjM0OCA1NC45NzU2IDEwNS42MjlDNTMuNjI0NCAxMDQuNzU2IDUyLjA4ODQgMTAzLjc2NCA1MS4xODU5IDEwMy4yMzFWMTAzLjIyNUM0OS4zNzQzIDEwMi4yMSA0Ny42NzAzIDEwMC45MzEgNDYuMTI5NCA5OS4zOTA0QzQyLjI0NSA5NS41MDYgNDAuMDI5NCA5MC41ODQ1IDM5LjQ4MjggODUuNTE3MkMzNC40MTU1IDg0Ljk3MDYgMjkuNDk0IDgyLjc1NSAyNS42MDk2IDc4Ljg3MDZDMjQuMTUzNCA3Ny40MTQ0IDIyLjkyOTkgNzUuODEzMyAyMS45NDI2IDc0LjExMjZDMjAuNjQ2NyA3MS44NjE2IDE4LjY3OTQgNjguNDkzMyAxNy43ODAzIDY3LjM2OTRDMTcuNjkwMiA2Ny4yNTY4IDE3LjU4MzggNjcuMDc0OSAxNy40NDk2IDY2Ljg0NTdDMTYuODM5MSA2NS44MDI1IDE1LjY1NTcgNjMuNzgwMyAxMi44MzUzIDYyLjg2MDlDMTIuMzg4IDYyLjcxNDggMTIuMzg4NCA2Mi4xMzQ2IDEyLjgzNTMgNjEuOTkwNUMxNS45NjY1IDYwLjk4MTggMTcuMTc4IDU4LjYzNzYgMTcuNjQ3OCA1Ny43Mjg1QzE3LjcwMDggNTcuNjI2MSAxNy43NDQ1IDU3LjU0MTQgMTcuNzgwMyA1Ny40Nzk1QzE4LjAxNDUgNTcuMDczOCAxOC42NTE1IDU2LjA4ODEgMTkuMzY5NSA1NC45NzcxQzIwLjI0MjcgNTMuNjI1OSAyMS4yMzYzIDUyLjA4ODQgMjEuNzY5NCA1MS4xODU5SDIxLjc3NDlDMjIuNzkwNSA0OS4zNzQzIDI0LjA2ODkgNDcuNjcwMyAyNS42MDk2IDQ2LjEyOTRDMjkuNDk0IDQyLjI0NSAzNC40MTU1IDQwLjAyOTQgMzkuNDgyOCAzOS40ODI4QzQwLjAyOTQgMzQuNDE1NSA0Mi4yNDUgMjkuNDk0IDQ2LjEyOTQgMjUuNjA5NloiIGZpbGw9InVybCgjcGFpbnQyX2xpbmVhcl82NjcxXzE1OTQwKSIvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2lfNjY3MV8xNTk0MCIgeD0iMTIuNSIgeT0iNi43ODU3MSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDUuNzE0IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9Ii01LjcxNDI5Ii8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMuNTcxNDMiLz4KPGZlQ29tcG9zaXRlIGluMj0iaGFyZEFscGhhIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazI9Ii0xIiBrMz0iMSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwLjkzMzMzMyAwIDAgMCAwIDAuNDc0NTEgMCAwIDAgMCAwLjI2NjY2NyAwIDAgMCAxIDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9InNoYXBlIiByZXN1bHQ9ImVmZmVjdDFfaW5uZXJTaGFkb3dfNjY3MV8xNTk0MCIvPgo8L2ZpbHRlcj4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzY2NzFfMTU5NDAiIHgxPSI2Mi41IiB5MT0iMTIuNSIgeDI9IjYyLjUiIHkyPSI2OS43Njg3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNFNjY1MUIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRUZBQkM1Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl82NjcxXzE1OTQwIiB4MT0iNjIuNSIgeTE9IjEyLjUiIHgyPSI2Mi41IiB5Mj0iNjkuNzY4NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRTY2NTFCIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0VGQUJDNSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50Ml9saW5lYXJfNjY3MV8xNTk0MCIgeDE9IjYyLjUiIHkxPSIxMi41IiB4Mj0iNjIuNSIgeTI9IjY5Ljc2ODciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0U2NjUxQiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNFRkFCQzUiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K" alt="" aria-hidden="true" decoding="async">
-        <span class="chip" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg></span>
-        <p class="phase">Days 1&ndash;10</p>
-        <h3>Learn the funnel by using it</h3>
-        <p>I sign up for the API as a first-time developer would and time every step
-           to the first successful call, noting each place I hesitate &mdash; those are
-           the same places signups drop. In parallel I audit which docs and posts
-           already pull organic traffic, and how Sarvam gets described when you ask
-           ChatGPT, Perplexity or Gemini about Indic speech and translation.</p>
+    <div class="slides">
+      <article class="slide reveal">
+        <div class="slide-copy">
+          <span class="kicker">Days 1&ndash;10</span>
+          <h3>Learn the funnel by using it</h3>
+          <p>I sign up for the API as a first-time developer would and time every step to the first successful call, noting each place I hesitate &mdash; those are the same places signups drop. In parallel I audit what already pulls organic traffic, and how Sarvam gets described when you ask an LLM about Indic speech.</p>
+          <ul class="slide-ticks">
+            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Time every step to first call</li>
+            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Note every point of hesitation</li>
+            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Audit docs, posts and keywords</li>
+            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Check how LLMs describe Sarvam</li>
+          </ul>
+        </div>
+        <div class="slide-visual v1">
+          <div class="vig">
+            <div class="vig-head"><span class="vig-title">Time to first call</span><span class="vig-tag">Audit</span></div>
+            <div class="vig-row"><span class="k">Landing &rarr; docs</span><span class="v">0:42</span></div>
+            <div class="vig-row"><span class="k">Docs &rarr; signup</span><span class="v">1:18</span></div>
+            <div class="vig-row hot"><span class="k">Signup &rarr; API key</span><span class="v">6:30</span></div>
+            <div class="vig-row"><span class="k">Key &rarr; first call</span><span class="v">2:05</span></div>
+          </div>
+        </div>
       </article>
 
-      <article class="card reveal">
-        <img class="accent" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1IiBoZWlnaHQ9IjEyNSIgdmlld0JveD0iMCAwIDEyNSAxMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2lfNjY3MV8xNTk1NSkiPgo8cGF0aCBkPSJNNDYuOTc0IDM1LjE1NzFWMzUuMzcyNUw0Ni45MDgyIDM1LjMzNDJDNDEuNDEwMSAzMi4xMzc3IDM2LjI2NDcgMzQuMDk0MSAzMS42MDE2IDM1Ljg2NzNDMjkuMTkgMzYuNzg0MyAyNi45MDc0IDM3LjY1MjIgMjQuNzcxNiAzNy43MzNDMjAuNjIxNyAzOC4wNzM3IDE5LjUwMDIgMzcuNTQ2NyAxOS41MDAyIDM3LjU0NjdDMTkuNTAwMiAzNy41NDY3IDIwLjEyMyAzNy45MDg5IDIyLjQ1NzUgNDEuNzY5M0MyMy41OTI5IDQzLjkzMzUgMjMuOTk1MiA0Ni41NDcxIDI0LjQwOTEgNDkuMjM2MUMyNS4xNjYxIDU0LjE1NDggMjUuOTYyMSA1OS4zMjYxIDMxLjM1NTIgNjIuNDYxNkwzMS40MjA5IDYyLjQ5OThMMzEuMjM1NSA2Mi42MDc2QzI0Ljg2MzMgNjYuMzEyNCAyNC4yNDU2IDcyLjEyMjYgMjMuNzM5MiA3Ni44ODU5QzIzLjU2MDkgNzguNTYyMiAyMy4zOTY1IDgwLjEwODggMjIuOTk5OSA4MS4zODg0QzIxLjQ3NjQgODYuMzAzOSAxOS41IDg3LjQ1MjkgMTkuNSA4Ny40NTI5QzE5LjUgODcuNDUyOSAyMS41MjQ1IDg2LjI3NTkgMjYuMzc2NSA4Ny41ODUxQzI3LjUyNyA4Ny44OTU1IDI4Ljc5NTIgODguNDYxMiAzMC4xNzU0IDg5LjA3NjlDMzQuNjE2MSA5MS4wNTc4IDQwLjIxNjUgOTMuNTU1OSA0Ni43ODg1IDg5LjczNUw0Ni45NzM3IDg5LjYyNzNWODkuNzAzOUM0Ni45NzM3IDk2LjA5NyA1MS4yMjkgOTkuNjA2IDU1LjA4NTQgMTAyLjc4NkM1Ny4wNzk5IDEwNC40MzEgNTguOTY3NiAxMDUuOTg3IDYwLjEwNSAxMDcuODFDNjIuNDcyOSAxMTEuMjU4IDYyLjU4MDQgMTEyLjUgNjIuNTgwNCAxMTIuNUM2Mi41ODA0IDExMi41IDYyLjU4MDUgMTExLjc3NiA2NC43MzMyIDEwNy44MUM2Ni4wMjY3IDEwNS43MzcgNjguMDczMiAxMDQuMDggNzAuMTc4OCAxMDIuMzc0Qzc0LjAzMDQgOTkuMjU0NyA3OC4wNzk3IDk1Ljk3NSA3OC4wNzk3IDg5LjcwMzlWODkuNjI3NUw3OC4yNjUxIDg5LjczNTNDODQuNjM3MyA5My40NCA4OS45NDMgOTEuMDczNiA5NC4yOTI2IDg5LjEzMzZDOTUuODIzMyA4OC40NTA5IDk3LjIzNTYgODcuODIxIDk4LjUzNDMgODcuNTI3MUMxMDMuNTIzIDg2LjM5OCAxMDUuNSA4Ny41NDcxIDEwNS41IDg3LjU0NzFDMTA1LjUgODcuNTQ3MSAxMDMuNDc1IDg2LjM3IDEwMi4xNzUgODEuNDg0MUMxMDEuODY3IDgwLjMyNTUgMTAxLjcxOSA3OC45MzY3IDEwMS41NTkgNzcuNDI1MUMxMDEuMDQyIDcyLjU2MiAxMDAuMzkgNjYuNDI4OCA5My44MTgxIDYyLjYwNzlMOTMuNjMyOSA2Mi41MDAyTDkzLjY5ODcgNjIuNDYxOUM5OS4xOTY4IDU5LjI2NTMgMTAwLjA4NyA1My43OTk4IDEwMC44OTQgNDguODQ2NkMxMDEuMzExIDQ2LjI4NDkgMTAxLjcwNiA0My44NjAzIDEwMi43MDQgNDEuOTU3M0MxMDQuNDg2IDM4LjE2NzggMTA1LjUgMzcuNDUzMyAxMDUuNSAzNy40NTMzQzEwNS41IDM3LjQ1MzMgMTA0Ljg3NyAzNy44MTUzIDEwMC4zOSAzNy45MjFDOTcuOTYxIDM3LjgyOTEgOTUuNTEyMiAzNi44NzMyIDkyLjk5MjcgMzUuODg5NkM4OC4zODQxIDM0LjA5MDUgODMuNTM4OCAzMi4xOTkgNzguMTQ1NyAzNS4zMzQ1TDc4LjA4IDM1LjM3MjdWMzUuMTU3MUM3OC4wOCAyNy43NDc2IDczLjM5MjEgMjQuMzAzNyA2OS41NDg5IDIxLjQ4MDVDNjguMTk2NCAyMC40ODY5IDY2Ljk0ODUgMTkuNTcwMiA2Ni4wNDY0IDE4LjU4NDZDNjIuNTgwOCAxNC43OTgxIDYyLjU4MDggMTIuNSA2Mi41ODA4IDEyLjVDNjIuNTgwOCAxMi41IDYyLjU4MDggMTQuODU0MSA1OS4wMjg5IDE4LjQzMDhDNTguMTg2NyAxOS4yNzkgNTcuMDY2MSAyMC4xMDIxIDU1Ljg0NjUgMjAuOTk4QzUxLjkyMjcgMjMuODgwMiA0Ni45NzQgMjcuNTE1MyA0Ni45NzQgMzUuMTU3MVoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl82NjcxXzE1OTU1KSIvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2lfNjY3MV8xNTk1NSIgeD0iMTkuNSIgeT0iMTIuNSIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjEwNC40OTgiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iNC40OTc2MSIvPgo8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI1Ljk5NjgxIi8+CjxmZUNvbXBvc2l0ZSBpbjI9ImhhcmRBbHBoYSIgb3BlcmF0b3I9ImFyaXRobWV0aWMiIGsyPSItMSIgazM9IjEiLz4KPGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMC45NzI1NDkgMCAwIDAgMCAwLjgxOTYwOCAwIDAgMCAwIDAuNzc2NDcxIDAgMCAwIDEgMCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluMj0ic2hhcGUiIHJlc3VsdD0iZWZmZWN0MV9pbm5lclNoYWRvd182NjcxXzE1OTU1Ii8+CjwvZmlsdGVyPgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MF9saW5lYXJfNjY3MV8xNTk1NSIgeDE9IjYyLjUiIHkxPSIzMC4zNDE0IiB4Mj0iNjIuNSIgeTI9IjExMi43MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjQjgxNTE0Ii8+CjxzdG9wIG9mZnNldD0iMC45NzU4NzIiIHN0b3AtY29sb3I9IiNEMkRGRjkiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K" alt="" aria-hidden="true" decoding="async">
-        <span class="chip" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M16 7h5v5"/></svg></span>
-        <p class="phase">Days 11&ndash;20</p>
-        <h3>Ship the cheapest fixes</h3>
-        <p>The audit becomes a ranked backlog where every item has an owner, an effort
-           estimate and a number it should move. Then I publish the two or three
-           highest-leverage pieces myself: a comparison page that captures search
-           demand that already exists, a developer tutorial that ends in a working
-           call, and the metadata and schema work that makes both easier to quote.</p>
+      <article class="slide reveal">
+        <div class="slide-copy">
+          <span class="kicker">Days 11&ndash;20</span>
+          <h3>Ship the cheapest fixes</h3>
+          <p>The audit becomes a ranked backlog where every item has an owner, an effort estimate and a number it should move. Then I publish the two or three highest-leverage pieces myself.</p>
+          <ul class="slide-ticks">
+            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Rank by effort against impact</li>
+            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>A comparison page for existing demand</li>
+            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>A tutorial that ends in a working call</li>
+            <li><span class="tick pink" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Metadata and schema both can quote</li>
+          </ul>
+        </div>
+        <div class="slide-visual v2">
+          <div class="vig">
+            <div class="vig-head"><span class="vig-title">Ranked backlog</span><span class="vig-tag">Ship</span></div>
+            <div class="vig-row"><span class="vig-rank">01</span><span class="k">Comparison page</span><span class="vig-chip">SEO</span><span class="vig-bar"><i style="width:92%"></i></span></div>
+            <div class="vig-row"><span class="vig-rank">02</span><span class="k">Quickstart tutorial</span><span class="vig-chip">Docs</span><span class="vig-bar"><i style="width:74%"></i></span></div>
+            <div class="vig-row"><span class="vig-rank">03</span><span class="k">Schema &amp; metadata</span><span class="vig-chip">Tech</span><span class="vig-bar"><i style="width:58%"></i></span></div>
+            <div class="vig-row"><span class="vig-rank">04</span><span class="k">Pricing clarity</span><span class="vig-chip">Web</span><span class="vig-bar"><i style="width:35%"></i></span></div>
+          </div>
+        </div>
       </article>
 
-      <article class="card reveal">
-        <img class="accent" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1IiBoZWlnaHQ9IjEyNSIgdmlld0JveD0iMCAwIDEyNSAxMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2lfNjY3MV8xNTk2MykiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTc0LjQyNjEgOTkuMjA4N0M3NC40MjYgOTkuMjA4NyA3NC40MjYyIDk5LjIwODYgNzQuNDI2MSA5OS4yMDg3Wk03MS42MDA2IDEwMS43MjhDNzEuNjAwNiAxMDEuNzI4IDcxLjYwMDcgMTAxLjcyOCA3MS42MDA2IDEwMS43MjhaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfNjY3MV8xNTk2MykiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01My4wNzk1IDIzLjU3NzVDNTIuMzQ4MSAyNC4yNzc4IDUxLjUwNzQgMjQuOTk1IDUwLjU3MzkgMjUuNzkxM0M0OS43ODQ5IDI2LjQ2NDQgNDguOTI5NiAyNy4xOTQgNDguMDE4IDI4LjAxNzhDNDcuNzc4OCAyOC4yMzM5IDQ3LjUyOTYgMjguNDU1NCA0Ny4yNzM4IDI4LjY4MjZDNDMuODQgMzEuNzMzMyAzOS4yMjkzIDM1LjgyOTUgNDIgNDIuMjAzQzM1Ljk2OTIgMzkuMDY3MiAzMC40MTIzIDQzLjY1MDggMjguMDE3OCA0Ni43Mjk0QzI3LjE1NjMgNDcuODM3MSAyNi4zNjIxIDQ4Ljk0NDggMjUuNTcxMSA1MC4wNDgxQzI0LjkxNjUgNTAuOTYxIDI0LjI2NDEgNTEuODcxIDIzLjU3NzUgNTIuNzc1NEgyMy41NzJDMjEuNzQ1MyA1NS40Nzk3IDE2LjA5NTUgNjEuMzA0MiAxMi44MzUzIDYyLjIyMjZDMTIuMzg4NCA2Mi4zNDg2IDEyLjM4OCA2My4wMjA4IDEyLjgzNTMgNjMuMTQ4NUMxNi4xMTE0IDY0LjA4MjQgMjEuMzM3NSA2OS41NjkyIDIzLjI3MjQgNzEuNjAwNkMyMy4zODU1IDcxLjcxOTUgMjMuNDg3OSA3MS44MjY5IDIzLjU3NzUgNzEuOTIwNUMyNC4yNzc4IDcyLjY1MTggMjQuOTk0OSA3My40OTI1IDI1Ljc5MTIgNzQuNDI1OUMyNi40NjQzIDc1LjIxNDkgMjcuMTk0IDc2LjA3MDQgMjguMDE3OCA3Ni45ODJDMjguMjMzOSA3Ny4yMjEyIDI4LjQ1NTQgNzcuNDcwNCAyOC42ODI2IDc3LjcyNjJDMzEuNzMzMyA4MS4xNiAzNS44Mjk1IDg1Ljc3MDcgNDIuMjAzIDgzQzM5LjA2NzIgODkuMDMwOCA0My42NTA4IDk0LjU4NzcgNDYuNzI5NCA5Ni45ODIyQzQ3LjgzNjkgOTcuODQzNiA0OC45NDQ1IDk4LjYzNzcgNTAuMDQ3NiA5OS40Mjg2QzUwLjk2MDMgMTAwLjA4MyA1MS44NzEyIDEwMC43MzYgNTIuNzc1NCAxMDEuNDIzVjEwMS40MjhDNTUuNDc5NyAxMDMuMjU1IDYxLjMwNDIgMTA4LjkwNCA2Mi4yMjI1IDExMi4xNjVDNjIuMzQ4NiAxMTIuNjEyIDYzLjAyMDggMTEyLjYxMiA2My4xNDg1IDExMi4xNjVDNjQuMDgyMyAxMDguODg5IDY5LjU2OSAxMDMuNjYzIDcxLjYwMDYgMTAxLjcyOEw3MS42ODcgMTAxLjY0NUw3MS43OTc5IDEwMS41NEw3MS44NTU5IDEwMS40ODRMNzEuOTIwNSAxMDEuNDIzQzcyLjY1MTggMTAwLjcyMiA3My40OTI3IDEwMC4wMDUgNzQuNDI2MSA5OS4yMDg3Qzc1LjIxNTEgOTguNTM1NiA3Ni4wNzA0IDk3LjgwNiA3Ni45ODIgOTYuOTgyMkM3Ny4yMjEyIDk2Ljc2NjEgNzcuNDcwNCA5Ni41NDQ2IDc3LjcyNjIgOTYuMzE3NEM4MS4xNiA5My4yNjY3IDg1Ljc3MDcgODkuMTcwNSA4MyA4Mi43OTY5Qzg5LjAzMDggODUuOTMyOCA5NC41ODc3IDgxLjM0OTIgOTYuOTgyMiA3OC4yNzA2Qzk3Ljg0MzcgNzcuMTYyOSA5OC42Mzc5IDc2LjA1NTIgOTkuNDI4OSA3NC45NTJDMTAwLjA4MyA3NC4wMzkgMTAwLjczNiA3My4xMjkxIDEwMS40MjMgNzIuMjI0NkgxMDEuNDI4QzEwMy4yNTUgNjkuNTIwMyAxMDguOTA0IDYzLjY5NTggMTEyLjE2NSA2Mi43Nzc0QzExMi42MTIgNjIuNjUxNCAxMTIuNjEyIDYxLjk3OTIgMTEyLjE2NSA2MS44NTE1QzEwOC44ODkgNjAuOTE3NiAxMDMuNjYzIDU1LjQzMDkgMTAxLjcyOCA1My4zOTk0QzEwMS42MTQgNTMuMjgwNCAxMDEuNTEyIDUzLjE3MzIgMTAxLjQyMyA1My4wNzk1QzEwMC43MjIgNTIuMzQ4MiAxMDAuMDA1IDUxLjUwNzUgOTkuMjA4OCA1MC41NzQxQzk4LjUzNTggNDkuNzg1MSA5Ny44MDYgNDguOTI5NiA5Ni45ODIyIDQ4LjAxOEM5Ni43NjYxIDQ3Ljc3ODggOTYuNTQ0NiA0Ny41Mjk2IDk2LjMxNzQgNDcuMjczOEM5My4yNjY3IDQzLjg0IDg5LjE3MDUgMzkuMjI5MyA4Mi43OTY5IDQyQzg1LjkzMjggMzUuOTY5MiA4MS4zNDkyIDMwLjQxMjMgNzguMjcwNiAyOC4wMTc4Qzc3LjE2MjkgMjcuMTU2MyA3Ni4wNTUyIDI2LjM2MjEgNzQuOTUxOSAyNS41NzExQzc0LjAzOSAyNC45MTY1IDczLjEyOSAyNC4yNjQxIDcyLjIyNDYgMjMuNTc3NVYyMy41NzJDNjkuNTIwMyAyMS43NDUzIDYzLjY5NTggMTYuMDk1NSA2Mi43Nzc0IDEyLjgzNTNDNjIuNjUxNCAxMi4zODg0IDYxLjk3OTIgMTIuMzg4IDYxLjg1MTUgMTIuODM1M0M2MC45MTc2IDE2LjExMTQgNTUuNDMwOCAyMS4zMzc0IDUzLjM5OTQgMjMuMjcyNEM1My4yODA0IDIzLjM4NTcgNTMuMTczMiAyMy40ODc4IDUzLjA3OTUgMjMuNTc3NVoiIGZpbGw9InVybCgjcGFpbnQxX2xpbmVhcl82NjcxXzE1OTYzKSIvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2lfNjY3MV8xNTk2MyIgeD0iMTIuNSIgeT0iNS45ODMwNSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDYuNTE3IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9Ii02LjUxNjk1Ii8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjYuNTE2OTUiLz4KPGZlQ29tcG9zaXRlIGluMj0iaGFyZEFscGhhIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazI9Ii0xIiBrMz0iMSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwLjMzMzMzMyAwIDAgMCAwIDAuNDE1Njg2IDAgMCAwIDAgMC44NjI3NDUgMCAwIDAgMSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJzaGFwZSIgcmVzdWx0PSJlZmZlY3QxX2lubmVyU2hhZG93XzY2NzFfMTU5NjMiLz4KPC9maWx0ZXI+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl82NjcxXzE1OTYzIiB4MT0iNjIuNSIgeTE9IjEyLjUiIHgyPSI2Mi41IiB5Mj0iMTEyLjUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZDRUFGMCIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNFQTY2OUYiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDFfbGluZWFyXzY2NzFfMTU5NjMiIHgxPSI2Mi41IiB5MT0iMTIuNSIgeDI9IjYyLjUiIHkyPSIxMTIuNSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRkNFQUYwIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0VBNjY5RiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo=" alt="" aria-hidden="true" decoding="async">
-        <span class="chip" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
-        <p class="phase">Days 21&ndash;30</p>
-        <h3>Prove it with numbers</h3>
-        <p>One dashboard the team actually opens, two honest experiments run against
-           it, and a short written readout to close the month: what moved, what
-           didn&rsquo;t, what I&rsquo;d kill, and the three bets worth real budget in month
-           two. The goal isn&rsquo;t a vanity spike &mdash; it&rsquo;s a measurement setup that
-           outlives the internship.</p>
+      <article class="slide reveal">
+        <div class="slide-copy">
+          <span class="kicker">Days 21&ndash;30</span>
+          <h3>Prove it with numbers</h3>
+          <p>One dashboard the team actually opens, two honest experiments run against it, and a short written readout to close the month: what moved, what didn&rsquo;t, what I&rsquo;d kill, and the three bets worth real budget in month two.</p>
+          <ul class="slide-ticks">
+            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>One dashboard, five numbers</li>
+            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>At least two honest experiments</li>
+            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>A written readout, not a deck</li>
+            <li><span class="tick green" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Three bets for month two</li>
+          </ul>
+        </div>
+        <div class="slide-visual v3">
+          <div class="vig">
+            <div class="vig-head"><span class="vig-title">Month one</span><span class="vig-tag">Measure</span></div>
+            <div class="vig-tiles">
+              <div class="vig-tile"><span class="n">4:12</span><span class="l">To first call</span></div>
+              <div class="vig-tile"><span class="n">31%</span><span class="l">Activation</span></div>
+              <div class="vig-tile"><span class="n">+18%</span><span class="l">Organic</span></div>
+              <div class="vig-tile"><span class="n">2</span><span class="l">Experiments</span></div>
+            </div>
+          </div>
+        </div>
       </article>
     </div>
   </div>
@@ -829,7 +968,7 @@ h1{
       <button class="xp-all" type="button" id="xp-all" aria-controls="xp-list">Expand all</button>
     </div>
 
-    <div class="xp" id="xp-list">
+    <div class="xp" id="xp-list" data-accordion data-accordion-all="#xp-all">
       <article class="xp-item open reveal">
         <h3 style="margin:0">
           <button class="xp-head" type="button" id="xp-h1" aria-expanded="true" aria-controls="xp-p1">
@@ -845,13 +984,13 @@ h1{
         <div class="xp-panel" id="xp-p1" role="region" aria-labelledby="xp-h1">
           <div class="xp-panel-inner"><div class="xp-content">
             <ul class="xp-points">
-              <li>Ran political campaign marketing across Maharashtra, including an
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Ran political campaign marketing across Maharashtra, including an
                   <b>MLA election campaign for the NCP in Pune</b> &mdash; the largest
                   campaign we handled.</li>
-              <li>Managed <b>&#8377;14 lakh in Meta ad spend</b> across the campaign:
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Managed <b>&#8377;14 lakh in Meta ad spend</b> across the campaign:
                   audience targeting, vernacular creative, and daily optimisation
                   against a fixed polling date.</li>
-              <li>Grew the agency to <b>23+ clients</b> over two and a half years.</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Grew the agency to <b>23+ clients</b> over two and a half years.</li>
               <li class="todo">Add the campaign outcome here &mdash; did they win, what was
                   the reach or vote share? This is the strongest line on the page once
                   filled.</li>
@@ -878,14 +1017,14 @@ h1{
         <div class="xp-panel" id="xp-p2" role="region" aria-labelledby="xp-h2">
           <div class="xp-panel-inner"><div class="xp-content">
             <ul class="xp-points">
-              <li>Built and sold an AI voice call centre to <b>22+ astrologers in Pune</b>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Built and sold an AI voice call centre to <b>22+ astrologers in Pune</b>
                   &mdash; found the segment, wrote the pitch, closed the clients myself.</li>
-              <li>Accepted into the <b>Sarvam AI Startup Program</b>, which is how I got
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Accepted into the <b>Sarvam AI Startup Program</b>, which is how I got
                   close to the stack from the customer side.</li>
-              <li>Built the voice layer on ElevenLabs. Not after a benchmark comparison
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Built the voice layer on ElevenLabs. Not after a benchmark comparison
                   &mdash; it was the name I already knew. That default is exactly the gap
                   I want to work on at Sarvam.</li>
-              <li>Honest lesson: the product worked and distribution did not. I could not
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Honest lesson: the product worked and distribution did not. I could not
                   get it in front of enough people, and that is why I want to be excellent
                   at this function rather than adjacent to it.</li>
             </ul>
@@ -911,9 +1050,9 @@ h1{
         <div class="xp-panel" id="xp-p3" role="region" aria-labelledby="xp-h3">
           <div class="xp-panel-inner"><div class="xp-content">
             <ul class="xp-points">
-              <li>Drove <b>&#8377;75.2L in sales on &#8377;7.6 lakh of ad spend</b> across
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Drove <b>&#8377;75.2L in sales on &#8377;7.6 lakh of ad spend</b> across
                   WhatsApp Ads and Google Ads &mdash; roughly a 10x return.</li>
-              <li>Owned the full paid funnel: targeting, creative, WhatsApp conversation
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Owned the full paid funnel: targeting, creative, WhatsApp conversation
                   flow and conversion tracking.</li>
             </ul>
             <ul class="tags">
@@ -938,9 +1077,9 @@ h1{
         <div class="xp-panel" id="xp-p4" role="region" aria-labelledby="xp-h4">
           <div class="xp-panel-inner"><div class="xp-content">
             <ul class="xp-points">
-              <li>Produced design and creative for an India Post campaign serving offline
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Produced design and creative for an India Post campaign serving offline
                   offices across rural Pune.</li>
-              <li>Marketing to audiences reached in person rather than online &mdash; the
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M12 1.6l2.3 1.5 2.7-.5 1.4 2.4 2.5 1.1-.3 2.7 1.8 2.1-1.8 2.1.3 2.7-2.5 1.1-1.4 2.4-2.7-.5L12 22.4l-2.3-1.5-2.7.5-1.4-2.4-2.5-1.1.3-2.7L1.6 12l1.8-2.1-.3-2.7 2.5-1.1 1.4-2.4 2.7.5L12 1.6z"/><path class="mark" d="M8.2 12.3l2.6 2.6 5-5.4"/></svg></span>Marketing to audiences reached in person rather than online &mdash; the
                   same audience Sarvam&rsquo;s voice and language products are ultimately
                   built for.</li>
             </ul>
@@ -968,6 +1107,102 @@ h1{
             <p>Savitribai Phule Pune University. The useful half for this role is the
                data half &mdash; being comfortable with a dataset is what separates a growth
                guess from a growth decision.</p>
+          </div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec has-motif" id="faq">
+  <img class="sec-motif tr" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1IiBoZWlnaHQ9IjEyNSIgdmlld0JveD0iMCAwIDEyNSAxMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2lfNjY3MV8xNTk1NSkiPgo8cGF0aCBkPSJNNDYuOTc0IDM1LjE1NzFWMzUuMzcyNUw0Ni45MDgyIDM1LjMzNDJDNDEuNDEwMSAzMi4xMzc3IDM2LjI2NDcgMzQuMDk0MSAzMS42MDE2IDM1Ljg2NzNDMjkuMTkgMzYuNzg0MyAyNi45MDc0IDM3LjY1MjIgMjQuNzcxNiAzNy43MzNDMjAuNjIxNyAzOC4wNzM3IDE5LjUwMDIgMzcuNTQ2NyAxOS41MDAyIDM3LjU0NjdDMTkuNTAwMiAzNy41NDY3IDIwLjEyMyAzNy45MDg5IDIyLjQ1NzUgNDEuNzY5M0MyMy41OTI5IDQzLjkzMzUgMjMuOTk1MiA0Ni41NDcxIDI0LjQwOTEgNDkuMjM2MUMyNS4xNjYxIDU0LjE1NDggMjUuOTYyMSA1OS4zMjYxIDMxLjM1NTIgNjIuNDYxNkwzMS40MjA5IDYyLjQ5OThMMzEuMjM1NSA2Mi42MDc2QzI0Ljg2MzMgNjYuMzEyNCAyNC4yNDU2IDcyLjEyMjYgMjMuNzM5MiA3Ni44ODU5QzIzLjU2MDkgNzguNTYyMiAyMy4zOTY1IDgwLjEwODggMjIuOTk5OSA4MS4zODg0QzIxLjQ3NjQgODYuMzAzOSAxOS41IDg3LjQ1MjkgMTkuNSA4Ny40NTI5QzE5LjUgODcuNDUyOSAyMS41MjQ1IDg2LjI3NTkgMjYuMzc2NSA4Ny41ODUxQzI3LjUyNyA4Ny44OTU1IDI4Ljc5NTIgODguNDYxMiAzMC4xNzU0IDg5LjA3NjlDMzQuNjE2MSA5MS4wNTc4IDQwLjIxNjUgOTMuNTU1OSA0Ni43ODg1IDg5LjczNUw0Ni45NzM3IDg5LjYyNzNWODkuNzAzOUM0Ni45NzM3IDk2LjA5NyA1MS4yMjkgOTkuNjA2IDU1LjA4NTQgMTAyLjc4NkM1Ny4wNzk5IDEwNC40MzEgNTguOTY3NiAxMDUuOTg3IDYwLjEwNSAxMDcuODFDNjIuNDcyOSAxMTEuMjU4IDYyLjU4MDQgMTEyLjUgNjIuNTgwNCAxMTIuNUM2Mi41ODA0IDExMi41IDYyLjU4MDUgMTExLjc3NiA2NC43MzMyIDEwNy44MUM2Ni4wMjY3IDEwNS43MzcgNjguMDczMiAxMDQuMDggNzAuMTc4OCAxMDIuMzc0Qzc0LjAzMDQgOTkuMjU0NyA3OC4wNzk3IDk1Ljk3NSA3OC4wNzk3IDg5LjcwMzlWODkuNjI3NUw3OC4yNjUxIDg5LjczNTNDODQuNjM3MyA5My40NCA4OS45NDMgOTEuMDczNiA5NC4yOTI2IDg5LjEzMzZDOTUuODIzMyA4OC40NTA5IDk3LjIzNTYgODcuODIxIDk4LjUzNDMgODcuNTI3MUMxMDMuNTIzIDg2LjM5OCAxMDUuNSA4Ny41NDcxIDEwNS41IDg3LjU0NzFDMTA1LjUgODcuNTQ3MSAxMDMuNDc1IDg2LjM3IDEwMi4xNzUgODEuNDg0MUMxMDEuODY3IDgwLjMyNTUgMTAxLjcxOSA3OC45MzY3IDEwMS41NTkgNzcuNDI1MUMxMDEuMDQyIDcyLjU2MiAxMDAuMzkgNjYuNDI4OCA5My44MTgxIDYyLjYwNzlMOTMuNjMyOSA2Mi41MDAyTDkzLjY5ODcgNjIuNDYxOUM5OS4xOTY4IDU5LjI2NTMgMTAwLjA4NyA1My43OTk4IDEwMC44OTQgNDguODQ2NkMxMDEuMzExIDQ2LjI4NDkgMTAxLjcwNiA0My44NjAzIDEwMi43MDQgNDEuOTU3M0MxMDQuNDg2IDM4LjE2NzggMTA1LjUgMzcuNDUzMyAxMDUuNSAzNy40NTMzQzEwNS41IDM3LjQ1MzMgMTA0Ljg3NyAzNy44MTUzIDEwMC4zOSAzNy45MjFDOTcuOTYxIDM3LjgyOTEgOTUuNTEyMiAzNi44NzMyIDkyLjk5MjcgMzUuODg5NkM4OC4zODQxIDM0LjA5MDUgODMuNTM4OCAzMi4xOTkgNzguMTQ1NyAzNS4zMzQ1TDc4LjA4IDM1LjM3MjdWMzUuMTU3MUM3OC4wOCAyNy43NDc2IDczLjM5MjEgMjQuMzAzNyA2OS41NDg5IDIxLjQ4MDVDNjguMTk2NCAyMC40ODY5IDY2Ljk0ODUgMTkuNTcwMiA2Ni4wNDY0IDE4LjU4NDZDNjIuNTgwOCAxNC43OTgxIDYyLjU4MDggMTIuNSA2Mi41ODA4IDEyLjVDNjIuNTgwOCAxMi41IDYyLjU4MDggMTQuODU0MSA1OS4wMjg5IDE4LjQzMDhDNTguMTg2NyAxOS4yNzkgNTcuMDY2MSAyMC4xMDIxIDU1Ljg0NjUgMjAuOTk4QzUxLjkyMjcgMjMuODgwMiA0Ni45NzQgMjcuNTE1MyA0Ni45NzQgMzUuMTU3MVoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl82NjcxXzE1OTU1KSIvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2lfNjY3MV8xNTk1NSIgeD0iMTkuNSIgeT0iMTIuNSIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjEwNC40OTgiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iNC40OTc2MSIvPgo8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI1Ljk5NjgxIi8+CjxmZUNvbXBvc2l0ZSBpbjI9ImhhcmRBbHBoYSIgb3BlcmF0b3I9ImFyaXRobWV0aWMiIGsyPSItMSIgazM9IjEiLz4KPGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMC45NzI1NDkgMCAwIDAgMCAwLjgxOTYwOCAwIDAgMCAwIDAuNzc2NDcxIDAgMCAwIDEgMCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluMj0ic2hhcGUiIHJlc3VsdD0iZWZmZWN0MV9pbm5lclNoYWRvd182NjcxXzE1OTU1Ii8+CjwvZmlsdGVyPgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MF9saW5lYXJfNjY3MV8xNTk1NSIgeDE9IjYyLjUiIHkxPSIzMC4zNDE0IiB4Mj0iNjIuNSIgeTI9IjExMi43MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjQjgxNTE0Ii8+CjxzdG9wIG9mZnNldD0iMC45NzU4NzIiIHN0b3AtY29sb3I9IiNEMkRGRjkiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K" alt="" aria-hidden="true" decoding="async">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <h2>Frequently asked questions</h2>
+      <p class="sec-lede">The six I would ask me.</p>
+    </header>
+    <div class="faq xp" data-accordion>
+      <article class="xp-item reveal">
+        <h3 style="margin:0">
+          <button class="xp-head" type="button" id="faq-h1" aria-expanded="false" aria-controls="faq-p1">
+            <span class="xp-q">Why growth marketing, with a data science degree?</span>
+            <svg class="xp-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </h3>
+        <div class="xp-panel" id="faq-p1" role="region" aria-labelledby="faq-h1">
+          <div class="xp-panel-inner"><div class="xp-content">
+            <p>Because the data half is the part of growth most people skip. I would rather be the marketer who can read a funnel properly than the engineer who never gets to decide what gets built. The degree is why I reach for a dashboard before an opinion.</p>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="xp-item reveal">
+        <h3 style="margin:0">
+          <button class="xp-head" type="button" id="faq-h2" aria-expanded="false" aria-controls="faq-p2">
+            <span class="xp-q">You co-founded an agency. Why an internship?</span>
+            <svg class="xp-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </h3>
+        <div class="xp-panel" id="faq-p2" role="region" aria-labelledby="faq-h2">
+          <div class="xp-panel-inner"><div class="xp-content">
+            <p>Nexussv taught me to run campaigns. Dialvola taught me that I am not yet good enough at distribution &mdash; the product worked and I could not get it in front of enough people. I would rather learn that function properly inside a company doing it at scale than keep guessing at it on my own.</p>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="xp-item reveal">
+        <h3 style="margin:0">
+          <button class="xp-head" type="button" id="faq-h3" aria-expanded="false" aria-controls="faq-p3">
+            <span class="xp-q">Are you able to work from Bengaluru?</span>
+            <svg class="xp-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </h3>
+        <div class="xp-panel" id="faq-p3" role="region" aria-labelledby="faq-h3">
+          <div class="xp-panel-inner"><div class="xp-content">
+            <p>Yes. I am in Pune, and I am ready to relocate for this.</p>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="xp-item reveal">
+        <h3 style="margin:0">
+          <button class="xp-head" type="button" id="faq-h4" aria-expanded="false" aria-controls="faq-p4">
+            <span class="xp-q">You are still in your third year. How does that work?</span>
+            <svg class="xp-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </h3>
+        <div class="xp-panel" id="faq-p4" role="region" aria-labelledby="faq-h4">
+          <div class="xp-panel-inner"><div class="xp-content">
+            <p>I am in the third year of a B.Tech in Data Science at the Department of Technology, SPPU. I have run Nexussv alongside it since 2023, so working to deadlines around coursework is the only way I have ever worked.</p>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="xp-item reveal">
+        <h3 style="margin:0">
+          <button class="xp-head" type="button" id="faq-h5" aria-expanded="false" aria-controls="faq-p5">
+            <span class="xp-q">Why are there no screenshots of the ad accounts?</span>
+            <svg class="xp-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </h3>
+        <div class="xp-panel" id="faq-p5" role="region" aria-labelledby="faq-h5">
+          <div class="xp-panel-inner"><div class="xp-content">
+            <p>Client account screenshots are not mine to publish, and my own company policy covers the Ads Manager data. Every number on this page is one I am free to state, and I can walk through any of them live.</p>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="xp-item reveal">
+        <h3 style="margin:0">
+          <button class="xp-head" type="button" id="faq-h6" aria-expanded="false" aria-controls="faq-p6">
+            <span class="xp-q">How much of this 30-day plan do you expect to survive?</span>
+            <svg class="xp-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </h3>
+        <div class="xp-panel" id="faq-p6" role="region" aria-labelledby="faq-h6">
+          <div class="xp-panel-inner"><div class="xp-content">
+            <p>Maybe half. It is written from the outside, with no access to your analytics, your signup funnel or what you have already tried. The point is to show how I would think about the first month, not to pretend I already know the answers.</p>
           </div></div>
         </div>
       </article>
@@ -1168,45 +1403,53 @@ h1{
   // experience accordion
   // EXCLUSIVE false = several panels may be open at once.
   // Set it to true to close the others whenever one opens.
+  // EXCLUSIVE false = several panels may be open at once.
+  // Set it to true to close the others whenever one opens.
   var EXCLUSIVE = false;
-  var items = [].slice.call(document.querySelectorAll('.xp-item'));
-  var allBtn = document.getElementById('xp-all');
 
   function setOpen(item, open) {
     item.classList.toggle('open', open);
     item.querySelector('.xp-head').setAttribute('aria-expanded', String(open));
   }
-  function allOpen() {
-    return items.every(function (i) { return i.classList.contains('open'); });
-  }
-  function syncAllBtn() {
-    if (allBtn) allBtn.textContent = allOpen() ? 'Collapse all' : 'Expand all';
-  }
 
-  items.forEach(function (item) {
-    item.querySelector('.xp-head').addEventListener('click', function () {
-      var willOpen = !item.classList.contains('open');
-      if (EXCLUSIVE && willOpen) {
-        items.forEach(function (other) { if (other !== item) setOpen(other, false); });
-      }
-      setOpen(item, willOpen);
-      syncAllBtn();
-    });
-  });
+  // one handler per accordion group, so experience and the FAQ stay independent
+  [].slice.call(document.querySelectorAll('[data-accordion]')).forEach(function (group) {
+    var items = [].slice.call(group.querySelectorAll('.xp-item'));
+    // querySelector('') throws, so only look when a group names a control
+    var allSel = group.dataset.accordionAll;
+    var allBtn = allSel ? document.querySelector(allSel) : null;
 
-  if (allBtn) {
-    if (EXCLUSIVE) {
-      // the control has no meaning when only one panel may be open
-      allBtn.parentElement.style.display = 'none';
-    } else {
-      allBtn.addEventListener('click', function () {
-        var target = !allOpen();
-        items.forEach(function (i) { setOpen(i, target); });
+    function allOpen() {
+      return items.every(function (i) { return i.classList.contains('open'); });
+    }
+    function syncAllBtn() {
+      if (allBtn) allBtn.textContent = allOpen() ? 'Collapse all' : 'Expand all';
+    }
+
+    items.forEach(function (item) {
+      item.querySelector('.xp-head').addEventListener('click', function () {
+        var willOpen = !item.classList.contains('open');
+        if (EXCLUSIVE && willOpen) {
+          items.forEach(function (other) { if (other !== item) setOpen(other, false); });
+        }
+        setOpen(item, willOpen);
         syncAllBtn();
       });
-      syncAllBtn();
+    });
+
+    if (allBtn) {
+      if (EXCLUSIVE) {
+        allBtn.parentElement.style.display = 'none';   // meaningless when one opens at a time
+      } else {
+        allBtn.addEventListener('click', function () {
+          var target = !allOpen();
+          items.forEach(function (i) { setOpen(i, target); });
+          syncAllBtn();
+        });
+        syncAllBtn();
+      }
     }
-  }
+  });
 
   // stat numbers count up the first time the strip is seen
   var nums = document.querySelectorAll('.stat .n[data-val]');
