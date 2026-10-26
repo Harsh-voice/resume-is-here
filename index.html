@@ -570,6 +570,26 @@ h1{
 .statement .kicker{display:block; margin-bottom:clamp(18px,2.4vw,26px)}
 .statement .cta{margin-top:clamp(30px,3.6vw,42px)}
 
+/* ============ Proof slots ============ */
+.proof{list-style:none; margin:0; padding:0;
+       display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,1.8vw,20px)}
+.proof-shot{
+  position:relative; aspect-ratio:4/3; overflow:hidden;
+  border:1px solid var(--st); border-radius:18px; background:var(--grey-50);
+  box-shadow:0 1px 2px rgba(31,31,31,.04), 0 10px 28px rgba(31,31,31,.045);
+  transition:transform .35s cubic-bezier(.2,0,0,1), box-shadow .35s cubic-bezier(.2,0,0,1);
+}
+.proof li:hover .proof-shot{transform:translateY(-4px);
+  box-shadow:0 2px 4px rgba(31,31,31,.05), 0 20px 48px rgba(31,31,31,.10)}
+.proof-shot img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+                object-position:top; display:block}
+.proof-ph{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
+          justify-content:center; gap:9px; padding:22px; text-align:center}
+.proof-ph .t{font-size:14px; font-weight:525; color:var(--tx-tertiary)}
+.proof-ph .d{font-size:12px; color:var(--grey-400); line-height:1.5; max-width:24ch}
+.proof-cap{margin:10px 2px 0; font-size:13px; color:var(--tx-tertiary); line-height:1.45}
+@media (max-width:860px){ .proof{grid-template-columns:1fr} .proof-shot{aspect-ratio:16/10} }
+
 /* ============ FAQ ============ */
 .faq{max-width:880px; margin-inline:auto; border-top:1px solid var(--st)}
 .faq .xp-head{grid-template-columns:minmax(0,1fr) 22px; padding-block:clamp(18px,2vw,24px)}
@@ -990,10 +1010,10 @@ h1{
     </header>
 
     <div class="stats reveal">
+      <div class="stat"><span class="n" data-val="14" data-suf="M+">14M+</span><span class="l">Views generated</span></div>
       <div class="stat"><span class="n" data-pre="&#8377;" data-val="75.2" data-dec="1" data-suf="L">&#8377;75.2L</span><span class="l">Revenue driven</span></div>
       <div class="stat"><span class="n" data-val="10" data-suf="x">10x</span><span class="l">Return on ad spend</span></div>
       <div class="stat"><span class="n" data-pre="&#8377;" data-val="21.6" data-dec="1" data-suf="L">&#8377;21.6L</span><span class="l">Ad spend managed</span></div>
-      <div class="stat"><span class="n" data-val="23" data-suf="+">23+</span><span class="l">Clients</span></div>
     </div>
 
     <div class="xp-bar reveal">
@@ -1143,6 +1163,51 @@ h1{
         </div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ============ PROOF =====================================================
+     Each slot takes one screenshot. Replace the <div class="proof-ph">…</div>
+     with:  <img src="proof/your-file.png" alt="what it shows">
+     Landscape 4:3 crops best — roughly 1600x1200. Crop or blur anything you
+     are not free to publish before you export.
+     ====================================================================== -->
+<section class="sec has-motif" id="proof">
+  <img class="sec-motif bl" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1IiBoZWlnaHQ9IjEyNSIgdmlld0JveD0iMCAwIDEyNSAxMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2lfNjY3MV8xNTk0MCkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTY3LjI5MSAxNy42NTc5QzY3LjI4NDUgMTcuNjU0NiA2Ny4yNzggMTcuNjUxMiA2Ny4yNzE1IDE3LjY0NzhaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfNjY3MV8xNTk0MCkiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy42NTc5IDU3LjcwOUMxNy42NTQ2IDU3LjcxNTUgMTcuNjUxMiA1Ny43MjIgMTcuNjQ3OCA1Ny43Mjg1WiIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyXzY2NzFfMTU5NDApIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNDYuMTI5NCAyNS42MDk2QzQ3LjU4NTYgMjQuMTUzNCA0OS4xODY3IDIyLjkyOTkgNTAuODg3NCAyMS45NDI2QzUzLjEzODQgMjAuNjQ2NyA1Ni41MDY3IDE4LjY3OTQgNTcuNjMwNiAxNy43ODAzQzU3Ljc0MzIgMTcuNjkwMiA1Ny45MjUxIDE3LjU4MzggNTguMTU0MyAxNy40NDk2QzU5LjE5NzUgMTYuODM5MSA2MS4yMTk3IDE1LjY1NTcgNjIuMTM5MSAxMi44MzUzQzYyLjI4NTIgMTIuMzg4IDYyLjg2NTQgMTIuMzg4NCA2My4wMDk1IDEyLjgzNTNDNjQuMDE4MiAxNS45NjY1IDY2LjM2MjQgMTcuMTc4IDY3LjI3MTUgMTcuNjQ3OEM2Ny4zNzM5IDE3LjcwMDggNjcuNDU4NiAxNy43NDQ1IDY3LjUyMDUgMTcuNzgwM0M2Ny45MjYyIDE4LjAxNDUgNjguOTExOSAxOC42NTE1IDcwLjAyMjkgMTkuMzY5NUM3MS4zNzQxIDIwLjI0MjcgNzIuOTExNiAyMS4yMzYzIDczLjgxNDEgMjEuNzY5NFYyMS43NzQ5Qzc1LjYyNTcgMjIuNzkwNSA3Ny4zMjk3IDI0LjA2ODkgNzguODcwNiAyNS42MDk2QzgyLjc1NSAyOS40OTQgODQuOTcwNiAzNC40MTU1IDg1LjUxNzIgMzkuNDgyOEM5MC41ODQ1IDQwLjAyOTQgOTUuNTA2IDQyLjI0NSA5OS4zOTA0IDQ2LjEyOTRDMTAwLjg0NyA0Ny41ODU2IDEwMi4wNyA0OS4xODY3IDEwMy4wNTcgNTAuODg3NEMxMDQuMzUzIDUzLjEzODQgMTA2LjMyMSA1Ni41MDY3IDEwNy4yMiA1Ny42MzA2QzEwNy4zMSA1Ny43NDMyIDEwNy40MTYgNTcuOTI1MSAxMDcuNTUgNTguMTU0M0MxMDguMTYxIDU5LjE5NzUgMTA5LjM0NCA2MS4yMTk3IDExMi4xNjUgNjIuMTM5MUMxMTIuNjEyIDYyLjI4NTIgMTEyLjYxMiA2Mi44NjU0IDExMi4xNjUgNjMuMDA5NUMxMDkuMDMzIDY0LjAxODIgMTA3LjgyMiA2Ni4zNjI0IDEwNy4zNTIgNjcuMjcxNUMxMDcuMjk5IDY3LjM3NCAxMDcuMjU1IDY3LjQ1ODUgMTA3LjIyIDY3LjUyMDVDMTA2Ljk4NiA2Ny45MjYxIDEwNi4zNDkgNjguOTExNyAxMDUuNjMxIDcwLjAyMjVDMTA0Ljc1OCA3MS4zNzM3IDEwMy43NjQgNzIuOTExNiAxMDMuMjMxIDczLjgxNDFIMTAzLjIyNUMxMDIuMjEgNzUuNjI1NyAxMDAuOTMxIDc3LjMyOTcgOTkuMzkwNCA3OC44NzA2Qzk1LjUwNiA4Mi43NTUgOTAuNTg0NSA4NC45NzA2IDg1LjUxNzIgODUuNTE3MkM4NC45NzA2IDkwLjU4NDUgODIuNzU1IDk1LjUwNiA3OC44NzA2IDk5LjM5MDRDNzcuNDE0NCAxMDAuODQ3IDc1LjgxMzMgMTAyLjA3IDc0LjExMjYgMTAzLjA1N0M3MS44NjE2IDEwNC4zNTMgNjguNDkzMyAxMDYuMzIxIDY3LjM2OTQgMTA3LjIyQzY3LjI1NjggMTA3LjMxIDY3LjA3NDkgMTA3LjQxNiA2Ni44NDU3IDEwNy41NUM2NS44MDI1IDEwOC4xNjEgNjMuNzgwMyAxMDkuMzQ0IDYyLjg2MDkgMTEyLjE2NUM2Mi43MTQ4IDExMi42MTIgNjIuMTM0NiAxMTIuNjEyIDYxLjk5MDUgMTEyLjE2NUM2MC45ODE4IDEwOS4wMzMgNTguNjM3NiAxMDcuODIyIDU3LjcyODUgMTA3LjM1MkM1Ny42MjYgMTA3LjI5OSA1Ny41NDE1IDEwNy4yNTUgNTcuNDc5NSAxMDcuMjJDNTcuMDczNiAxMDYuOTg1IDU2LjA4NzEgMTA2LjM0OCA1NC45NzU2IDEwNS42MjlDNTMuNjI0NCAxMDQuNzU2IDUyLjA4ODQgMTAzLjc2NCA1MS4xODU5IDEwMy4yMzFWMTAzLjIyNUM0OS4zNzQzIDEwMi4yMSA0Ny42NzAzIDEwMC45MzEgNDYuMTI5NCA5OS4zOTA0QzQyLjI0NSA5NS41MDYgNDAuMDI5NCA5MC41ODQ1IDM5LjQ4MjggODUuNTE3MkMzNC40MTU1IDg0Ljk3MDYgMjkuNDk0IDgyLjc1NSAyNS42MDk2IDc4Ljg3MDZDMjQuMTUzNCA3Ny40MTQ0IDIyLjkyOTkgNzUuODEzMyAyMS45NDI2IDc0LjExMjZDMjAuNjQ2NyA3MS44NjE2IDE4LjY3OTQgNjguNDkzMyAxNy43ODAzIDY3LjM2OTRDMTcuNjkwMiA2Ny4yNTY4IDE3LjU4MzggNjcuMDc0OSAxNy40NDk2IDY2Ljg0NTdDMTYuODM5MSA2NS44MDI1IDE1LjY1NTcgNjMuNzgwMyAxMi44MzUzIDYyLjg2MDlDMTIuMzg4IDYyLjcxNDggMTIuMzg4NCA2Mi4xMzQ2IDEyLjgzNTMgNjEuOTkwNUMxNS45NjY1IDYwLjk4MTggMTcuMTc4IDU4LjYzNzYgMTcuNjQ3OCA1Ny43Mjg1QzE3LjcwMDggNTcuNjI2MSAxNy43NDQ1IDU3LjU0MTQgMTcuNzgwMyA1Ny40Nzk1QzE4LjAxNDUgNTcuMDczOCAxOC42NTE1IDU2LjA4ODEgMTkuMzY5NSA1NC45NzcxQzIwLjI0MjcgNTMuNjI1OSAyMS4yMzYzIDUyLjA4ODQgMjEuNzY5NCA1MS4xODU5SDIxLjc3NDlDMjIuNzkwNSA0OS4zNzQzIDI0LjA2ODkgNDcuNjcwMyAyNS42MDk2IDQ2LjEyOTRDMjkuNDk0IDQyLjI0NSAzNC40MTU1IDQwLjAyOTQgMzkuNDgyOCAzOS40ODI4QzQwLjAyOTQgMzQuNDE1NSA0Mi4yNDUgMjkuNDk0IDQ2LjEyOTQgMjUuNjA5NloiIGZpbGw9InVybCgjcGFpbnQyX2xpbmVhcl82NjcxXzE1OTQwKSIvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2lfNjY3MV8xNTk0MCIgeD0iMTIuNSIgeT0iNi43ODU3MSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDUuNzE0IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9Ii01LjcxNDI5Ii8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMuNTcxNDMiLz4KPGZlQ29tcG9zaXRlIGluMj0iaGFyZEFscGhhIiBvcGVyYXRvcj0iYXJpdGhtZXRpYyIgazI9Ii0xIiBrMz0iMSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwLjkzMzMzMyAwIDAgMCAwIDAuNDc0NTEgMCAwIDAgMCAwLjI2NjY2NyAwIDAgMCAxIDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9InNoYXBlIiByZXN1bHQ9ImVmZmVjdDFfaW5uZXJTaGFkb3dfNjY3MV8xNTk0MCIvPgo8L2ZpbHRlcj4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzY2NzFfMTU5NDAiIHgxPSI2Mi41IiB5MT0iMTIuNSIgeDI9IjYyLjUiIHkyPSI2OS43Njg3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNFNjY1MUIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRUZBQkM1Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl82NjcxXzE1OTQwIiB4MT0iNjIuNSIgeTE9IjEyLjUiIHgyPSI2Mi41IiB5Mj0iNjkuNzY4NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRTY2NTFCIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0VGQUJDNSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50Ml9saW5lYXJfNjY3MV8xNTk0MCIgeDE9IjYyLjUiIHkxPSIxMi41IiB4Mj0iNjIuNSIgeTI9IjY5Ljc2ODciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0U2NjUxQiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNFRkFCQzUiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K" alt="" aria-hidden="true" decoding="async">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <h2>Receipts</h2>
+      <p class="sec-lede">The numbers above, as the platforms reported them.</p>
+    </header>
+    <ul class="proof reveal">
+      <li>
+        <div class="proof-shot">
+          <div class="proof-ph">
+            <span class="t">Instagram insights</span>
+            <span class="d">Professional dashboard behind the 14M+ views</span>
+          </div>
+        </div>
+        <p class="proof-cap">Views across the accounts I ran</p>
+      </li>
+      <li>
+        <div class="proof-shot">
+          <div class="proof-ph">
+            <span class="t">Campaign</span>
+            <span class="d">Reach and results, client details cropped</span>
+          </div>
+        </div>
+        <p class="proof-cap">Meta &middot; campaign view</p>
+      </li>
+      <li>
+        <div class="proof-shot">
+          <div class="proof-ph">
+            <span class="t">Campaign</span>
+            <span class="d">Reach and results, client details cropped</span>
+          </div>
+        </div>
+        <p class="proof-cap">Meta &middot; campaign view</p>
+      </li>
+    </ul>
   </div>
 </section>
 
