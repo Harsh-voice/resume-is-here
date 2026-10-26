@@ -24,6 +24,7 @@
   --tx:#1f1f1f; --tx-secondary:#3d3d3d; --tx-tertiary:#666;
   --st:#e6e6e6; --st-secondary:#f0f0f0;
   --grey-50:#f9f9f9; --grey-100:#f5f5f5; --grey-200:#f0f0f0;
+  --grey-300:#e6e6e6; --grey-400:#ccc; --grey-600:#999;
   --indigo-100:#e8effc; --indigo-500:#6a88e2; --indigo-600:#556adc; --indigo-900:#212191;
   --ink-btn-a:#3a3f5c; --ink-btn-b:#1e2033;
   --paper:#fff; --paper-soft:#fcfcfc;
@@ -44,7 +45,8 @@ body{
 .hero-shell{position:relative; overflow:hidden; isolation:isolate}
 .hero-grad{
   position:absolute; z-index:-2; pointer-events:none;
-  width:202.7vw; height:96.9vw; top:-55.4vw; left:50%; transform:translateX(-50%);
+  width:202.7vw; height:96.9vw; top:-55.4vw; left:50%;
+  transform:translateX(-50%) translateY(var(--par,0px)); will-change:transform;
   max-width:none; object-fit:fill;
 }
 .hero-blob{
@@ -169,6 +171,26 @@ h1{
   .grid-3 .card:hover,.grid-4 .card:hover,.pill:hover{transform:none}
 }
 
+/* ============ Logo marquee — their keyframes: translate 0 to -50%, linear ============ */
+@keyframes marquee{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+.marquee-sec{padding-block:clamp(40px,5vw,60px); background:var(--paper); overflow:hidden}
+.kicker{font-size:12px; font-weight:525; letter-spacing:2px; text-transform:uppercase;
+        color:var(--tx-tertiary)}
+.marquee-sec .kicker{display:block; text-align:center; margin-bottom:clamp(24px,3vw,34px)}
+.marquee{position:relative; overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex; width:max-content; animation:marquee 48s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-item{
+  flex:0 0 auto; padding-inline:clamp(26px,3.4vw,52px);
+  font-size:clamp(18px,2vw,24px); font-weight:525; letter-spacing:-.01em;
+  color:var(--grey-600); white-space:nowrap;
+  transition:color .25s cubic-bezier(.4,0,.2,1);
+}
+.marquee-item:hover{color:var(--tx-secondary)}
+@media (prefers-reduced-motion:reduce){ .marquee-track{animation:none} }
+
 /* ============ Body sections ============ */
 .band{background:var(--grey-50)}
 .sec{padding-block:clamp(56px,7.5vw,96px)}
@@ -247,6 +269,7 @@ h1{
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
 @supports not (background-clip:text){ .stat .n{color:var(--tx)} }
+.stat .n{font-variant-numeric:tabular-nums}
 .stat .l{
   display:block; margin-top:10px; font-size:12px; font-weight:525; letter-spacing:2px;
   text-transform:uppercase; color:var(--tx-tertiary); line-height:1.4;
@@ -370,6 +393,45 @@ h1{
     </div>
   </section>
 </div>
+
+<!-- ============ BRANDS — swap these for whatever you want listed ============ -->
+<section class="marquee-sec">
+  <span class="kicker reveal">Brands I&rsquo;ve worked with</span>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-item">PK Films India</span>
+      <span class="marquee-item">Studio IQ</span>
+      <span class="marquee-item">Dial Vola</span>
+      <span class="marquee-item">Chakan MIDC</span>
+      <span class="marquee-item">Maharashtra Campaigns</span>
+      <span class="marquee-item" aria-hidden="true">PK Films India</span>
+      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
+      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
+      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
+      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
+      <span class="marquee-item" aria-hidden="true">PK Films India</span>
+      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
+      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
+      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
+      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
+      <span class="marquee-item" aria-hidden="true">PK Films India</span>
+      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
+      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
+      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
+      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
+      <span class="marquee-item" aria-hidden="true">PK Films India</span>
+      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
+      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
+      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
+      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
+      <span class="marquee-item" aria-hidden="true">PK Films India</span>
+      <span class="marquee-item" aria-hidden="true">Studio IQ</span>
+      <span class="marquee-item" aria-hidden="true">Dial Vola</span>
+      <span class="marquee-item" aria-hidden="true">Chakan MIDC</span>
+      <span class="marquee-item" aria-hidden="true">Maharashtra Campaigns</span>
+    </div>
+  </div>
+</section>
 
 <!-- ============ WALKTHROUGH — Sarvam's two-column media pattern ============ -->
 <section class="band" id="walkthrough">
@@ -516,10 +578,10 @@ h1{
     </header>
 
     <div class="stats reveal">
-      <div class="stat"><span class="n">14M+</span><span class="l">Views generated</span></div>
-      <div class="stat"><span class="n">860K+</span><span class="l">Followers grown</span></div>
-      <div class="stat"><span class="n">&#8377;13L+</span><span class="l">Ad spend managed</span></div>
-      <div class="stat"><span class="n">50+</span><span class="l">Sites shipped</span></div>
+      <div class="stat"><span class="n" data-pre="" data-val="14" data-suf="M+">14M+</span><span class="l">Views generated</span></div>
+      <div class="stat"><span class="n" data-pre="" data-val="860" data-suf="K+">860K+</span><span class="l">Followers grown</span></div>
+      <div class="stat"><span class="n" data-pre="&#8377;" data-val="13" data-suf="L+">&#8377;13L+</span><span class="l">Ad spend managed</span></div>
+      <div class="stat"><span class="n" data-pre="" data-val="50" data-suf="+">50+</span><span class="l">Sites shipped</span></div>
     </div>
 
     <div class="xp">
@@ -653,6 +715,47 @@ h1{
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
   items.forEach(function (el) { io.observe(el); });
+
+  // stat numbers count up the first time the strip is seen
+  var nums = document.querySelectorAll('.stat .n[data-val]');
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function runCount(el) {
+    var target = parseFloat(el.dataset.val),
+        pre = el.dataset.pre || '', suf = el.dataset.suf || '',
+        dur = 1500, t0 = null;
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min((ts - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - k, 4);           // easeOutQuart
+      el.textContent = pre + Math.round(target * eased) + suf;
+      if (k < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if (nums.length && !reduced && 'IntersectionObserver' in window) {
+    nums.forEach(function (el) { el.textContent = (el.dataset.pre||'') + '0' + (el.dataset.suf||''); });
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(function (el) { cio.observe(el); });
+  }
+
+  // hero gradient drifts a little slower than the page
+  var grad = document.querySelector('.hero-grad');
+  if (grad && !reduced) {
+    var ticking = false;
+    addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = Math.min(window.scrollY, 900);
+        grad.style.setProperty('--par', (y * 0.16) + 'px');
+        ticking = false;
+      });
+    }, { passive: true });
+  }
 
   // anything already on screen at load shows immediately
   requestAnimationFrame(function () {
