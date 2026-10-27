@@ -52,11 +52,11 @@ Two options, and the second is better.
 1. **Your own voice.** They are hiring a person. An Indian accent applying to
    an Indian-languages AI company is not a liability.
 
-2. **Sarvam's own TTS (Bulbul).** You have API access through the Startup
+2. **Sarvam's own TTS (Bulbul v3).** You have API access through the Startup
    Program. Narrating a Sarvam application with Sarvam's speech model is a
    demonstration, not a shortcut. Put one line in the end card: *"Narrated
-   with Sarvam Bulbul."* That single credit does more work than the whole
-   tools section on your page.
+   with Sarvam Bulbul v3."* That single credit does more work than the whole
+   tools section on your page. Docs: docs.sarvam.ai, Text-to-Speech.
 
 Either way, do not use a generic American AI voice. That is the one choice
 that reads as lazy.
@@ -173,7 +173,7 @@ lands on it.
 ```
 Harsh Bomble
 Growth Marketing Intern · Bengaluru
-Narrated with Sarvam Bulbul
+Narrated with Sarvam Bulbul v3
 ```
 
 ---
