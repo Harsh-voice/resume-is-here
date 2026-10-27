@@ -603,12 +603,26 @@ h1{
   box-shadow:0 2px 4px rgba(31,31,31,.05), 0 20px 48px rgba(31,31,31,.10)}
 .proof-shot img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
                 object-position:center; display:block; background:#fff}
+.proof-trio{grid-template-columns:repeat(3,1fr); margin-top:clamp(14px,2vw,22px)}
+.proof-trio > li:first-child{grid-column:auto}
+/* screenshots are dark and of mixed orientation; a dark frame hides the letterbox */
+.proof-trio .proof-shot{aspect-ratio:4/3; background:#0b0b0d; border-color:rgba(255,255,255,.1)}
+.proof-trio .proof-shot img{background:transparent}
+.proof-sub{
+  margin:clamp(30px,4vw,44px) 0 0; display:flex; align-items:baseline;
+  gap:12px; flex-wrap:wrap; border-top:1px solid var(--st); padding-top:18px;
+}
+.proof-sub .t{font-size:17px; color:var(--tx-secondary); line-height:1.5}
+.proof-foot{margin:14px 2px 0; font-size:13px; color:var(--tx-tertiary); line-height:1.5}
 .proof-ph{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
           justify-content:center; gap:9px; padding:22px; text-align:center}
 .proof-ph .t{font-size:14px; font-weight:525; color:var(--tx-tertiary)}
 .proof-ph .d{font-size:12px; color:var(--grey-400); line-height:1.5; max-width:24ch}
 .proof-cap{margin:10px 2px 0; font-size:13px; color:var(--tx-tertiary); line-height:1.45}
-@media (max-width:860px){ .proof{grid-template-columns:1fr} }
+.proof-cap b{color:var(--tx); font-weight:600}
+.proof-cap .kicker{display:inline-block; margin-bottom:3px}
+.proof-cap .up{color:#6ea335; font-weight:525}
+@media (max-width:860px){ .proof, .proof-trio{grid-template-columns:1fr} }
 
 /* ============ FAQ ============ */
 .faq{max-width:880px; margin-inline:auto; border-top:1px solid var(--st)}
@@ -1197,7 +1211,7 @@ h1{
   <div class="wrap">
     <header class="sec-head reveal">
       <h2>Receipts</h2>
-      <p class="sec-lede">Straight out of Ads Manager. Campaign and client names are cropped; the totals are not.</p>
+      <p class="sec-lede">Straight out of the dashboards. Campaign and client names are cropped; the totals are not.</p>
     </header>
     <ul class="proof reveal">
       <li>
@@ -1219,6 +1233,33 @@ h1{
         <p class="proof-cap">34 campaigns &middot; 1.94M reach &middot; 6.99M impressions &middot; &#8377;2.45L spent</p>
       </li>
     </ul>
+
+    <div class="proof-sub reveal">
+      <p class="t">And the organic side &mdash; Instagram professional dashboard, three
+         snapshots seven weeks apart.</p>
+    </div>
+    <ul class="proof proof-trio reveal">
+      <li>
+        <a class="proof-link" href="proof/04-ig-689k.jpg" target="_blank" rel="noopener">
+          <div class="proof-shot"><img src="proof/04-ig-689k.jpg" alt="Instagram professional dashboard, views for 25 Dec to 23 Jan" loading="lazy" decoding="async"></div>
+        </a>
+        <p class="proof-cap"><span class="kicker">25 Dec &ndash; 23 Jan</span><br><b>689,700</b> views &middot; 124,605 accounts reached <span class="up">+212.5%</span></p>
+      </li>
+      <li>
+        <a class="proof-link" href="proof/05-ig-1169k.jpg" target="_blank" rel="noopener">
+          <div class="proof-shot"><img src="proof/05-ig-1169k.jpg" alt="Instagram professional dashboard, views for 7 Jan to 5 Feb" loading="lazy" decoding="async"></div>
+        </a>
+        <p class="proof-cap"><span class="kicker">7 Jan &ndash; 5 Feb</span><br><b>1,169,384</b> views &middot; 163,091 accounts reached <span class="up">+271.2%</span></p>
+      </li>
+      <li>
+        <a class="proof-link" href="proof/06-ig-1678k.jpg" target="_blank" rel="noopener">
+          <div class="proof-shot"><img src="proof/06-ig-1678k.jpg" alt="Instagram professional dashboard, views for 15 Jan to 13 Feb" loading="lazy" decoding="async"></div>
+        </a>
+        <p class="proof-cap"><span class="kicker">15 Jan &ndash; 13 Feb</span><br><b>1,678,298</b> views &middot; 265,518 accounts reached <span class="up">+294.3%</span></p>
+      </li>
+    </ul>
+    <p class="proof-foot reveal">Each figure is a rolling 30&#8209;day window, so they overlap.
+       Read them as a trajectory, not a total.</p>
   </div>
 </section>
 
