@@ -586,23 +586,25 @@ h1{
 
 /* ============ Proof slots ============ */
 .proof{list-style:none; margin:0; padding:0;
-       display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,1.8vw,20px)}
+       display:grid; grid-template-columns:1fr 1fr; gap:clamp(14px,2vw,22px)}
+.proof > li:first-child{grid-column:1 / -1}
+.proof-link{display:block; text-decoration:none}
 .proof-shot{
-  position:relative; aspect-ratio:4/3; overflow:hidden;
+  position:relative; aspect-ratio:16/9; overflow:hidden;
   border:1px solid var(--st); border-radius:18px; background:var(--grey-50);
   box-shadow:0 1px 2px rgba(31,31,31,.04), 0 10px 28px rgba(31,31,31,.045);
   transition:transform .35s cubic-bezier(.2,0,0,1), box-shadow .35s cubic-bezier(.2,0,0,1);
 }
 .proof li:hover .proof-shot{transform:translateY(-4px);
   box-shadow:0 2px 4px rgba(31,31,31,.05), 0 20px 48px rgba(31,31,31,.10)}
-.proof-shot img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-                object-position:top; display:block}
+.proof-shot img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+                object-position:center; display:block; background:#fff}
 .proof-ph{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
           justify-content:center; gap:9px; padding:22px; text-align:center}
 .proof-ph .t{font-size:14px; font-weight:525; color:var(--tx-tertiary)}
 .proof-ph .d{font-size:12px; color:var(--grey-400); line-height:1.5; max-width:24ch}
 .proof-cap{margin:10px 2px 0; font-size:13px; color:var(--tx-tertiary); line-height:1.45}
-@media (max-width:860px){ .proof{grid-template-columns:1fr} .proof-shot{aspect-ratio:16/10} }
+@media (max-width:860px){ .proof{grid-template-columns:1fr} }
 
 /* ============ FAQ ============ */
 .faq{max-width:880px; margin-inline:auto; border-top:1px solid var(--st)}
@@ -1191,35 +1193,26 @@ h1{
   <div class="wrap">
     <header class="sec-head reveal">
       <h2>Receipts</h2>
-      <p class="sec-lede">The numbers above, as the platforms reported them.</p>
+      <p class="sec-lede">Straight out of Ads Manager. Campaign and client names are cropped; the totals are not.</p>
     </header>
     <ul class="proof reveal">
       <li>
-        <div class="proof-shot">
-          <div class="proof-ph">
-            <span class="t">Instagram insights</span>
-            <span class="d">Professional dashboard behind the 14M+ views</span>
-          </div>
-        </div>
-        <p class="proof-cap">Views across the accounts I ran</p>
+        <a class="proof-link" href="proof/01-meta-pivot.webp" target="_blank" rel="noopener">
+          <div class="proof-shot"><img src="proof/01-meta-pivot.webp" alt="Meta Ads Manager pivot across 779 campaigns" loading="lazy" decoding="async"></div>
+        </a>
+        <p class="proof-cap">779 campaigns &middot; 9.75M impressions &middot; 2.99M reach &middot; &#8377;3.46L spent</p>
       </li>
       <li>
-        <div class="proof-shot">
-          <div class="proof-ph">
-            <span class="t">Campaign</span>
-            <span class="d">Reach and results, client details cropped</span>
-          </div>
-        </div>
-        <p class="proof-cap">Meta &middot; campaign view</p>
+        <a class="proof-link" href="proof/02-meta-campaigns.webp" target="_blank" rel="noopener">
+          <div class="proof-shot"><img src="proof/02-meta-campaigns.webp" alt="Meta Ads Manager, 40 campaigns, purchase results" loading="lazy" decoding="async"></div>
+        </a>
+        <p class="proof-cap">40 campaigns &middot; 699K reach &middot; &#8377;1.72L spent &middot; &#8377;92 CPM</p>
       </li>
       <li>
-        <div class="proof-shot">
-          <div class="proof-ph">
-            <span class="t">Campaign</span>
-            <span class="d">Reach and results, client details cropped</span>
-          </div>
-        </div>
-        <p class="proof-cap">Meta &middot; campaign view</p>
+        <a class="proof-link" href="proof/03-meta-leads.webp" target="_blank" rel="noopener">
+          <div class="proof-shot"><img src="proof/03-meta-leads.webp" alt="Meta Ads Manager, 34 campaigns, lead results" loading="lazy" decoding="async"></div>
+        </a>
+        <p class="proof-cap">34 campaigns &middot; 1.94M reach &middot; 6.99M impressions &middot; &#8377;2.45L spent</p>
       </li>
     </ul>
   </div>

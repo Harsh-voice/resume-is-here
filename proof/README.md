@@ -1,33 +1,27 @@
-# Receipts
+# Receipts — screenshot slots
 
-Three slots in the "Receipts" section of `index.html`.
-Landscape **4:3**, about **1600 x 1200 px**. PNG.
+Three slots on the page, in `#proof`. Layout is one full-width lead plus two
+side by side.
 
-Replace the placeholder with an image:
+| File | Slot | Rendered | Caption |
+|---|---|---|---|
+| `01-meta-pivot.webp` | lead, full width | 1198 × 673 | 779 campaigns · 9.75M impressions · 2.99M reach · ₹3.46L spent |
+| `02-meta-campaigns.webp` | bottom left | 587 × 329 | 40 campaigns · 699K reach · ₹1.72L spent · ₹92 CPM |
+| `03-meta-leads.webp` | bottom right | 587 × 329 | 34 campaigns · 1.94M reach · 6.99M impressions · ₹2.45L spent |
 
-    <div class="proof-ph"> ... </div>
+## Swapping one out
 
-becomes
+Export at **16:9** — 1920 × 1080 is ideal. The slot is `aspect-ratio: 16/9`
+with `object-fit: contain`, so nothing gets cropped; an image at another ratio
+will letterbox against white rather than lose its totals row.
 
-    <img src="proof/01-instagram.png" alt="Instagram professional dashboard, 14M+ views">
+Drop the file in here under the same name and rebuild. Each slot links to the
+full-size file, so the two smaller ones stay readable on click.
 
-| slot | file | what it shows |
-|---|---|---|
-| 1 | `01-instagram.png` | Instagram professional dashboard behind the 14M+ views |
-| 2 | `02-campaign.png`  | Meta campaign view |
-| 3 | `03-campaign.png`  | Meta campaign view |
+## Before you export
 
-## Before you export anything
-
-**Check the Meta ones against your own policy first.** You told me Nexussv's
-policy bars sharing Ads Manager screenshots. If that still holds, use slot 1
-only and delete slots 2 and 3 — the page reads fine with one.
-
-Whatever you do export, crop or blur before saving:
-
-- client and account names, account IDs, ad account numbers
-- phone numbers, email addresses, billing details
-- the candidate's name, party marks and campaign creative
-- any other client visible in a sidebar or account switcher
-
-A reach or results column with the account name cropped out is still proof.
+- Blur or crop campaign names and the ad account name.
+- Check the top-left account switcher and any avatars.
+- Leave the **totals row** alone — it is the thing being shown.
+- Set the date range deliberately; "Maximum" defaults back to the account's
+  first ever campaign, which may predate the role you are claiming.
