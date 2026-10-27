@@ -239,7 +239,15 @@ h1{
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
 
 /* ============ Plan slides ============ */
-.slides{display:grid; gap:clamp(14px,2vw,22px)}
+/* Each card pins under the header and the next one rides up over it.
+   Offsets step down by 22px so the cards already stuck keep a visible edge.
+   Block flow, not grid: a sticky grid item is confined to its own row. */
+.slides{display:block}
+.slide{position:sticky; margin-bottom:clamp(16px,2.2vw,24px)}
+.slides > .slide:nth-child(1){top:100px}
+.slides > .slide:nth-child(2){top:122px}
+.slides > .slide:nth-child(3){top:144px}
+.slides > .slide:last-child{margin-bottom:0}
 .slide{
   display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);
   gap:clamp(20px,3vw,48px); align-items:center;
@@ -284,9 +292,15 @@ h1{
 .vig-tile .n{display:block; font-family:"Season Mix",Matter,serif; font-size:19px; line-height:1; color:var(--tx)}
 .vig-tile .l{display:block; margin-top:5px; font-size:9px; letter-spacing:.06em;
              text-transform:uppercase; color:var(--tx-tertiary)}
+@media (max-width:1000px){
+  .slides > .slide{position:static}
+}
 @media (max-width:860px){
   .slide{grid-template-columns:1fr; gap:24px}
   .slide-visual{min-height:200px; order:2}
+}
+@media (prefers-reduced-motion:reduce){
+  .slides > .slide{position:static}
 }
 /* measured list — no boxes, so it reads differently from the grids above */
 .measure{list-style:none; margin:0; padding:0; border-top:1px solid var(--st)}
