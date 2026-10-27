@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>film</title>
+<style>
+@font-face{font-family:Matter;src:url(fonts/MatterUprights-VF.woff2) format("woff2-variations");font-weight:100 1000;font-display:block}
+@font-face{font-family:"Season Mix";src:url(fonts/SeasonMixVFUprights.woff2) format("woff2-variations");font-weight:300 900;font-display:block}
+@font-face{font-family:"Matter Mono";src:url(fonts/MatterMono-Regular.woff2) format("woff2");font-weight:400;font-display:block}
+
+:root{
+  --tx:#1f1f1f; --tx2:#4a4a4a; --tx3:#6b6b6b; --st:#e6e6e6; --st2:#f0f0f0;
+  --paper:#fff; --soft:#fafafa;
+  --saffron:#f9730c; --amber:#ffb053; --lime:#b7d44a;
+  --indigo:#3333cc; --indigo-600:#4250d5; --peri:#a5bbfc; --peri-soft:#dbe4fe;
+}
+*{margin:0; padding:0; box-sizing:border-box}
+html,body{width:1920px; height:1080px; overflow:hidden; background:#fff}
+body{font-family:Matter,system-ui,sans-serif; color:var(--tx);
+     -webkit-font-smoothing:antialiased; text-rendering:geometricPrecision}
+
+#stage{position:relative; width:1920px; height:1080px; background:var(--paper); overflow:hidden}
+.scene{position:absolute; inset:0; opacity:0; will-change:opacity}
+
+.kick{font-family:"Matter Mono",monospace; font-size:20px; letter-spacing:.2em;
+      text-transform:uppercase; color:var(--tx3)}
+.disp{font-family:"Season Mix",Matter,serif; font-weight:525; letter-spacing:-.022em;
+      line-height:1.06; color:var(--tx)}
+
+/* ---------- S1 title ---------- */
+#s1{display:grid; place-content:center; justify-items:center; gap:30px; text-align:center}
+#s1 .disp{font-size:128px}
+
+/* ---------- shared act header ---------- */
+.act-head{position:absolute; left:120px; top:84px; display:flex; align-items:baseline; gap:26px}
+.act-head .n{font-family:"Matter Mono",monospace; font-size:21px; letter-spacing:.18em;
+             color:var(--tx3); text-transform:uppercase}
+.act-head .t{font-family:"Season Mix",Matter,serif; font-weight:525; font-size:48px;
+             letter-spacing:-.02em; color:var(--tx)}
+
+/* ---------- S2 funnel stepper ---------- */
+#s2 .rail{position:absolute; left:120px; right:120px; top:520px; height:1px; background:var(--st)}
+.step{position:absolute; top:410px; width:340px}
+.step .box{background:#fff; border:1px solid var(--st); border-radius:20px; padding:32px 34px;
+           box-shadow:0 1px 2px rgba(31,31,31,.04), 0 12px 30px rgba(31,31,31,.05)}
+.step .lab{font-family:"Matter Mono",monospace; font-size:15px; letter-spacing:.14em;
+           text-transform:uppercase; color:var(--tx3); margin-bottom:12px}
+.step .nm{font-size:31px; font-weight:525; color:var(--tx); line-height:1.25}
+.step .ms{font-family:"Matter Mono",monospace; font-size:17px; color:var(--indigo-600); margin-top:14px}
+.step .dot{position:absolute; left:50%; top:110px; width:11px; height:11px; margin-left:-5.5px;
+           border-radius:50%; background:var(--st); border:2px solid #fff}
+#s2 .timer{position:absolute; right:120px; top:92px; font-family:"Matter Mono",monospace;
+           font-size:24px; letter-spacing:.1em; color:var(--tx3)}
+#s2 .flag{position:absolute; top:690px; width:340px; text-align:center}
+#s2 .flag .ln{height:2px; background:var(--indigo); margin-bottom:14px}
+#s2 .flag .tx{font-family:"Matter Mono",monospace; font-size:17px; letter-spacing:.14em;
+              text-transform:uppercase; color:var(--indigo)}
+
+/* ---------- S3 answer card ---------- */
+#s3 .pills{position:absolute; left:50%; top:300px; translate:-50% 0; display:flex; gap:14px}
+#s3 .pill{font-size:22px; color:var(--tx2); border:1px solid var(--st); border-radius:999px;
+          padding:11px 26px; background:#fff}
+#s3 .card{position:absolute; left:50%; top:404px; translate:-50% 0; width:1000px;
+          background:#fff; border:1px solid var(--st); border-radius:24px; padding:48px 52px;
+          box-shadow:0 1px 2px rgba(31,31,31,.04), 0 18px 48px rgba(31,31,31,.07)}
+#s3 .q{font-size:30px; color:var(--tx3); margin-bottom:34px}
+#s3 .bar{height:17px; border-radius:9px; background:var(--st2); margin-bottom:17px}
+#s3 .mark{position:absolute; right:44px; bottom:36px; width:30px; height:30px}
+#s3 .punch{position:absolute; left:50%; top:50%; translate:-50% -50%; width:1400px;
+           text-align:center; opacity:0}
+#s3 .punch .disp{font-size:90px}
+
+/* ---------- scallop wipe ---------- */
+.wipe{position:absolute; inset:0; pointer-events:none}
+.wipe svg{position:absolute; top:0; height:1080px; width:3200px}
+.split{position:absolute; inset:0; display:flex; align-items:center}
+.split .l{position:absolute; left:150px; width:640px}
+.split .r{position:absolute; left:1000px; width:800px}
+.split .disp{font-size:76px}
+.split .r .disp{color:#fff}
+
+/* ---------- S4 ranked list ---------- */
+#s4 .list{position:absolute; left:150px; right:150px; top:320px}
+.row{display:grid; grid-template-columns:72px 1fr 210px 140px 210px; align-items:center;
+     gap:24px; padding:30px 14px; border-bottom:1px solid var(--st)}
+.row .r{font-family:"Matter Mono",monospace; font-size:21px; color:var(--tx3)}
+.row .i{font-size:31px; font-weight:450; color:var(--tx)}
+.row .o,.row .e{font-size:21px; color:var(--tx3)}
+.row .m{font-size:21px; font-weight:525; color:var(--indigo-600); text-align:right}
+.row.hot .i{font-weight:525}
+.row.hot{background:linear-gradient(90deg, rgba(219,228,254,.5), rgba(219,228,254,0))}
+
+/* ---------- S5 dashboard ---------- */
+#s5 .tiles{position:absolute; left:150px; right:150px; top:368px;
+           display:grid; grid-template-columns:repeat(5,1fr); gap:22px}
+.tile{background:#fff; border:1px solid var(--st); border-radius:20px; padding:34px 30px;
+      box-shadow:0 1px 2px rgba(31,31,31,.04), 0 12px 30px rgba(31,31,31,.045)}
+.tile .l{font-family:"Matter Mono",monospace; font-size:15px; letter-spacing:.12em;
+         text-transform:uppercase; color:var(--tx3); line-height:1.5; min-height:48px}
+.tile .spark{display:block; width:100%; height:92px; margin-top:26px; overflow:visible}
+.tile .spark path{fill:none; stroke:var(--indigo-600); stroke-width:3; stroke-linecap:round;
+                  stroke-linejoin:round}
+.tile .spark .fillq{fill:var(--peri-soft); stroke:none; opacity:.55}
+.tile .s{height:3px; border-radius:3px; background:var(--peri); margin-top:24px}
+
+/* ---------- S6 close ---------- */
+#s6{display:grid; place-content:center; justify-items:center; text-align:center}
+#s6 .disp{font-size:80px; max-width:1560px; line-height:1.18}
+
+/* ---------- S7 end card ---------- */
+#s7{background:#000; display:grid; place-content:center; justify-items:center; gap:22px; text-align:center}
+#s7 .nm{font-family:"Season Mix",Matter,serif; font-weight:525; font-size:76px;
+        letter-spacing:-.022em; color:#fff}
+#s7 .ro{font-size:25px; color:rgba(255,255,255,.72)}
+#s7 .cr{font-family:"Matter Mono",monospace; font-size:16px; letter-spacing:.16em;
+        text-transform:uppercase; color:rgba(255,255,255,.45); margin-top:14px}
+
+/* ---------- subtitles ---------- */
+#sub{position:absolute; left:50%; bottom:78px; translate:-50% 0; width:1480px;
+     text-align:center; font-size:40px; font-weight:525; line-height:1.32;
+     color:var(--tx); opacity:0}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- S1 -->
+  <section class="scene" id="s1">
+    <span class="kick" id="s1k">A 30-day plan</span>
+    <span class="disp" id="s1d">Thirty days</span>
+  </section>
+
+  <!-- S2 -->
+  <section class="scene" id="s2">
+    <div class="act-head"><span class="n">Days 01&ndash;10</span><span class="t">Learn the funnel by using it</span></div>
+    <div class="timer" id="s2t">00:00</div>
+    <div class="rail"></div>
+    <div id="s2steps"></div>
+    <div class="flag" id="s2flag"><div class="ln"></div><div class="tx">I hesitated here</div></div>
+  </section>
+
+  <!-- S3 -->
+  <section class="scene" id="s3">
+    <div class="act-head"><span class="n">Days 01&ndash;10</span><span class="t">And what the models say</span></div>
+    <div class="pills" id="s3p">
+      <span class="pill">ChatGPT</span><span class="pill">Perplexity</span><span class="pill">Gemini</span>
+    </div>
+    <div class="card" id="s3c">
+      <div class="q">&ldquo;Which models are best for Indian-language speech?&rdquo;</div>
+      <div class="bar" style="width:100%"></div>
+      <div class="bar" style="width:92%"></div>
+      <div class="bar" style="width:74%"></div>
+      <div class="bar" style="width:84%;margin-bottom:0"></div>
+      <img class="mark" id="s3m" src="model-03.svg" alt="">
+    </div>
+    <div class="punch" id="s3x"><span class="disp">Increasingly, that answer<br>is the top of the funnel.</span></div>
+  </section>
+
+  <!-- S4 -->
+  <section class="scene" id="s4">
+    <div class="wipe" id="w4"></div>
+    <div class="split" id="sp4">
+      <div class="l"><span class="disp">Days 11&ndash;20</span></div>
+      <div class="r"><span class="disp">ship the cheapest fixes</span></div>
+    </div>
+    <div class="act-head" id="s4h"><span class="n">Days 11&ndash;20</span><span class="t">A ranked list, with owners</span></div>
+    <div class="list" id="s4l"></div>
+  </section>
+
+  <!-- S5 -->
+  <section class="scene" id="s5">
+    <div class="wipe" id="w5"></div>
+    <div class="split" id="sp5">
+      <div class="l"><span class="disp">Days 21&ndash;30</span></div>
+      <div class="r"><span class="disp">prove it with numbers</span></div>
+    </div>
+    <div class="act-head" id="s5h"><span class="n">Days 21&ndash;30</span><span class="t">One dashboard the team opens</span></div>
+    <div class="tiles" id="s5t"></div>
+  </section>
+
+  <!-- S6 -->
+  <section class="scene" id="s6">
+    <span class="disp" id="s6d">Not a vanity spike.<br>A setup the team keeps using<br>after I&rsquo;m gone.</span>
+  </section>
+
+  <!-- S7 -->
+  <section class="scene" id="s7">
+    <span class="nm">Harsh Bomble</span>
+    <span class="ro">Growth Marketing Intern &middot; Bengaluru</span>
+    <span class="cr">Narrated with Sarvam Bulbul v3</span>
+  </section>
+
+  <div id="sub"></div>
+</div>
+
+<script>
+// ===================== timeline =====================
+// every value on screen is a pure function of t, so a frame grab is exact
+var FPS = 30, DUR = 41;
+
+var SUBS = [
+  [2.00,  8.90, "Days one to ten. I sign up for the API as a first-time developer and note where I hesitate."],
+  [9.20, 11.40, "Those are the places signups drop."],
+  [11.70,15.00, "Then I check what ChatGPT says about Indic speech."],
+  [15.30,18.20, "Increasingly, that answer is the top of the funnel."],
+  [18.50,22.10, "Days eleven to twenty. The audit becomes a ranked list."],
+  [22.40,28.90, "Every item gets an owner and a number it should move. Then I publish the top two or three."],
+  [29.20,34.70, "Days twenty-one to thirty. One dashboard the team opens. Two honest experiments. One short readout."],
+  [35.00,39.70, "Not a vanity spike. A setup the team keeps using after I'm gone."]
+];
+
+var SCENES = [
+  ['s1', 0.0,  2.0],
+  ['s2', 2.0, 11.4],
+  ['s3', 11.4,18.2],
+  ['s4', 18.2,28.9],
+  ['s5', 28.9,34.7],
+  ['s6', 34.7,39.7],
+  ['s7', 39.7,41.0]
+];
+
+// cubic-bezier(.2,0,0,1), Sarvam's curve, solved by bisection on x
+function bez(p1x,p1y,p2x,p2y){
+  function c(a,b,t){var u=1-t; return 3*u*u*t*a + 3*u*t*t*b + t*t*t;}
+  return function(x){
+    if (x<=0) return 0; if (x>=1) return 1;
+    var lo=0, hi=1, m;
+    for (var i=0;i<28;i++){ m=(lo+hi)/2; if (c(p1x,p2x,m)<x) lo=m; else hi=m; }
+    return c(p1y,p2y,(lo+hi)/2);
+  };
+}
+var EASE = bez(.2,0,0,1);
+
+var clamp = function(v,a,b){ return v<a?a:(v>b?b:v); };
+// progress through [a,b], eased
+function p(t,a,b){ return EASE(clamp((t-a)/(b-a),0,1)); }
+// fade in over [a,b], hold, fade out over [c,d]
+function fade(t,a,b,c,d){
+  if (t<a) return 0;
+  if (t<b) return clamp((t-a)/(b-a),0,1);
+  if (c===undefined || t<c) return 1;
+  if (t<d) return 1-clamp((t-c)/(d-c),0,1);
+  return 0;
+}
+function rise(el,prog,px){
+  el.style.opacity = prog;
+  el.style.translate = '0 ' + ((1-prog)*px).toFixed(2) + 'px';
+}
+// same, for elements that are centred with translate:-50%
+function riseC(el,prog,px){
+  el.style.opacity = prog;
+  el.style.translate = '-50% ' + ((1-prog)*px).toFixed(2) + 'px';
+}
+
+// ---------- scallop wipe: a panel whose leading edge is a row of lobes ----------
+function scallopPath(w,h,lobes){
+  var r = h/(lobes*2), d = 'M ' + w + ' 0 L ' + r + ' 0';
+  for (var i=0;i<lobes;i++){
+    d += ' A ' + r + ' ' + r + ' 0 0 0 ' + r + ' ' + ((i+1)*2*r).toFixed(2);
+  }
+  return d + ' L ' + w + ' ' + h + ' Z';
+}
+var LOBES = 4, EDGE = 1080/(LOBES*2);     // x of the scalloped edge inside the svg
+function buildWipe(id,colour){
+  var host = document.getElementById(id);
+  host.innerHTML =
+    '<svg viewBox="0 0 3200 1080" preserveAspectRatio="none">' +
+      '<path d="' + scallopPath(3200,1080,LOBES) + '" fill="' + colour + '"/>' +
+    '</svg>';
+  return host.querySelector('svg');
+}
+// park the lobed edge at x, then later drive it clear off the left
+var PARK = 880 - EDGE, GONE = -(3200 - 1920) - 200;
+var W4 = buildWipe('w4','#b7d44a');
+var W5 = buildWipe('w5','#a5bbfc');
+
+// ---------- S2 steps ----------
+var STEPS = [
+  ['01','Landing page','0:00'],
+  ['02','Docs &amp; quickstart','1:12'],
+  ['03','API key','2:48'],
+  ['04','First successful call','4:06']
+];
+(function(){
+  var host = document.getElementById('s2steps');
+  var gapL = 120, span = (1920 - 240);
+  STEPS.forEach(function(s,i){
+    var el = document.createElement('div');
+    el.className = 'step';
+    el.style.left = (gapL + i*(span/4) + (span/4 - 316)/2) + 'px';
+    el.innerHTML = '<div class="box"><div class="lab">Step ' + s[0] + '</div>' +
+                   '<div class="nm">' + s[1] + '</div>' +
+                   '<div class="ms">' + s[2] + '</div></div>';
+    host.appendChild(el);
+  });
+})();
+var STEP_EL = [].slice.call(document.querySelectorAll('#s2steps .step'));
+(function(){
+  var f = document.getElementById('s2flag');
+  f.style.left = STEP_EL[1].style.left;
+})();
+
+// ---------- S4 rows ----------
+var ROWS = [
+  ['01','Comparison page vs competitors','Me','2 days','Organic signups'],
+  ['02','Developer tutorial, ends in a call','Me','3 days','Activation'],
+  ['03','Schema and metadata on docs','Me + eng','1 day','LLM citations'],
+  ['04','Rewrite the quickstart opener','Docs','1 day','Time to first call'],
+  ['05','Pricing page FAQ block','Me','half day','Signup rate']
+];
+(function(){
+  var host = document.getElementById('s4l');
+  ROWS.forEach(function(r,i){
+    var el = document.createElement('div');
+    el.className = 'row' + (i<2 ? ' hot' : '');
+    el.innerHTML = '<div class="r">' + r[0] + '</div><div class="i">' + r[1] + '</div>' +
+                   '<div class="o">' + r[2] + '</div><div class="e">' + r[3] + '</div>' +
+                   '<div class="m">' + r[4] + '</div>';
+    host.appendChild(el);
+  });
+})();
+var ROW_EL = [].slice.call(document.querySelectorAll('#s4l .row'));
+
+// ---------- S5 tiles ----------
+var TILES = ['Signups','Activation rate','Time to first call','Organic sessions','Assisted conversions'];
+var SPARKS = [
+  '6,78 54,70 102,58 150,61 198,44 246,30 294,12',
+  '6,80 54,74 102,76 150,60 198,52 246,38 294,26',
+  '6,22 54,30 102,26 150,42 198,50 246,62 294,74',
+  '6,84 54,72 102,66 150,54 198,46 246,34 294,16',
+  '6,76 54,78 102,64 150,56 198,40 246,32 294,20'
+];
+(function(){
+  var host = document.getElementById('s5t');
+  TILES.forEach(function(name,i){
+    var el = document.createElement('div');
+    el.className = 'tile';
+    var pts = SPARKS[i];
+    el.innerHTML = '<div class="l">' + name + '</div>' +
+      '<svg class="spark" viewBox="0 0 300 92" preserveAspectRatio="none">' +
+        '<path class="fillq" d="M ' + pts.split(' ').join(' L ') + ' L 294,92 L 6,92 Z"/>' +
+        '<path d="M ' + pts.split(' ').join(' L ') + '"/>' +
+      '</svg><div class="s"></div>';
+    host.appendChild(el);
+  });
+})();
+var TILE_EL = [].slice.call(document.querySelectorAll('#s5t .tile'));
+
+// ===================== the render function =====================
+var SUB = document.getElementById('sub');
+
+function render(t){
+  // scenes cross-fade at their seams
+  SCENES.forEach(function(s){
+    var el = document.getElementById(s[0]), a = s[1], b = s[2], o;
+    var FI = 0.34, FO = 0.34;
+    if (t < a - FI || t > b + 0.01) o = 0;
+    else if (t < a) o = (t - (a - FI)) / FI;
+    else if (t > b - FO) o = clamp((b - t) / FO, 0, 1);
+    else o = 1;
+    if (s[0] === 's1') o = (t < 0.35) ? t/0.35 : o;
+    el.style.opacity = clamp(o, 0, 1);
+  });
+
+  // ---- S1 ----
+  rise(document.getElementById('s1k'), p(t,0.15,0.85), 16);
+  rise(document.getElementById('s1d'), p(t,0.30,1.15), 26);
+
+  // ---- S2: steps land in sequence, timer counts, flag drops on step 2 ----
+  var lt2 = t - 2.0;
+  STEP_EL.forEach(function(el,i){
+    var at = 0.55 + i*0.95;
+    rise(el, p(lt2, at, at+0.75), 22);
+  });
+  var tm = clamp(lt2/4.6, 0, 1) * 246;     // 0:00 to 4:06 in seconds
+  document.getElementById('s2t').textContent =
+    Math.floor(tm/60) + ':' + String(Math.floor(tm%60)).padStart(2,'0');
+  document.getElementById('s2t').style.opacity = p(lt2, 0.4, 1.0);
+  var fl = document.getElementById('s2flag');
+  fl.style.opacity = p(lt2, 6.4, 7.1);
+  fl.querySelector('.ln').style.scale = p(lt2, 6.5, 7.3) + ' 1';
+  fl.querySelector('.ln').style.transformOrigin = 'left center';
+
+  // ---- S3: pills, card, then the punch line takes the frame ----
+  var lt3 = t - 11.4;
+  riseC(document.getElementById('s3p'), p(lt3, 0.25, 1.0), 18);
+  riseC(document.getElementById('s3c'), p(lt3, 0.5, 1.4), 30);
+  var grow = p(lt3, 3.4, 4.5);
+  document.getElementById('s3c').style.opacity = 1 - grow;
+  document.getElementById('s3c').style.scale = (1 + grow*0.14).toFixed(4);
+  document.getElementById('s3p').style.opacity = Math.min(p(lt3,0.25,1.0), 1 - grow);
+  var px = document.getElementById('s3x');
+  px.style.opacity = p(lt3, 3.8, 4.8);
+  px.querySelector('.disp').style.scale = (0.97 + 0.03*p(lt3,3.8,5.0)).toFixed(4);
+
+  // ---- S4: lime wipe completes the sentence, then the list builds ----
+  var lt4 = t - 18.2;
+  var inA = p(lt4, 0.05, 1.25);                       // slides in and parks
+  var outA = p(lt4, 2.05, 3.05);                      // then clears the frame
+  W4.style.translate = (1920 + inA*(PARK-1920) + outA*(GONE-PARK)).toFixed(1) + 'px 0';
+  var sp4 = document.getElementById('sp4');
+  sp4.style.opacity = fade(lt4, 0.0, 0.18, 2.1, 2.5);
+  sp4.querySelector('.r').style.opacity = clamp((inA - 0.45)/0.3, 0, 1);
+  document.getElementById('w4').style.opacity = fade(lt4, 0, 0.01, 2.75, 3.15);
+  rise(document.getElementById('s4h'), p(lt4, 2.95, 3.75), 16);
+  ROW_EL.forEach(function(el,i){
+    var at = 3.35 + i*0.52;
+    rise(el, p(lt4, at, at+0.6), 20);
+  });
+
+  // ---- S5: periwinkle wipe, then tiles ----
+  var lt5 = t - 28.9;
+  var inB = p(lt5, 0.05, 1.15);
+  var outB = p(lt5, 1.75, 2.65);
+  W5.style.translate = (1920 + inB*(PARK-1920) + outB*(GONE-PARK)).toFixed(1) + 'px 0';
+  var sp5 = document.getElementById('sp5');
+  sp5.style.opacity = fade(lt5, 0.0, 0.18, 1.8, 2.15);
+  sp5.querySelector('.r').style.opacity = clamp((inB - 0.45)/0.3, 0, 1);
+  document.getElementById('w5').style.opacity = fade(lt5, 0, 0.01, 2.35, 2.75);
+  rise(document.getElementById('s5h'), p(lt5, 2.5, 3.25), 16);
+  TILE_EL.forEach(function(el,i){
+    var at = 2.8 + i*0.34;
+    rise(el, p(lt5, at, at+0.55), 24);
+    el.querySelector('.s').style.transformOrigin = 'left center';
+    el.querySelector('.s').style.scale = p(lt5, at+0.3, at+1.1) + ' 1';
+  });
+
+  // ---- S6 ----
+  rise(document.getElementById('s6d'), p(t, 35.5, 36.6), 24);
+
+  // ---- subtitles ----
+  var line = null, op = 0;
+  for (var i=0;i<SUBS.length;i++){
+    var s = SUBS[i];
+    if (t >= s[0]-0.18 && t <= s[1]+0.18){
+      line = s[2];
+      op = fade(t, s[0]-0.18, s[0]+0.04, s[1]-0.04, s[1]+0.18);
+      break;
+    }
+  }
+  SUB.textContent = line || '';
+  SUB.style.opacity = op;
+}
+
+window.render = render;
+window.TOTAL_FRAMES = Math.round(DUR * FPS);
+render(0);
+</script>
+</body>
+</html>

@@ -1,4 +1,39 @@
-# 41-second walkthrough — script and Claude Motion prompt
+# 41-second walkthrough
+
+## The film is already made
+
+`30-day-plan.mp4` in this repo. 1920x1080, 30fps, exactly 41.00 seconds,
+1.9 MB, silent.
+
+I built it rather than prompting a tool, because that was the only way to use
+the **real Matter and Season Mix fonts**. It is rendered from
+`film-source.html`, which draws every frame from the same design tokens as
+the website, so the type, colour and easing are identical to the page, not
+an approximation of it.
+
+It includes the scalloped reveal in lime and periwinkle, the funnel stepper,
+the ranked list, the dashboard tiles, the closing line, the end card, and
+burned-in subtitles. The subtitles matter: on LinkedIn and in email the video
+autoplays muted, so it has to work with no sound at all.
+
+**What is missing is the voice.** See `voice-cues.md` for the exact start
+time of each line. Generate the lines with Bulbul, drop each at its cue, and
+the voice lands on the captions.
+
+To change anything, edit `film-source.html` and re-render:
+
+```
+node render.js            # writes frames/
+ffmpeg -framerate 30 -i frames/f%05d.jpg -c:v libx264 -preset slow \
+       -crf 18 -pix_fmt yuv420p -movflags +faststart 30-day-plan.mp4 -y
+```
+
+The Claude Motion prompt below is kept as a fallback if you ever want a
+different cut.
+
+---
+
+# Script and Claude Motion prompt
 
 Reference: `assets.sarvam.ai/Pages/home/india-can.mp4`, Sarvam's own homepage
 film. 1920×1080, 30fps, 2:13, continuous music bed, **no narrator**.
@@ -117,7 +152,7 @@ shadow, a question about Indic speech visible at the top.
 
 **0:16** The card scales up to fill the frame.
 
-> Increasingly, that is the top of the funnel.
+> Increasingly, that answer is the top of the funnel.
 
 ---
 
