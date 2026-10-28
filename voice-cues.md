@@ -1,18 +1,19 @@
 # Voice cue sheet
 
-The film is already rendered with subtitles burned in at these exact times.
-Generate each line separately with Bulbul and drop it at the start time below,
+The film is rendered with these subtitles burned in at these exact times.
+Generate each line separately with Bulbul v3 and drop it at its start time,
 and the voice will sit on the captions.
 
 | # | Start | End | Length | Line |
 |---|-------|-----|--------|------|
-| 1 | 2.00s | 8.90s | 6.90s | Days one to ten. I sign up for the API as a first-time developer and note where I hesitate. |
-| 2 | 9.20s | 11.40s | 2.20s | Those are the places signups drop. |
-| 3 | 11.70s | 15.00s | 3.30s | Then I check what ChatGPT says about Indic speech. |
-| 4 | 15.30s | 18.20s | 2.90s | Increasingly, that answer is the top of the funnel. |
-| 5 | 18.50s | 22.10s | 3.60s | Days eleven to twenty. The audit becomes a ranked list. |
-| 6 | 22.40s | 28.90s | 6.50s | Every item gets an owner and a number it should move. Then I publish the top two or three. |
-| 7 | 29.20s | 34.70s | 5.50s | Days twenty-one to thirty. One dashboard the team opens. Two honest experiments. One short readout. |
-| 8 | 35.00s | 39.70s | 4.70s | Not a vanity spike. A setup the team keeps using after I'm gone. |
+| 1 | 2.00s | 7.82s | 5.82s | I'd aim the month at startup founders and developers. This category is won on default habit. |
+| 2 | 8.12s | 12.12s | 4.00s | Everyone still opens ChatGPT first, even after trying Gemini and Claude. |
+| 3 | 12.42s | 20.42s | 8.00s | A developer who writes against the SDK during the Startup Program rarely rewrites it. So the Program is really a habit-formation product. |
+| 4 | 20.72s | 26.54s | 5.82s | One lakh, three weeks, three channels, each on its own page. Separate pages mean clean attribution. |
+| 5 | 26.84s | 29.02s | 2.18s | The failure mode is credit tourists. |
+| 6 | 29.32s | 33.68s | 4.36s | Kill any channel over target at fifteen thousand. Scale what clears it. |
+| 7 | 33.98s | 39.80s | 5.82s | So the metric is not signups. It's developers still making daily API calls on day thirty. |
 
-Total film: 41.00s. Narration ends at 39.70s, then the end card holds to 41.00s.
+Total film 41.00s. Narration ends at 39.80s, then the end card holds to 41.00s.
+
+99 words, which is 165 words per minute.

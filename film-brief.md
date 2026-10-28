@@ -80,8 +80,8 @@ keeps going and clears the frame, handing over to the next act.
 Sarvam uses this on their homepage as "India can ⟩ train state-of-the-art
 models". You use it twice:
 
-- **Days 11–20** ⟩ *ship the cheapest fixes* — in lime
-- **Days 21–30** ⟩ *prove it with numbers* — in periwinkle
+- **₹1L, three weeks** ⟩ *three channels, three pages*, in lime
+- **Day 30** ⟩ *one metric, one kill rule*, in periwinkle
 
 **Colour as a journey, not a palette.** White, then lime, then periwinkle,
 then black. Each act arrives with its own colour.
@@ -90,12 +90,12 @@ then black. Each act arrives with its own colour.
 
 | Time | Beat |
 |---|---|
-| 0:00–0:02 | Title. `A 30-DAY PLAN` in mono, **Thirty days** in Season Mix. |
-| 0:02–0:11 | Four funnel steps land one at a time, a timer counting 0:00 to 4:06. An indigo rule draws under step two, labelled `I HESITATED HERE`. |
-| 0:11–0:18 | Three pills (ChatGPT, Perplexity, Gemini). A question card. It scales up and gives way to the big line. |
-| 0:18–0:29 | Lime sweep. A ranked list builds row by row, top two highlighted. |
-| 0:29–0:35 | Periwinkle sweep. Five dashboard tiles land with sparklines rising. |
-| 0:35–0:41 | Clears to empty white. The closing line. Black end card. |
+| 0:00–0:02 | Title. `A 30-DAY PLAN` in mono, **Default habit** in Season Mix. |
+| 0:02–0:12 | Three pills one at a time: ChatGPT, Gemini, Claude. Indigo ring lands on ChatGPT, then **Still opened first.** |
+| 0:12–0:20 | A four-row panel: the Startup Program window, SDK written `Once`, rewritten `Rarely`, the real product is `The habit`. |
+| 0:20–0:27 | Lime sweep. **₹1L, three weeks** ⟩ *three channels, three pages*. Three channel cards with budget bars. |
+| 0:27–0:34 | Periwinkle sweep. **Day 30** ⟩ *one metric, one kill rule*. Four gate tiles. |
+| 0:34–0:41 | Empty white, then **Not signups. Developers still calling on day thirty.** Black end card. |
 
 **Burn in the subtitles.** On LinkedIn and in email, video autoplays muted.
 Most people watch it with no sound. It has to carry silently.
@@ -136,30 +136,26 @@ a solid colour. The second half of the sentence is written on the field in
 white and appears as the field covers that side, so the sentence completes as
 the shape travels. The field parks with its lobed edge around x=880, holds
 about one second, then continues left and clears the frame.
-  First time, lime:        "Days 11-20"  >  "ship the cheapest fixes"
-  Second time, periwinkle: "Days 21-30"  >  "prove it with numbers"
+  First time, lime:        "Rs1L, three weeks"  >  "three channels, three pages"
+  Second time, periwinkle: "Day 30"             >  "one metric, one kill rule"
 
 SIX BEATS:
-  0:00-0:02  Title. "A 30-DAY PLAN" small in mono above "Thirty days" at 128px.
-  0:02-0:11  Four cards land one at a time across the frame: Landing page,
-             Docs and quickstart, API key, First successful call. Each shows a
-             timestamp. A timer top right counts up from 0:00 to 4:06. At 6.5
-             seconds an indigo rule draws under card two, labelled
-             "I HESITATED HERE" in mono.
-  0:11-0:18  Three pills centred: ChatGPT, Perplexity, Gemini. Below them a
-             white card with a question in quotes and four grey bars standing
-             in for an answer. The card scales up 14% and fades as the line
-             "Increasingly, that answer is the top of the funnel." takes the
-             frame at 90px.
-  0:18-0:29  Lime signature shot, then a five row ranked list builds one row
-             at a time. Columns: number, item, owner, effort, metric. The top
-             two rows carry a soft periwinkle wash.
-  0:29-0:35  Periwinkle signature shot, then five dashboard tiles land left to
-             right, each with a mono label and a rising sparkline in indigo
-             with a pale periwinkle fill.
-  0:35-0:41  Everything clears to empty white for half a second. Then the
-             closing line fades up centred at 80px. Cut to a black end card:
-             "Harsh Bomble" in Season Mix, the role beneath it, and
+  0:00-0:02  Title. "A 30-DAY PLAN" small in mono above "Default habit" at 128px.
+  0:02-0:12  Three pills centred, arriving one at a time: ChatGPT, Gemini, Claude.
+             An indigo ring settles on the ChatGPT pill, then the line
+             "Still opened first." drops in beneath them at 86px.
+  0:12-0:20  A white panel, four rows arriving in order: Startup Program window
+             6-12 months, SDK written against Once, Rewritten afterwards Rarely,
+             So the real product is The habit. The two Once and The habit values
+             are indigo, the rest near-black.
+  0:20-0:27  Lime signature shot, then three cards deal out left to right:
+             Comparison page (Search), Creator pages (Collab), Founders page
+             (Meta). Each has a budget bar that fills from the left.
+  0:27-0:34  Periwinkle signature shot, then four tiles land: Rs15k decision
+             point, Day 30 measured at, Daily calls sustained, 3 channels judged.
+  0:34-0:41  Everything clears to empty white for half a second. Then
+             "Not signups. Developers still calling on day thirty." at 80px.
+             Cut to a black end card with the name, the role, and
              "NARRATED WITH SARVAM BULBUL V3" small in mono.
 
 LAYOUT: large negative space. One idea per frame, never two headlines at once.

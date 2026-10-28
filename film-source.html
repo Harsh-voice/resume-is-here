@@ -38,37 +38,37 @@ body{font-family:Matter,system-ui,sans-serif; color:var(--tx);
 .act-head .t{font-family:"Season Mix",Matter,serif; font-weight:525; font-size:48px;
              letter-spacing:-.02em; color:var(--tx)}
 
-/* ---------- S2 funnel stepper ---------- */
-#s2 .rail{position:absolute; left:120px; right:120px; top:520px; height:1px; background:var(--st)}
-.step{position:absolute; top:410px; width:340px}
-.step .box{background:#fff; border:1px solid var(--st); border-radius:20px; padding:32px 34px;
-           box-shadow:0 1px 2px rgba(31,31,31,.04), 0 12px 30px rgba(31,31,31,.05)}
-.step .lab{font-family:"Matter Mono",monospace; font-size:15px; letter-spacing:.14em;
-           text-transform:uppercase; color:var(--tx3); margin-bottom:12px}
-.step .nm{font-size:31px; font-weight:525; color:var(--tx); line-height:1.25}
-.step .ms{font-family:"Matter Mono",monospace; font-size:17px; color:var(--indigo-600); margin-top:14px}
-.step .dot{position:absolute; left:50%; top:110px; width:11px; height:11px; margin-left:-5.5px;
-           border-radius:50%; background:var(--st); border:2px solid #fff}
-#s2 .timer{position:absolute; right:120px; top:92px; font-family:"Matter Mono",monospace;
-           font-size:24px; letter-spacing:.1em; color:var(--tx3)}
-#s2 .flag{position:absolute; top:690px; width:340px; text-align:center}
-#s2 .flag .ln{height:2px; background:var(--indigo); margin-bottom:14px}
-#s2 .flag .tx{font-family:"Matter Mono",monospace; font-size:17px; letter-spacing:.14em;
-              text-transform:uppercase; color:var(--indigo)}
+/* ---------- S2 pills + line ---------- */
+#s2 .pills{position:absolute; left:50%; top:372px; translate:-50% 0; display:flex; gap:20px}
+#s2 .pill{font-size:30px; color:var(--tx3); border:1px solid var(--st); border-radius:999px;
+          padding:18px 44px; background:#fff}
+#s2 .pill.lit{color:var(--tx)}
+#s2 .bigline{position:absolute; left:0; right:0; top:540px; text-align:center}
+#s2 .bigline .disp{font-size:86px}
 
-/* ---------- S3 answer card ---------- */
-#s3 .pills{position:absolute; left:50%; top:300px; translate:-50% 0; display:flex; gap:14px}
-#s3 .pill{font-size:22px; color:var(--tx2); border:1px solid var(--st); border-radius:999px;
-          padding:11px 26px; background:#fff}
-#s3 .card{position:absolute; left:50%; top:404px; translate:-50% 0; width:1000px;
-          background:#fff; border:1px solid var(--st); border-radius:24px; padding:48px 52px;
-          box-shadow:0 1px 2px rgba(31,31,31,.04), 0 18px 48px rgba(31,31,31,.07)}
-#s3 .q{font-size:30px; color:var(--tx3); margin-bottom:34px}
-#s3 .bar{height:17px; border-radius:9px; background:var(--st2); margin-bottom:17px}
-#s3 .mark{position:absolute; right:44px; bottom:36px; width:30px; height:30px}
-#s3 .punch{position:absolute; left:50%; top:50%; translate:-50% -50%; width:1400px;
-           text-align:center; opacity:0}
-#s3 .punch .disp{font-size:90px}
+/* ---------- S3 panel ---------- */
+#s3 .panel{position:absolute; left:50%; top:356px; translate:-50% 0; width:1120px;
+           background:#fff; border:1px solid var(--st); border-radius:24px; padding:20px 52px;
+           box-shadow:0 1px 2px rgba(31,31,31,.04), 0 18px 48px rgba(31,31,31,.06)}
+#s3 .prow{display:flex; justify-content:space-between; align-items:baseline;
+          padding:30px 0; border-bottom:1px solid var(--st2); font-size:31px; color:var(--tx3)}
+#s3 .prow:last-child{border-bottom:0}
+#s3 .prow .v{color:var(--tx); font-weight:525}
+#s3 .prow .v.key{color:var(--indigo-700)}
+
+/* ---------- S4 three channel cards ---------- */
+#s4 .cards{position:absolute; left:150px; right:150px; top:378px;
+           display:grid; grid-template-columns:repeat(3,1fr); gap:26px}
+.pcard{background:#fff; border:1px solid var(--st); border-radius:22px; padding:36px 34px;
+       box-shadow:0 1px 2px rgba(31,31,31,.04), 0 14px 34px rgba(31,31,31,.05)}
+.pcard .tag{font-family:"Matter Mono",monospace; font-size:15px; letter-spacing:.14em;
+            text-transform:uppercase; color:var(--tx3)}
+.pcard .nm2{font-size:34px; font-weight:525; color:var(--tx); line-height:1.25; margin-top:16px;
+            min-height:92px}
+.pcard .sub{font-size:21px; color:var(--tx3); line-height:1.45; margin-top:6px; min-height:62px}
+.pcard .bar{height:6px; border-radius:6px; background:var(--st2); margin-top:26px; overflow:hidden}
+.pcard .bar i{display:block; height:100%; border-radius:6px; background:var(--indigo-600);
+              transform-origin:left center}
 
 /* ---------- scallop wipe ---------- */
 .wipe{position:absolute; inset:0; pointer-events:none}
@@ -91,12 +91,14 @@ body{font-family:Matter,system-ui,sans-serif; color:var(--tx);
 .row.hot{background:linear-gradient(90deg, rgba(219,228,254,.5), rgba(219,228,254,0))}
 
 /* ---------- S5 dashboard ---------- */
-#s5 .tiles{position:absolute; left:150px; right:150px; top:368px;
+#s5 .tiles{position:absolute; left:150px; right:150px; top:392px;
            display:grid; grid-template-columns:repeat(5,1fr); gap:22px}
 .tile{background:#fff; border:1px solid var(--st); border-radius:20px; padding:34px 30px;
       box-shadow:0 1px 2px rgba(31,31,31,.04), 0 12px 30px rgba(31,31,31,.045)}
 .tile .l{font-family:"Matter Mono",monospace; font-size:15px; letter-spacing:.12em;
          text-transform:uppercase; color:var(--tx3); line-height:1.5; min-height:48px}
+.tile .gv{font-family:"Season Mix",Matter,serif; font-weight:525; font-size:60px;
+          letter-spacing:-.022em; color:var(--tx); margin-top:22px}
 .tile .spark{display:block; width:100%; height:92px; margin-top:26px; overflow:visible}
 .tile .spark path{fill:none; stroke:var(--indigo-600); stroke-width:3; stroke-linecap:round;
                   stroke-linejoin:round}
@@ -116,81 +118,71 @@ body{font-family:Matter,system-ui,sans-serif; color:var(--tx);
         text-transform:uppercase; color:rgba(255,255,255,.45); margin-top:14px}
 
 /* ---------- subtitles ---------- */
-#sub{position:absolute; left:50%; bottom:78px; translate:-50% 0; width:1480px;
-     text-align:center; font-size:40px; font-weight:525; line-height:1.32;
-     color:var(--tx); opacity:0}
+#sub{position:absolute; left:0; right:0; bottom:66px; display:flex; justify-content:center;
+     opacity:0; pointer-events:none}
+#sub .plate{
+  max-width:1480px; text-align:center; font-size:40px; font-weight:525; line-height:1.32;
+  color:var(--tx); background:rgba(255,255,255,.94); border-radius:16px; padding:14px 30px;
+}
 </style>
 </head>
 <body>
 <div id="stage">
 
-  <!-- S1 -->
   <section class="scene" id="s1">
     <span class="kick" id="s1k">A 30-day plan</span>
-    <span class="disp" id="s1d">Thirty days</span>
+    <span class="disp" id="s1d">Default habit</span>
   </section>
 
-  <!-- S2 -->
   <section class="scene" id="s2">
-    <div class="act-head"><span class="n">Days 01&ndash;10</span><span class="t">Learn the funnel by using it</span></div>
-    <div class="timer" id="s2t">00:00</div>
-    <div class="rail"></div>
-    <div id="s2steps"></div>
-    <div class="flag" id="s2flag"><div class="ln"></div><div class="tx">I hesitated here</div></div>
+    <div class="act-head"><span class="n">The bet</span><span class="t">Founders and developers</span></div>
+    <div class="pills" id="s2p">
+      <span class="pill lit">ChatGPT</span><span class="pill">Gemini</span><span class="pill">Claude</span>
+    </div>
+    <div class="bigline" id="s2l"><span class="disp">Still opened first.</span></div>
   </section>
 
-  <!-- S3 -->
   <section class="scene" id="s3">
-    <div class="act-head"><span class="n">Days 01&ndash;10</span><span class="t">And what the models say</span></div>
-    <div class="pills" id="s3p">
-      <span class="pill">ChatGPT</span><span class="pill">Perplexity</span><span class="pill">Gemini</span>
+    <div class="act-head"><span class="n">The bet</span><span class="t">Why the window matters</span></div>
+    <div class="panel" id="s3c">
+      <div class="prow"><span class="k">Startup Program window</span><span class="v">6&ndash;12 months</span></div>
+      <div class="prow"><span class="k">SDK written against</span><span class="v key">Once</span></div>
+      <div class="prow"><span class="k">Rewritten afterwards</span><span class="v">Rarely</span></div>
+      <div class="prow"><span class="k">So the real product is</span><span class="v key">The habit</span></div>
     </div>
-    <div class="card" id="s3c">
-      <div class="q">&ldquo;Which models are best for Indian-language speech?&rdquo;</div>
-      <div class="bar" style="width:100%"></div>
-      <div class="bar" style="width:92%"></div>
-      <div class="bar" style="width:74%"></div>
-      <div class="bar" style="width:84%;margin-bottom:0"></div>
-      <img class="mark" id="s3m" src="model-03.svg" alt="">
-    </div>
-    <div class="punch" id="s3x"><span class="disp">Increasingly, that answer<br>is the top of the funnel.</span></div>
   </section>
 
-  <!-- S4 -->
   <section class="scene" id="s4">
     <div class="wipe" id="w4"></div>
     <div class="split" id="sp4">
-      <div class="l"><span class="disp">Days 11&ndash;20</span></div>
-      <div class="r"><span class="disp">ship the cheapest fixes</span></div>
+      <div class="l"><span class="disp">&#8377;1L, three weeks</span></div>
+      <div class="r"><span class="disp">three channels,<br>three pages</span></div>
     </div>
-    <div class="act-head" id="s4h"><span class="n">Days 11&ndash;20</span><span class="t">A ranked list, with owners</span></div>
-    <div class="list" id="s4l"></div>
+    <div class="act-head" id="s4h"><span class="n">The spend</span><span class="t">One page per channel</span></div>
+    <div class="cards" id="s4c"></div>
   </section>
 
-  <!-- S5 -->
   <section class="scene" id="s5">
     <div class="wipe" id="w5"></div>
     <div class="split" id="sp5">
-      <div class="l"><span class="disp">Days 21&ndash;30</span></div>
-      <div class="r"><span class="disp">prove it with numbers</span></div>
+      <div class="l"><span class="disp">Day 30</span></div>
+      <div class="r"><span class="disp">one metric, one kill rule</span></div>
     </div>
-    <div class="act-head" id="s5h"><span class="n">Days 21&ndash;30</span><span class="t">One dashboard the team opens</span></div>
+    <div class="act-head" id="s5h"><span class="n">The gate</span><span class="t">Credit tourists are the failure mode</span></div>
     <div class="tiles" id="s5t"></div>
   </section>
 
-  <!-- S6 -->
   <section class="scene" id="s6">
-    <span class="disp" id="s6d">Not a vanity spike.<br>A setup the team keeps using<br>after I&rsquo;m gone.</span>
+    <span class="disp" id="s6d">Not signups.<br>Developers still calling<br>on day thirty.</span>
   </section>
 
-  <!-- S7 -->
   <section class="scene" id="s7">
     <span class="nm">Harsh Bomble</span>
     <span class="ro">Growth Marketing Intern &middot; Bengaluru</span>
     <span class="cr">Narrated with Sarvam Bulbul v3</span>
   </section>
 
-  <div id="sub"></div>
+  <div id="sub"><span class="plate"></span></div>
 </div>
 
 <script>
@@ -199,24 +191,23 @@ body{font-family:Matter,system-ui,sans-serif; color:var(--tx);
 var FPS = 30, DUR = 41;
 
 var SUBS = [
-  [2.00,  8.90, "Days one to ten. I sign up for the API as a first-time developer and note where I hesitate."],
-  [9.20, 11.40, "Those are the places signups drop."],
-  [11.70,15.00, "Then I check what ChatGPT says about Indic speech."],
-  [15.30,18.20, "Increasingly, that answer is the top of the funnel."],
-  [18.50,22.10, "Days eleven to twenty. The audit becomes a ranked list."],
-  [22.40,28.90, "Every item gets an owner and a number it should move. Then I publish the top two or three."],
-  [29.20,34.70, "Days twenty-one to thirty. One dashboard the team opens. Two honest experiments. One short readout."],
-  [35.00,39.70, "Not a vanity spike. A setup the team keeps using after I'm gone."]
+  [2.00,  7.82, "I'd aim the month at startup founders and developers. This category is won on default habit."],
+  [8.12, 12.12, "Everyone still opens ChatGPT first, even after trying Gemini and Claude."],
+  [12.42,20.42, "A developer who writes against the SDK during the Startup Program rarely rewrites it. So the Program is really a habit-formation product."],
+  [20.72,26.54, "One lakh, three weeks, three channels, each on its own page. Separate pages mean clean attribution."],
+  [26.84,29.02, "The failure mode is credit tourists."],
+  [29.32,33.68, "Kill any channel over target at fifteen thousand. Scale what clears it."],
+  [33.98,39.80, "So the metric is not signups. It's developers still making daily API calls on day thirty."]
 ];
 
 var SCENES = [
   ['s1', 0.0,  2.0],
-  ['s2', 2.0, 11.4],
-  ['s3', 11.4,18.2],
-  ['s4', 18.2,28.9],
-  ['s5', 28.9,34.7],
-  ['s6', 34.7,39.7],
-  ['s7', 39.7,41.0]
+  ['s2', 2.0, 12.12],
+  ['s3', 12.12,20.42],
+  ['s4', 20.42,26.84],
+  ['s5', 26.84,33.68],
+  ['s6', 33.68,39.80],
+  ['s7', 39.80,41.0]
 ];
 
 // cubic-bezier(.2,0,0,1), Sarvam's curve, solved by bisection on x
@@ -274,83 +265,45 @@ var PARK = 880 - EDGE, GONE = -(3200 - 1920) - 200;
 var W4 = buildWipe('w4','#b7d44a');
 var W5 = buildWipe('w5','#a5bbfc');
 
-// ---------- S2 steps ----------
-var STEPS = [
-  ['01','Landing page','0:00'],
-  ['02','Docs &amp; quickstart','1:12'],
-  ['03','API key','2:48'],
-  ['04','First successful call','4:06']
+// ---------- S4 channel cards ----------
+var CHANNELS = [
+  ['Search',  'Comparison page',  'ElevenLabs and Whisper intent, Indic coverage and price', 88],
+  ['Collab',  'Creator pages',    'One per collab, opening on that creator\u2019s own build', 66],
+  ['Meta',    'Founders page',    'Developer-tool interests, creator-whitelisted ads', 54]
 ];
 (function(){
-  var host = document.getElementById('s2steps');
-  var gapL = 120, span = (1920 - 240);
-  STEPS.forEach(function(s,i){
+  var host = document.getElementById('s4c');
+  CHANNELS.forEach(function(c){
     var el = document.createElement('div');
-    el.className = 'step';
-    el.style.left = (gapL + i*(span/4) + (span/4 - 316)/2) + 'px';
-    el.innerHTML = '<div class="box"><div class="lab">Step ' + s[0] + '</div>' +
-                   '<div class="nm">' + s[1] + '</div>' +
-                   '<div class="ms">' + s[2] + '</div></div>';
+    el.className = 'pcard';
+    el.innerHTML = '<div class="tag">' + c[0] + '</div><div class="nm2">' + c[1] + '</div>' +
+                   '<div class="sub">' + c[2] + '</div>' +
+                   '<div class="bar"><i data-w="' + c[3] + '"></i></div>';
     host.appendChild(el);
   });
 })();
-var STEP_EL = [].slice.call(document.querySelectorAll('#s2steps .step'));
-(function(){
-  var f = document.getElementById('s2flag');
-  f.style.left = STEP_EL[1].style.left;
-})();
+var CARD_EL = [].slice.call(document.querySelectorAll('#s4c .pcard'));
 
-// ---------- S4 rows ----------
-var ROWS = [
-  ['01','Comparison page vs competitors','Me','2 days','Organic signups'],
-  ['02','Developer tutorial, ends in a call','Me','3 days','Activation'],
-  ['03','Schema and metadata on docs','Me + eng','1 day','LLM citations'],
-  ['04','Rewrite the quickstart opener','Docs','1 day','Time to first call'],
-  ['05','Pricing page FAQ block','Me','half day','Signup rate']
-];
-(function(){
-  var host = document.getElementById('s4l');
-  ROWS.forEach(function(r,i){
-    var el = document.createElement('div');
-    el.className = 'row' + (i<2 ? ' hot' : '');
-    el.innerHTML = '<div class="r">' + r[0] + '</div><div class="i">' + r[1] + '</div>' +
-                   '<div class="o">' + r[2] + '</div><div class="e">' + r[3] + '</div>' +
-                   '<div class="m">' + r[4] + '</div>';
-    host.appendChild(el);
-  });
-})();
-var ROW_EL = [].slice.call(document.querySelectorAll('#s4l .row'));
-
-// ---------- S5 tiles ----------
-var TILES = ['Signups','Activation rate','Time to first call','Organic sessions','Assisted conversions'];
-var SPARKS = [
-  '6,78 54,70 102,58 150,61 198,44 246,30 294,12',
-  '6,80 54,74 102,76 150,60 198,52 246,38 294,26',
-  '6,22 54,30 102,26 150,42 198,50 246,62 294,74',
-  '6,84 54,72 102,66 150,54 198,46 246,34 294,16',
-  '6,76 54,78 102,64 150,56 198,40 246,32 294,20'
-];
+// ---------- S5 gate tiles ----------
+var GATE = [['\u20B915k','Decision point'], ['Day 30','Measured at'],
+            ['Daily','Calls, sustained'], ['3','Channels judged']];
 (function(){
   var host = document.getElementById('s5t');
-  TILES.forEach(function(name,i){
+  host.style.gridTemplateColumns = 'repeat(4,1fr)';
+  GATE.forEach(function(g){
     var el = document.createElement('div');
     el.className = 'tile';
-    var pts = SPARKS[i];
-    el.innerHTML = '<div class="l">' + name + '</div>' +
-      '<svg class="spark" viewBox="0 0 300 92" preserveAspectRatio="none">' +
-        '<path class="fillq" d="M ' + pts.split(' ').join(' L ') + ' L 294,92 L 6,92 Z"/>' +
-        '<path d="M ' + pts.split(' ').join(' L ') + '"/>' +
-      '</svg><div class="s"></div>';
+    el.innerHTML = '<div class="l">' + g[1] + '</div><div class="gv">' + g[0] + '</div>';
     host.appendChild(el);
   });
 })();
 var TILE_EL = [].slice.call(document.querySelectorAll('#s5t .tile'));
+var PILL_EL = [].slice.call(document.querySelectorAll('#s2p .pill'));
 
 // ===================== the render function =====================
 var SUB = document.getElementById('sub');
 
 function render(t){
-  // scenes cross-fade at their seams
   SCENES.forEach(function(s){
     var el = document.getElementById(s[0]), a = s[1], b = s[2], o;
     var FI = 0.34, FO = 0.34;
@@ -362,56 +315,50 @@ function render(t){
     el.style.opacity = clamp(o, 0, 1);
   });
 
-  // ---- S1 ----
   rise(document.getElementById('s1k'), p(t,0.15,0.85), 16);
   rise(document.getElementById('s1d'), p(t,0.30,1.15), 26);
 
-  // ---- S2: steps land in sequence, timer counts, flag drops on step 2 ----
+  // S2: three pills, then the line lands under them
   var lt2 = t - 2.0;
-  STEP_EL.forEach(function(el,i){
-    var at = 0.55 + i*0.95;
-    rise(el, p(lt2, at, at+0.75), 22);
+  var pills = document.getElementById('s2p');
+  pills.style.opacity = 1; pills.style.translate = '-50% 0';
+  PILL_EL.forEach(function(el,i){
+    var at = 0.3 + i*0.8;
+    rise(el, p(lt2, at, at+0.7), 18);
   });
-  var tm = clamp(lt2/4.6, 0, 1) * 246;     // 0:00 to 4:06 in seconds
-  document.getElementById('s2t').textContent =
-    Math.floor(tm/60) + ':' + String(Math.floor(tm%60)).padStart(2,'0');
-  document.getElementById('s2t').style.opacity = p(lt2, 0.4, 1.0);
-  var fl = document.getElementById('s2flag');
-  fl.style.opacity = p(lt2, 6.4, 7.1);
-  fl.querySelector('.ln').style.scale = p(lt2, 6.5, 7.3) + ' 1';
-  fl.querySelector('.ln').style.transformOrigin = 'left center';
+  // the ring arrives just before the line that explains it
+  var ring = p(lt2, 4.4, 5.3);
+  PILL_EL[0].style.borderColor = 'rgba(66,80,213,' + ring.toFixed(3) + ')';
+  PILL_EL[0].style.boxShadow = '0 0 0 ' + (ring*3).toFixed(2) + 'px rgba(219,228,254,' + ring.toFixed(3) + ')';
+  rise(document.getElementById('s2l'), p(lt2, 5.9, 6.9), 26);
 
-  // ---- S3: pills, card, then the punch line takes the frame ----
-  var lt3 = t - 11.4;
-  riseC(document.getElementById('s3p'), p(lt3, 0.25, 1.0), 18);
-  riseC(document.getElementById('s3c'), p(lt3, 0.5, 1.4), 30);
-  var grow = p(lt3, 3.4, 4.5);
-  document.getElementById('s3c').style.opacity = 1 - grow;
-  document.getElementById('s3c').style.scale = (1 + grow*0.14).toFixed(4);
-  document.getElementById('s3p').style.opacity = Math.min(p(lt3,0.25,1.0), 1 - grow);
-  var px = document.getElementById('s3x');
-  px.style.opacity = p(lt3, 3.8, 4.8);
-  px.querySelector('.disp').style.scale = (0.97 + 0.03*p(lt3,3.8,5.0)).toFixed(4);
+  // S3: the window panel, rows arriving in order
+  var lt3 = t - 12.12;
+  riseC(document.getElementById('s3c'), p(lt3, 0.3, 1.2), 28);
+  [].slice.call(document.querySelectorAll('#s3c .prow')).forEach(function(el,i){
+    var at = 0.9 + i*0.95;
+    el.style.opacity = p(lt3, at, at+0.6);
+  });
 
-  // ---- S4: lime wipe completes the sentence, then the list builds ----
-  var lt4 = t - 18.2;
-  var inA = p(lt4, 0.05, 1.25);                       // slides in and parks
-  var outA = p(lt4, 2.05, 3.05);                      // then clears the frame
+  // S4: lime wipe completes the line, then three cards deal out
+  var lt4 = t - 20.42;
+  var inA = p(lt4, 0.05, 1.25), outA = p(lt4, 2.05, 3.05);
   W4.style.translate = (1920 + inA*(PARK-1920) + outA*(GONE-PARK)).toFixed(1) + 'px 0';
   var sp4 = document.getElementById('sp4');
   sp4.style.opacity = fade(lt4, 0.0, 0.18, 2.1, 2.5);
   sp4.querySelector('.r').style.opacity = clamp((inA - 0.45)/0.3, 0, 1);
   document.getElementById('w4').style.opacity = fade(lt4, 0, 0.01, 2.75, 3.15);
   rise(document.getElementById('s4h'), p(lt4, 2.95, 3.75), 16);
-  ROW_EL.forEach(function(el,i){
-    var at = 3.35 + i*0.52;
-    rise(el, p(lt4, at, at+0.6), 20);
+  CARD_EL.forEach(function(el,i){
+    var at = 3.3 + i*0.42;
+    rise(el, p(lt4, at, at+0.6), 24);
+    var bar = el.querySelector('.bar i');
+    bar.style.scale = (p(lt4, at+0.35, at+1.25) * (+bar.dataset.w/100)).toFixed(4) + ' 1';
   });
 
-  // ---- S5: periwinkle wipe, then tiles ----
-  var lt5 = t - 28.9;
-  var inB = p(lt5, 0.05, 1.15);
-  var outB = p(lt5, 1.75, 2.65);
+  // S5: periwinkle wipe, then the gate
+  var lt5 = t - 26.84;
+  var inB = p(lt5, 0.05, 1.15), outB = p(lt5, 1.75, 2.65);
   W5.style.translate = (1920 + inB*(PARK-1920) + outB*(GONE-PARK)).toFixed(1) + 'px 0';
   var sp5 = document.getElementById('sp5');
   sp5.style.opacity = fade(lt5, 0.0, 0.18, 1.8, 2.15);
@@ -419,14 +366,11 @@ function render(t){
   document.getElementById('w5').style.opacity = fade(lt5, 0, 0.01, 2.35, 2.75);
   rise(document.getElementById('s5h'), p(lt5, 2.5, 3.25), 16);
   TILE_EL.forEach(function(el,i){
-    var at = 2.8 + i*0.34;
+    var at = 2.9 + i*0.34;
     rise(el, p(lt5, at, at+0.55), 24);
-    el.querySelector('.s').style.transformOrigin = 'left center';
-    el.querySelector('.s').style.scale = p(lt5, at+0.3, at+1.1) + ' 1';
   });
 
-  // ---- S6 ----
-  rise(document.getElementById('s6d'), p(t, 35.5, 36.6), 24);
+  rise(document.getElementById('s6d'), p(t, 34.4, 35.6), 24);
 
   // ---- subtitles ----
   var line = null, op = 0;
@@ -438,7 +382,7 @@ function render(t){
       break;
     }
   }
-  SUB.textContent = line || '';
+  SUB.firstElementChild.textContent = line || '';
   SUB.style.opacity = op;
 }
 

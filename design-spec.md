@@ -144,7 +144,7 @@ overlay at 0.22 opacity.
 
 ### 2 · Walkthrough — `#walkthrough`
 
-**Data.** Four steps: **Audit · Ship · Measure · Report.** Heading: *The
+**Data.** Four steps: **Bet · Build · Spend · Cut.** Heading: *The
 two-minute version.* The video frame sits beside it.
 
 **Design.** Split layout. Stepper on the left with a connecting rule, media
@@ -155,13 +155,15 @@ pattern.
 
 ### 3 · The 30-day plan — `#plan`
 
-**Data.** One 257-word paragraph. The whole plan, unbroken.
+**Data.** One 231-word paragraph. Harsh's own plan, almost verbatim: aim at
+startup founders and developers, because the category is won on default habit.
+The Startup Program is really a habit-formation product. ₹1L across three
+weeks, three channels, each on its own page. The metric is developers at
+sustained daily API calls by day 30, not signups. Kill a channel over target
+at ₹15k.
 
 **Design.** A single bordered card, 24px radius, with a flower motif bleeding
-off one corner. Deliberately one block of text, so the detail is available
-without being forced on anyone.
-
----
+off one corner.
 
 ### 4 · Three phases — `#phases`
 
@@ -169,9 +171,9 @@ without being forced on anyone.
 
 | Card | Heading | Panel |
 |---|---|---|
-| Days 1–10 | Learn the funnel by using it | Time to first call: `0:42 · 1:18 · 6:30 · 2:05` |
-| Days 11–20 | Ship the cheapest fixes | Ranked backlog: Comparison page · Quickstart tutorial · Schema & metadata · Pricing clarity |
-| Days 21–30 | Prove it with numbers | Month one: `4:12 · 31% · +18% · 2` |
+| The bet | This category is won on default habit | Program window `6–12 mo` · SDK written `Once` · Rewritten `Rarely` · Real product `The habit` |
+| Weeks 1–3 · ₹1L | Three channels, three pages | Comparison page `Search` · Creator pages `Collab` · Founders page `Meta` · Clean attribution `Per page` |
+| Day 30 | One metric, one kill rule | `₹15k` decision point · `Day 30` measured at · `Daily` calls sustained · `3` channels judged |
 
 **Design.** The three cards are `position: sticky` at stepped offsets of
 100px, 122px and 144px. Card one pins, card two slides over it, card three
@@ -182,8 +184,8 @@ normally.
 
 ### 5 · What I'd measure
 
-**Data.** Four numbered items: **Time to first call · Signup → activation ·
-Organic & assisted · Share of AI answers.**
+**Data.** Four numbered items: **Developers at sustained daily calls · Cost per
+activated developer · Attribution by landing page · The ₹15k gate.**
 
 **Design.** No boxes. A numbered list with hairlines between, so it reads
 differently from the card grids above and below it.

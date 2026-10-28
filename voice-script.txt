@@ -1,15 +1,13 @@
-Days one to ten. I sign up for the API as a first-time developer and note where I hesitate.
+I'd aim the month at startup founders and developers. This category is won on default habit.
 
-Those are the places signups drop.
+Everyone still opens ChatGPT first, even after trying Gemini and Claude.
 
-Then I check what ChatGPT says about Indic speech.
+A developer who writes against the SDK during the Startup Program rarely rewrites it. So the Program is really a habit-formation product.
 
-Increasingly, that answer is the top of the funnel.
+One lakh, three weeks, three channels, each on its own page. Separate pages mean clean attribution.
 
-Days eleven to twenty. The audit becomes a ranked list.
+The failure mode is credit tourists.
 
-Every item gets an owner and a number it should move. Then I publish the top two or three.
+Kill any channel over target at fifteen thousand. Scale what clears it.
 
-Days twenty-one to thirty. One dashboard the team opens. Two honest experiments. One short readout.
-
-Not a vanity spike. A setup the team keeps using after I'm gone.
+So the metric is not signups. It's developers still making daily API calls on day thirty.
