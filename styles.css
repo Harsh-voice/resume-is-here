@@ -97,8 +97,7 @@ body{
 }
 .pill-sm.dark{background:#2a2c33; color:#fff}
 .pill-sm.light{background:var(--grey-100); color:var(--tx)}
-@media (max-width:900px){ .nav{display:none} }
-@media (max-width:560px){ .pill-sm.light{display:none} }
+@media (max-width:760px){ .pill-sm.light{display:none} }
 
 /* ============ Hero ============ */
 .hero{position:relative; z-index:1; text-align:center; padding-block:206px 150px}
@@ -305,7 +304,7 @@ h1{
   .slides > .slide{position:static}
 }
 @media (max-width:860px){
-  .slide{grid-template-columns:1fr; gap:24px}
+  .slide{grid-template-columns:minmax(0,1fr); gap:24px}
   .slide-visual{min-height:200px; order:2}
 }
 @media (prefers-reduced-motion:reduce){
@@ -783,8 +782,48 @@ h1{
 
 /* Narrow screens: the gradient is sized in vw, so it needs its own scale
    or it collapses into a blob at the top and the motif lands on bare white. */
+/* ============ Phone ============
+   Four things were wrong at 390px: no way to navigate a 14,000px page, the
+   stepper orphaned "Cut" on its own line, the tools grid left "Premiere Pro"
+   alone mid-grid, and the gradient put a hard saffron band across the top. */
+
+/* On a phone the name badge is worth less than being able to reach a section.
+   The name is already in the hero and the footer; navigation is nowhere. */
+@media (max-width:620px){
+  .site-header .bar{gap:14px; padding-block:11px}
+  .header-cta{display:none}
+  .nav{display:flex; gap:2px; flex:1 1 auto; justify-content:flex-end}
+  .nav a{font-size:13.5px; padding:7px 9px}
+}
+/* below 400px the wordmark and three labels cannot share one row, so the
+   header takes two rows rather than pushing the page sideways */
+@media (max-width:400px){
+  .site-header .bar{flex-wrap:wrap; gap:0 10px}
+  .nav{flex:1 0 100%; justify-content:flex-start; gap:0; margin-top:1px}
+  .nav a{font-size:13px; padding:6px 10px 6px 0}
+  .slide{padding:20px; border-radius:20px}
+  /* grid and flex children default to min-width:auto, so the vignette refused
+     to shrink below its content and pushed the card 7px wide */
+  .slide-visual, .vig{min-width:0}
+  .vig-bar{display:none}
+}
+
+/* 4 steps across 350px wrapped 3 + 1; a 2x2 grid reads as deliberate */
+@media (max-width:560px){
+  .steps{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .step{justify-content:center; padding:9px 14px 9px 11px}
+}
+
+/* the 6 / 7 / 6 stagger is a desktop composition; on a phone the rows should
+   just be one even grid, so the only short row is the last one */
+@media (max-width:560px){
+  .tools{grid-template-columns:repeat(3,1fr); gap:10px}
+  .tools-row{display:contents}
+  .tool{width:auto; min-height:94px}
+}
+
 @media (max-width:760px){
-  .hero-grad{width:420vw; height:200.8vw; top:-95vw}
+  .hero-grad{width:420vw; height:200.8vw; top:-130vw}
   .hero{padding-block:116px 72px}
   .motif{width:150px; height:23px; margin-bottom:20px}
   h1{font-size:clamp(34px,9.2vw,44px); margin-top:22px}
