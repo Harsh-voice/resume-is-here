@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Harsh Bomble</title>
+<style>
+@font-face{font-family:Matter;src:url(fonts/MatterUprights-VF.woff2) format("woff2-variations");font-weight:100 1000;font-display:block}
+@font-face{font-family:"Season Mix";src:url(fonts/SeasonMixVFUprights.woff2) format("woff2-variations");font-weight:300 900;font-display:block}
+@font-face{font-family:"Matter Mono";src:url(fonts/MatterMono-Regular.woff2) format("woff2");font-weight:400;font-display:block}
+
+:root{
+  --tx:#1f1f1f; --tx2:#3d3d3d; --tx3:#666; --st:#e6e6e6; --st2:#f0f0f0;
+  --indigo:#3333cc; --indigo-700:#4250d5; --peri-soft:#dbe4fe;
+}
+@page{ size:A4; margin:0 }
+*{margin:0; padding:0; box-sizing:border-box}
+html,body{background:#fff}
+body{
+  font-family:Matter,system-ui,sans-serif; color:var(--tx);
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  -webkit-font-smoothing:antialiased;
+}
+.sheet{
+  width:210mm; min-height:297mm; padding:16mm 16mm 14mm;
+  margin:0 auto; background:#fff; position:relative; overflow:hidden;
+}
+/* a single quiet motif, the way the site uses them */
+.sheet::before{
+  content:""; position:absolute; top:-34mm; right:-30mm; width:86mm; height:86mm;
+  background:radial-gradient(circle at 50% 50%, var(--peri-soft) 0%, rgba(219,228,254,0) 68%);
+  pointer-events:none;
+}
+.sheet > *{position:relative}
+
+/* ---------- header ---------- */
+.nm{font-family:"Season Mix",Matter,serif; font-weight:525; font-size:34px;
+    letter-spacing:-.022em; line-height:1.05; color:var(--tx)}
+.role{font-family:"Matter Mono",monospace; font-size:9.5px; letter-spacing:.17em;
+      text-transform:uppercase; color:var(--tx3); margin-top:7px}
+.meta{display:flex; flex-wrap:wrap; gap:4px 14px; margin-top:11px; font-size:10.8px; color:var(--tx2)}
+.meta a{color:var(--tx2); text-decoration:none}
+.meta .site{color:var(--indigo-700); font-weight:525}
+.rule{height:1px; background:var(--st); margin:13px 0 0}
+
+/* ---------- summary ---------- */
+.sum{margin-top:13px; font-size:11.8px; line-height:1.55; color:var(--tx2); max-width:172mm}
+.sum b{color:var(--tx); font-weight:600}
+
+/* ---------- sections ---------- */
+h2{
+  font-family:"Matter Mono",monospace; font-size:9px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--tx3); font-weight:400;
+  margin:22px 0 0; padding-bottom:6px; border-bottom:1px solid var(--st);
+}
+.job{margin-top:14px; break-inside:avoid}
+.job-top{display:flex; justify-content:space-between; align-items:baseline; gap:12px}
+.job-t{font-size:13.5px; font-weight:600; color:var(--tx); line-height:1.3}
+.job-w{font-family:"Matter Mono",monospace; font-size:9px; letter-spacing:.09em;
+       text-transform:uppercase; color:var(--tx3); white-space:nowrap}
+.job-o{font-size:10.8px; color:var(--tx3); margin-top:2px}
+ul{list-style:none; margin:6px 0 0}
+li{position:relative; padding-left:13px; font-size:11px; line-height:1.55;
+   color:var(--tx2); margin-bottom:5px}
+li::before{content:""; position:absolute; left:0; top:7px; width:4px; height:4px;
+           border-radius:50%; background:var(--indigo-700)}
+li b{color:var(--tx); font-weight:600}
+li.q::before{background:var(--st); width:5px; height:1px; top:8px; border-radius:0}
+li.q{color:var(--tx3); font-size:10.2px}
+
+/* ---------- two short blocks side by side at the end ---------- */
+.foot2{display:flex; gap:12mm; margin-top:14px}
+.foot2 > div{flex:1}
+.kv{font-size:11px; line-height:1.62; color:var(--tx2); margin-top:3px}
+.kv b{color:var(--tx); font-weight:600; font-size:10.8px}
+.edu-t{font-size:13.5px; font-weight:600; color:var(--tx); line-height:1.3}
+.edu-o{font-size:10.8px; color:var(--tx3); margin-top:2px}
+
+/* the verification path, which is the thing a resume reader actually wants */
+.receipts{margin-top:20px; padding-top:11px; border-top:1px solid var(--st)}
+.receipts .l{font-family:"Matter Mono",monospace; font-size:9px; letter-spacing:.2em;
+             text-transform:uppercase; color:var(--tx3)}
+.receipts p{margin-top:5px; font-size:10.8px; line-height:1.55; color:var(--tx2)}
+.receipts b{color:var(--indigo-700); font-weight:525}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <div class="nm">Harsh Bomble</div>
+    <div class="role">Growth Marketing Intern &middot; Mumbai, open to relocating to Bengaluru</div>
+    <div class="meta">
+      <a href="mailto:harshbomble.work@gmail.com">harshbomble.work@gmail.com</a>
+      <a href="https://www.linkedin.com/in/harsh-bomble/">linkedin.com/in/harsh-bomble</a>
+      <a class="site" href="#">PORTFOLIO-LINK</a>
+    </div>
+    <div class="rule"></div>
+  </header>
+
+  <p class="sum">Growth and performance marketer who already builds on Sarvam.
+     <b>41+ political campaigns</b> across Maharashtra on <b>&#8377;7.6L of Meta spend</b>,
+     <b>&#8377;75.2L in sales at roughly 10x</b> for PK Films India, <b>50+ sites</b> shipped
+     for Chakan MIDC companies, and a voice AI product running on <b>Sarvam&rsquo;s APIs</b>
+     under the Sarvam AI Startup Program.</p>
+
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="job-top">
+      <div>
+        <div class="job-t">Founder</div>
+        <div class="job-o">DialVola &middot; AI voice call centre</div>
+      </div>
+      <div class="job-w">Mar 2026 &ndash; Oct 2026</div>
+    </div>
+    <ul>
+      <li>Built and sold an AI voice call centre to <b>22+ astrologers in Pune</b>. Found the
+          segment, wrote the pitch, closed every client personally.</li>
+      <li>Built on <b>Sarvam&rsquo;s APIs</b> under the <b>Sarvam AI Startup Program</b>. Using
+          the stack showed me both the pull, Indic speech and Hinglish and latency, and the
+          friction.</li>
+      <li>Wrote an <b>OpenAI-compatible shim</b> to remove the switching cost from OpenAI, the
+          same friction that keeps developers on whichever provider they started with.</li>
+      <li>The product worked and distribution did not. That gap is why I am applying for this
+          role rather than starting another company.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-top">
+      <div>
+        <div class="job-t">Co-Founder</div>
+        <div class="job-o">Nexussv &middot; Full-time</div>
+      </div>
+      <div class="job-w">Aug 2023 &ndash; Feb 2026</div>
+    </div>
+    <ul>
+      <li>Ran <b>41+ political campaigns</b> across Maharashtra, including <b>MLA and MP
+          election campaigns for the NCP</b>.</li>
+      <li>Managed <b>&#8377;7.6 lakh of Meta ad spend</b> delivering <b>16.7M impressions</b>.
+          Audience targeting, vernacular creative, and daily optimisation against a fixed
+          polling date.</li>
+      <li>Grew the agency to <b>23+ clients</b> over two and a half years, including <b>50+
+          sites</b> for companies across Chakan MIDC.</li>
+      <li class="q">Client and campaign specifics withheld under agency confidentiality.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-top">
+      <div>
+        <div class="job-t">Growth &amp; Performance Marketing</div>
+        <div class="job-o">PK Films India &middot; Part-time</div>
+      </div>
+      <div class="job-w">May 2025 &ndash; Dec 2025</div>
+    </div>
+    <ul>
+      <li>Drove <b>&#8377;75.2L in sales on &#8377;7.6 lakh of ad spend</b> across WhatsApp Ads
+          and Google Ads, roughly a <b>10x return</b>.</li>
+      <li>Owned the full paid funnel: targeting, creative, WhatsApp conversation flow and
+          conversion tracking.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-top">
+      <div>
+        <div class="job-t">Campaign Design &amp; Creative</div>
+        <div class="job-o">India Post &middot; Project engagement</div>
+      </div>
+      <div class="job-w">Sep 2024</div>
+    </div>
+    <ul>
+      <li>Produced design and creative for a campaign serving offline offices across rural
+          Pune, marketing to audiences reached in person rather than online.</li>
+    </ul>
+  </div>
+
+  <h2>Education</h2>
+  <div class="job">
+    <div class="job-top">
+      <div>
+        <div class="edu-t">B.Tech, Data Science</div>
+        <div class="edu-o">Department of Technology, Savitribai Phule Pune University</div>
+      </div>
+      <div class="job-w">Third year</div>
+    </div>
+  </div>
+
+  <div class="foot2">
+    <div>
+      <h2 style="margin-top:0">Skills</h2>
+      <p class="kv"><b>Performance</b> &nbsp;Meta Ads, Google Ads, WhatsApp Business, Ads Manager<br>
+         <b>AI stack</b> &nbsp;Sarvam, OpenAI, Claude, Gemini, ElevenLabs, Hugging Face<br>
+         <b>Analytics</b> &nbsp;Search Console, conversion tracking, attribution design<br>
+         <b>Build</b> &nbsp;Webflow, Figma, vibe-coded landing pages<br>
+         <b>Creative</b> &nbsp;Canva, Photoshop, Premiere Pro, Jitter</p>
+    </div>
+    <div style="flex:0 0 46mm">
+      <h2 style="margin-top:0">Languages</h2>
+      <p class="kv">Marathi &nbsp;<span style="color:#666">Native</span><br>
+         Hindi &nbsp;<span style="color:#666">Fluent</span><br>
+         English &nbsp;<span style="color:#666">Working</span></p>
+    </div>
+  </div>
+
+  <div class="receipts">
+    <div class="l">Receipts</div>
+    <p>Meta Ads Manager totals and Instagram professional dashboards behind the numbers
+       above, with campaign and client names cropped, are at
+       <b>PORTFOLIO-LINK/proof</b>. Happy to walk through any of them live.</p>
+  </div>
+
+</div>
+</body>
+</html>

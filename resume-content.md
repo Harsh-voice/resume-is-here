@@ -24,10 +24,11 @@ valuable line on the page and it should be visible in the first two seconds.
 
 ## ONE LINE, UNDER THE HEADER
 
-> Growth and performance marketer who already builds on Sarvam. Ran ₹7.6L of
-> Meta spend across 853 political campaigns, drove ₹75.2L in sales at roughly
-> 10x return, and shipped a voice AI product on Sarvam's APIs under the Startup
-> Program.
+> Growth and performance marketer who already builds on Sarvam. **41+ political
+> campaigns** across Maharashtra on **₹7.6L of Meta spend**, **₹75.2L in sales at
+> roughly 10x** for PK Films India, **50+ sites** shipped for Chakan MIDC
+> companies, and a voice AI product running on **Sarvam's APIs** under the Sarvam
+> AI Startup Program.
 
 No "objective". No "seeking a challenging role". One sentence of facts.
 
@@ -49,12 +50,12 @@ No "objective". No "seeking a challenging role". One sentence of facts.
 ### Nexussv — Co-Founder
 *Full-time · Aug 2023 – Feb 2026*
 
-- Ran political campaign marketing across Maharashtra, including **MLA and MP
+- Ran **41+ political campaigns** across Maharashtra, including **MLA and MP
   election campaigns for the NCP**.
-- Managed **₹7.6 lakh of Meta ad spend across 853 campaigns**, delivering
-  **16.7M impressions**. Audience targeting, vernacular creative, daily
+- Managed **₹7.6 lakh of Meta ad spend** delivering **16.7M impressions**. Audience targeting, vernacular creative, daily
   optimisation against a fixed polling date.
-- Grew the agency to **23+ clients** over two and a half years.
+- Grew the agency to **23+ clients** over two and a half years, including **50+
+  sites** for companies across Chakan MIDC.
 - Client and campaign specifics withheld under agency confidentiality.
 
 ### PK Films — Growth & Performance Marketing
@@ -138,3 +139,21 @@ accounts to show, send those screenshots and I will raise it.
 One thing to check: ₹7.6 lakh now appears for both Nexussv Meta spend and PK
 Films spend. If those are genuinely two different ₹7.6L figures, fine, but it
 reads like a copy-paste error. Worth separating with exact amounts.
+
+---
+
+# Built
+
+`resume.html` sets this in the site's own theme and prints to
+`Harsh-Bomble-Growth-Marketing-Intern.pdf`, one A4 page.
+
+```
+node -e "const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();
+const p=await b.newPage();await p.goto('file://'+process.cwd()+'/resume.html',{waitUntil:'networkidle'});
+await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(300);
+await p.pdf({path:'Harsh-Bomble-Growth-Marketing-Intern.pdf',format:'A4',printBackground:true,
+margin:{top:'0',right:'0',bottom:'0',left:'0'}});await b.close();})()"
+```
+
+Search and replace `PORTFOLIO-LINK` in `resume.html` once the site is on Vercel,
+then re-run that command.
