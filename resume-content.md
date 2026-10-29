@@ -15,7 +15,7 @@ Harsh Bomble
 Growth Marketing Intern · Mumbai, open to relocate to Bengaluru
 
 [?] phone   ·   harshbomble.work@gmail.com
-linkedin.com/in/harsh-bomble   ·   portfolio-is-here.vercel.app
+linkedin.com/in/harsh-bomble   ·   resume-is-here.vercel.app
 ```
 
 The portfolio link goes **in the header, not at the bottom**. It is the most
@@ -156,5 +156,5 @@ await p.pdf({path:'Harsh-Bomble-Growth-Marketing-Intern.pdf',format:'A4',printBa
 margin:{top:'0',right:'0',bottom:'0',left:'0'}});await b.close();})()"
 ```
 
-Search and replace `portfolio-is-here.vercel.app` in `resume.html` once the site is on Vercel,
+Search and replace `resume-is-here.vercel.app` in `resume.html` once the site is on Vercel,
 then re-run that command.
